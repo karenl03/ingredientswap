@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile Web App</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap">
+<style>
+    body {
+        /* font-family: Arial, sans-serif; */
+        font-family: 'Abril Fatface', cursive;
+        font-weight: normal;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+        display: flex; /* Use flexbox for layout */
+        flex-direction: column;
+    }
+
+    .container {
+        flex: 1;
+        max-width: 360px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+    .title {
+        font-size: 30px;
+        font-weight: bold;
+        color: #F17D98;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    header {
+        background-color: #B4D4CA;
+        color: #fff;
+        height: 68px;
+        text-align: center;
+        padding: 10px 0;
+    }
+    .button-container {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-top: 1000px; /* Adjust margin-top as needed */
+    }
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #F17D98; /* Pink color */
+        color: #fff; /* White text */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+    .button:hover {
+        background-color: #d84f96; /* Darker pink on hover */
+    }
+
+    footer {
+        position: fixed; /* Fixed positioning */
+        left: 0;
+        bottom: 0;
+        width: 100%; /* Full width */
+        background-color: #fff;
+        color: #fff;
+        height: 50px;
+        text-align: center;
+        padding: 10px 0;
+        border: 3px solid #B4D4CA;
+    }
+
+    .footer-icons {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .footer-icons i {
+        font-size: 24px;
+    }
+
+</style>
+</head>
+<body>
+
+<header>
+    <img src="is-logo.png" alt="Logo" height="68px">
+</header>
+<title>Edit Recipe</title>
+<i class="fa-regular fa-circle-info"></i>
+
+<div class="container">
+    <div class="text-box">
+            <h1>Information</h1>
+            <p>IngredientSwap helps you customize your favorite recipes given your personal allergens dietary restrictions.</p>
+            <p>Click a box once to increase the ingredient amount.</p>
+            <p>Click a box twice to decrease the ingredient amount. </p>
+            <p>Click a box three times to remove the ingredient. </p>
+            <p>Select “Done” when finished. </p>
+    </div>
+</div>
+<div class="button-container">
+<button class="button">Done</button>
+</div>
+<footer>
+    <div class="footer-icons">
+        <i class="fas fa-home"></i>
+        <i class="fas fa-bookmark"></i>
+        <i class="fas fa-user"></i>
+    </div>
+</footer>
+
+<!-- You may need to include Font Awesome for icons -->
+<!-- <script src="https://kit.fontawesome.com/a076d05399.js"></script> -->
+
+</body>
+</html>
