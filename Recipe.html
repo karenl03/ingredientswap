@@ -230,11 +230,22 @@
 
 <div class="title">
     <div class="header-icons">
-        <span class="material-symbols-outlined" style="font-size: 30px;">arrow_back_ios</span>
+        <a href="Welcome.html">
+            <span class="material-symbols-outlined" style="font-size: 30px;">arrow_back_ios</span>
+        </a>
         <h1>Edit Recipe</h1>
-        <span class="material-symbols-outlined" style="font-size: 30px;">info</span>
+        <a href="#" onclick="navigateToInfo()">
+            <span class="material-symbols-outlined" style="font-size: 30px;">info</span>
+        </a>
     </div>
 </div>
+
+<script>
+    function navigateToInfo() {
+        // Navigate to the new page
+        window.location.href = "Information.html";
+    }
+</script>
 
 <div class="ingredients-title">
     <h2 style="margin-bottom: 0;">Ingredients</h2>
@@ -306,8 +317,15 @@
 </script>
 
 <div class="save-button-container">
-    <button class="save-button">Save</button>
+    <button class="save-button" onclick="saveAndNavigate()">Save</button>
 </div>
+
+<script>
+    function saveAndNavigate() {
+        window.location.href = "FinalRecipe.html";
+    }
+</script>
+
 <footer-top></footer-top>
 <footer>
     <div class="footer-icons">

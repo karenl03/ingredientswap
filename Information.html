@@ -55,6 +55,7 @@
         color: #F17D98;
         text-align: center;
         margin-top: 5px;
+        margin-bottom: 10px;
     }
 
     .text-title {
@@ -151,12 +152,7 @@
 </header>
 
 <div class="title">
-    <div class="header-icons">
-        <span class="material-symbols-outlined" style="font-size: 30px;">arrow_back_ios</span>
-        <h1>Edit Recipe</h1>
-        <span class="material-symbols-outlined" style="font-size: 30px;">info</span>
-    </div>
-    <h2>Chocolate Chip Cookies</h2>
+    <h1>Edit Recipe</h1>
 </div>
 
 <div class="container">
@@ -165,7 +161,6 @@
             <div class="text-title">
                 <h1>Information</h1>
             </div>
-            <span class="material-symbols-outlined" style="font-size: 30px; color: #FFF;">expand_more</span>
         </div>
         <p>IngredientSwap helps you customize your favorite recipes given your personal allergens dietary restrictions.</p>
         <p>Click a box once to increase the ingredient amount.</p>
@@ -174,9 +169,17 @@
         <p>Select “Done” when finished. </p>
     </div>
 </div>
+
 <div class="button-container">
-    <button class="button">Done</button>
+    <button class="button" onclick="doneAndNavigate()">Done</button>
 </div>
+
+<script>
+    function doneAndNavigate() {
+        window.location.href = "Recipe.html";
+    }
+</script>
+
 <footer-top></footer-top>
 <footer>
     <div class="footer-icons">
