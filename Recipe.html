@@ -11,6 +11,7 @@
     .material-symbols-outlined {
         font-size: 50px;
         color: #B4D4CA;
+        margin-top: 10px;
     }
 
     body {
@@ -28,12 +29,6 @@
         font-family: 'Abril Fatface', cursive;
         padding: 0;
         margin: 0;
-    }
-
-    p {
-        font-family: 'Roboto Mono';
-        font-weight: normal;
-        font-size: 17px;
     }
 
     .container {
@@ -114,7 +109,6 @@
     }
 
     .ingredients-title {
-        font-size: 15px;
         font-family: 'Abril Fatface', cursive;
         font-weight: normal;
         color: #000000;
@@ -136,13 +130,14 @@
     }
 
     .nutrition-text {
-        font-size: 12px;
+        font-size: 20px;
         font-family: 'Roboto Mono', normal;
         font-weight: normal;
         color: #000000;
         text-align: left;
-        margin-top: 5px;
         margin-left: 20px;
+        text-decoration: none;
+        line-height: 0.75;
     }
 
     .save-button-container {
@@ -153,7 +148,7 @@
 
     .save-button {
         font-family: 'Abril Fatface', cursive;
-        font-size: 20px;
+        font-size: 25px;
         background-color: #F17D98;
         color: #fff;
         border: none;
@@ -192,6 +187,9 @@
         padding: 5px 10px;
         cursor: pointer;
         background-color: rgb(255, 255, 255);
+        width: 40px; /* Set a fixed width */
+        height: 30px; /* Set a fixed height */
+        margin-left: 15px;
     }
 
     .button:hover {
@@ -246,35 +244,35 @@
 <ul class="todo-list">
     <li class="todo-item">
         <div class="button-container">
-            <button class="button" onclick="toggleState(this)">▲</button>
+            <button class="button" onclick="toggleState(this)"></button>
             <span class="number">1</span>
         </div>
         <span class="task">Eggs</span>
     </li>
     <li class="todo-item">
         <div class="button-container">
-            <button class="button" onclick="toggleState(this)">▲</button>
+            <button class="button" onclick="toggleState(this)"></button>
             <span class="number">2</span>
         </div>
         <span class="task">Cup Almond Milk</span>
     </li>
     <li class="todo-item">
         <div class="button-container">
-            <button class="button" onclick="toggleState(this)">▲</button>
+            <button class="button" onclick="toggleState(this)"></button>
             <span class="number">3</span>
         </div>
         <span class="task">Cup Sugar</span>
     </li>
     <li class="todo-item">
         <div class="button-container">
-            <button class="button" onclick="toggleState(this)">▲</button>
+            <button class="button" onclick="toggleState(this)"></button>
             <span class="number">4</span>
         </div>
         <span class="task">Cup Chocolate Chips</span>
     </li>
     <li class="todo-item">
         <div class="button-container">
-            <button class="button" onclick="toggleState(this)">▲</button>
+            <button class="button" onclick="toggleState(this)"></button>
             <span class="number">5</span>
         </div>
         <span class="task">Tbs Baking Soda</span>
@@ -283,12 +281,15 @@
 
 <div class="nutrition-title">
     <h1>Nutrition</h1>
-    <div classs ="nutrition-text">
+</div>
+
+    <div class ="nutrition-text">
         <p>10g Fat</p>
         <p>5g Protein</p>
+        <p>15g Sugar</p>
         <p>200 Calories</p>
     </div>
-</div>
+
 
 <script>
     function toggleState(button) {
