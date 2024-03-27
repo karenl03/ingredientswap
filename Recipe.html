@@ -115,7 +115,7 @@
 
     .ingredients-title {
         font-size: 15px;
-        font-family: 'Roboto Mono', normal;
+        font-family: 'Abril Fatface', cursive;
         font-weight: normal;
         color: #000000;
         text-decoration: underline;
@@ -126,7 +126,7 @@
 
     .nutrition-title {
         font-size: 12px;
-        font-family: 'Roboto Mono', normal;
+        font-family: 'Abril Fatface', cursive;
         font-weight: normal;
         color: #000000;
         text-decoration: underline;
@@ -296,6 +296,8 @@
             button.innerText = '▼'; // Down arrow
         } else if (button.innerText === '▼') {
             button.innerText = 'X';
+        } else if (button.innerText === 'X'){
+            button.innerText = '';
         } else {
             button.innerText = '▲';
         }
