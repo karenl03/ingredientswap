@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile Web App</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap">
+<style>
+    body {
+        /* font-family: Arial, sans-serif; */
+        font-family: 'Abril Fatface', cursive;
+        font-weight: normal;
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+        display: flex; /* Use flexbox for layout */
+        flex-direction: column;
+    }
+
+    svg {
+        width: 10; /* Set desired width */
+        height: 10; /* Set desired height */
+    }
+
+    .container {
+        flex: 1;
+        max-width: 360px;
+        margin: 0 auto;
+        padding: 10px;
+        background-color: #B4D4CA;
+        border-radius: 10px;
+        margin-top: 10px;
+        border: 1px solid #F17D98;
+        border-radius: 0px;
+        position: relative;
+    }
+
+    .title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #F17D98;
+        text-align: center;
+        margin-top: 5px;
+    }
+
+    .text-title {
+        font-size: 15px;
+        font-weight: bold;
+        color: #ffffff;
+        text-align: left;
+        margin-top: 5px;
+    }
+
+    .text-box {
+        font-size: 15px;
+        font-family: 'Roboto', italic;
+        font-weight: normal;
+        color: #000000;
+        text-align: left;
+        margin-top: 5px;
+    }
+
+    header {
+        background-color: #B4D4CA;
+        color: #fff;
+        height: 68px;
+        text-align: center;
+        padding: 10px 0;
+    }
+    .button-container {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-top: 570px;
+        margin-right: 10px; /* Adjust margin-top as needed */
+    }
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #F17D98; /* Pink color */
+        font-family: 'Roboto', bold;
+        font-size: 15px;
+        color: #fff; /* White text */
+        border: none;
+        border-radius: 0px;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+    .button:hover {
+        background-color: #d84f96; /* Darker pink on hover */
+    }
+
+    footer {
+        position: fixed; /* Fixed positioning */
+        left: 0;
+        bottom: 0;
+        width: 100%; /* Full width */
+        background-color: #fff;
+        color: #fff;
+        height: 50px;
+        text-align: center;
+        padding: 10px 0;
+        border: 3px solid #B4D4CA;
+    }
+
+    .footer-icons {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .footer-icons i {
+        font-size: 24px;
+    }
+
+    .ingredients-title {
+        font-size: 12px;
+        font-weight: normal;
+        color: #000000;
+        text-decoration: underline;
+        text-align: left;
+        margin-top: 5px;
+        margin-left: 10px;
+    }
+
+    .nutrition-title {
+        font-size: 12px;
+        font-weight: normal;
+        color: #000000;
+        text-decoration: underline;
+        text-align: left;
+        margin-top: 5px;
+        margin-left: 10px;
+    }
+
+</style>
+</head>
+<body>
+
+<header>
+    <img src="is-logo.png" alt="Logo" height="68px">
+</header>
+
+<div class="title">
+        <div>
+            <img src="circle-arrow-left-solid.svg" height="30xp" color=#B4D4CA>
+        </div>
+        <h1>Edit Recipe</h1>
+    <h1>Chocolate Chip Cookies</h1>
+</div>
+
+<div class="ingredients-title">
+    <h1>Ingredients</h1>
+</div>
+
+<div class="nutrition-title">
+    <h1>Nutrition</h1>
+</div>
+
+<div class="button-container">
+<button class="button">Done</button>
+</div>
+
+
+<footer>
+    <div class="footer-icons">
+        <img src="house-solid.svg" height="30xp" color=#B4D4CA>
+        <img src="bookmark-solid.svg" height="30xp" color=#B4D4CA>
+        <img src="person-solid.svg" height="30xp" color=#B4D4CA>
+    </div>
+</footer>
+
+<!-- You may need to include Font Awesome for icons -->
+<!-- <script src="https://kit.fontawesome.com/a076d05399.js"></script> -->
+
+</body>
+</html>
