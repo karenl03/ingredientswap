@@ -39,14 +39,17 @@
 
     .container {
         flex: 1;
-        max-width: 40%;
+        width: 220px; /* Set the width of the container */
+        height: 210px;
         margin: 0 auto;
-        padding: 10px;
+        padding: 20px;
         background-color: #FFF;
-        border-radius: 10px;
-        margin-top: 10px;
-        position: relative;
+        border-radius: 1px;
         text-align: center;
+    }
+
+    .big-container {
+        display: flex;
     }
 
     .title {
@@ -148,8 +151,8 @@
     }
 
     .container img {
-        display: block;
-        margin: 0 auto;
+        display: center;
+        margin-right: 10px;
         border: 4px solid #B4D4CA;
     }
 
@@ -230,25 +233,28 @@
     </div>
 </div>
 
-<div class="container">
-    <img src="Cookies.jpg" width ="90%">
-    <h1 style="font-size: 20px; color: #F17D98; margin-top: 8px;">Chocolate Chip Cookies</h1>
+<div class="big-container">
+    <div class="container">
+        <img src="Cookies.jpg" width ="180px" height = "180px">
+        <h1 style="font-size: 20px; color: #F17D98; margin-top: 8px;">Chocolate Chip Cookies</h1>
+    </div>
+    <div class="container">
+        <img src="Angel.jpg" width ="180px" height = "180px">
+        <h1 style="font-size: 20px; color: #F17D98; margin-top: 8px;">Angel Food Cake</h1>
+    </div>
 </div>
 
-<div class="container">
-    <img src="Angel.jpg" width ="90%">
-    <h1 style="font-size: 20px; color: #F17D98; margin-top: 8px;">Angel Food Cake</h1>
+<div class="big-container">
+    <div class="container">
+        <img src="Cake-Pops.png" width ="180px" height = "180px">
+        <h1 style="font-size: 20px; color: #F17D98; margin-top: 8px;">Cake Pops</h1>
+    </div>
+    <div class="container">
+        <img src="Brownies.png" width ="180px" height = "180px">
+        <h1 style="font-size: 20px; color: #F17D98; margin-top: 8px;">Brownies</h1>
+    </div>
 </div>
 
-<div class="container">
-    <img src="Cookies.jpg" width ="90%">
-    <h1 style="font-size: 20px; color: #F17D98; margin-top: 8px;">Cake Pops</h1>
-</div>
-
-<div class="container">
-    <img src="Cookies.jpg" width ="90%">
-    <h1 style="font-size: 20px; color: #F17D98; margin-top: 8px;">Brownies</h1>
-</div>
 
 
 <footer-top></footer-top>
