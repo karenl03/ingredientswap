@@ -12,6 +12,7 @@
     .material-symbols-outlined {
         font-size: 50px;
         color: #B4D4CA;
+        margin-top: 10px;
     }
 
     body {
@@ -248,7 +249,7 @@
             <span class="material-symbols-outlined" style="font-size: 30px;">arrow_back_ios</span>
         </a>
         <h1>Final Recipe</h1>
-        <span class="material-symbols-outlined" style="font-size: 30px;">info</span>
+        <span class="material-symbols-outlined" style="font-size: 30px; color: #FFF;">info</span>
     </div>
 </div>
 
@@ -256,9 +257,9 @@
     <img src="Cookies.jpg" width ="90%">
     <h1 style="font-size: 30px; color: #F17D98; margin-top: 8px;">Chocolate Chip Cookies</h1>
     <div class="servings-container">
-        <span class="material-symbols-outlined" style="font-size: 20px; color: #FFF;">groups</span>
+        <span class="material-symbols-outlined" style="font-size: 20px; color: #FFF; margin-top: 0;">groups</span>
         <p>8 servings</p>
-        <span class="material-symbols-outlined" style="font-size: 20px; color: #FFF;">timer</span>
+        <span class="material-symbols-outlined" style="font-size: 20px; color: #FFF; margin-top: 0;">timer</span>
         <p>30 minutes</p>
     </div>
 
@@ -295,8 +296,13 @@
     </div>
 </div>
 <div class="button-container">
-    <button class="button">Save</button>
+    <button class="button" onclick="savedRecipes()">Save</button>
 </div>
+<script>
+    function savedRecipes() {
+        window.location.href = "SavedRecipe.html";
+    }
+</script>
 <footer-top></footer-top>
 <footer>
     <div class="footer-icons">

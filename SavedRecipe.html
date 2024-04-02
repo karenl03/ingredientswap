@@ -244,18 +244,23 @@
 <div class="title">
     <div class="header-icons">
         <a href="Recipe.html">
-            <span class="material-symbols-outlined" style="font-size: 30px;">arrow_back_ios</span>
+            <span class="material-symbols-outlined" style="font-size: 30px; color: white;">arrow_back_ios</span>
         </a>
         <h1>Saved Recipe</h1>
-        <span class="material-symbols-outlined" style="font-size: 30px;">info</span>
+        <span class="material-symbols-outlined" style="font-size: 30px; color: white;">info</span>
     </div>
 </div>
 
 <div class="big-container">
     <div class="container">
-        <img src="Cookies.jpg" width ="180px" height = "180px">
+        <img src="Cookies.jpg" width ="180px" height = "180px" onclick="getRecipe()">
         <h1 style="font-size: 20px; color: #F17D98; margin-top: 8px;">Chocolate Chip Cookies</h1>
     </div>
+    <script>
+        function getRecipe() {
+            window.location.href = "FinalRecipe.html";
+        }
+    </script>
     <div class="container">
         <img src="Angel.jpg" width ="180px" height = "180px">
         <h1 style="font-size: 20px; color: #F17D98; margin-top: 8px;">Angel Food Cake</h1>

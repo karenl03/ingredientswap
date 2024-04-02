@@ -12,6 +12,7 @@
     .material-symbols-outlined {
         font-size: 50px;
         color: #B4D4CA;
+        margin-top: 10px;
     }
 
     body {
@@ -166,7 +167,7 @@
             <div class="text-title">
                 <h1>Information</h1>
             </div>
-            <span class="material-symbols-outlined" style="font-size: 30px; color: #FFF;">close</span>
+            <span class="material-symbols-outlined" style="font-size: 30px; color: #FFF;" onclick="closeAndNavigate()">close</span>
         </div>
         <p>IngredientSwap helps you customize your favorite recipes given your personal allergens dietary restrictions.</p>
         <p>Click a box once to increase the ingredient amount.</p>
@@ -186,6 +187,12 @@
         <span class="material-symbols-outlined">person</span>
     </div>
 </footer>
+
+<script>
+    function closeAndNavigate() {
+        window.location.href = "Recipe.html";
+    }
+</script>
 
 <!-- You may need to include Font Awesome for icons -->
 <!-- <script src="https://kit.fontawesome.com/a076d05399.js"></script> -->

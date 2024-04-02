@@ -12,6 +12,7 @@
     .material-symbols-outlined {
         font-size: 50px;
         color: #B4D4CA;
+        margin-top: 10px;
     }
 
     body {
@@ -32,7 +33,7 @@
     }
 
     h3 {
-        font-family: 'Roboto', normal;
+        font-family: 'Roboto Mono', normal;
         font-size: 18px;
         color: #000000;
         padding: 0;
@@ -112,10 +113,10 @@
 
     footer-top {
         position: fixed;
-        bottom: 50px; /* Adjust to fit the size of the footer */
+        bottom: 50px;
         width: 100%;
         background-color: #B4D4CA;
-        height: 5px; /* Adjust the height of the rectangle */
+        height: 5px;
         text-align: center;
         padding: 10px 0;
     }
@@ -152,16 +153,16 @@
     }
 
     .dropdown {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    font-family: 'Roboto', bold;
-    font-size: 18px;
-    color: #000000;
-    display: inline-block;
-    transform: translate(-50%, -50%);
-    text-align: left;
-  }
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-family: 'Roboto Mono', bold;
+        font-size: 18px;
+        color: #000000;
+        display: inline-block;
+        transform: translate(-50%, -50%);
+        text-align: left;
+    }
 
   .custom-select {
     position: absolute;
@@ -171,13 +172,14 @@
     display: none;
     flex-direction: column;
     background-color: #f9f9f9;
+    transform: translate(-50%, -50%);
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
   }
 
   /* Style for dropdown button */
   .dropdown-btn {
-    font-family: 'Roboto', bold;
+    font-family: 'Roboto Mono', bold;
     font-size: 20px;
     color: #000000;
     background-color: #B4D4CA;
@@ -200,7 +202,7 @@
 
   /* Style for dropdown items */
   .dropdown-content a {
-    font-family: 'Roboto', bold;
+    font-family: 'Roboto Mono', bold;
     font-size: 18px;
     color: #000000;
     text-decoration: none;
@@ -272,9 +274,9 @@
 
 <div class="title">
     <div class="header-icons">
-        <span class="material-symbols-outlined" style="font-size: 30px;">arrow_back_ios</span>
+        <span class="material-symbols-outlined" style="font-size: 30px; color: white">arrow_back_ios</span>
         <h1>Welcome!</h1>
-        <span class="material-symbols-outlined" style="font-size: 30px;">info</span>
+        <span class="material-symbols-outlined" style="font-size: 30px; color: white">info</span>
     </div>
     <h2>Please select your dietary restrictions and allergens</h2>
 </div>
@@ -310,8 +312,15 @@
   </script>
 
 <div class="button-container">
-    <button class="button">Done</button>
+    <button class="button" onclick="doneAndNavigate()">Done</button>
 </div>
+
+<script>
+    function doneAndNavigate() {
+        window.location.href = "Recipe.html";
+    }
+</script>
+
 <footer-top></footer-top>
 <footer>
     <div class="footer-icons">
