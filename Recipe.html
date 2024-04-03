@@ -221,6 +221,64 @@
         color: #F17D98;
         margin-left: 8px;
     }
+
+    .modify-button-container {
+        display: flex;
+        align-items: center;
+        margin: auto;
+    }
+
+    .sugar-button {
+        font-family: 'Abril Fatface';
+        font-size: 15px;
+        background-color: #fff;
+        color: #000;
+        border: 2px solid #B4D4CA;
+        padding: 10px 10px;
+        margin-bottom: 5px;
+        margin-left: 15px;
+        margin-right: 15px;
+        cursor: pointer;
+    }
+
+    .sugar-button.clicked {
+    background-color: #B4D4CA;
+    }
+
+    .protein-button {
+        font-family: 'Abril Fatface';
+        font-size: 15px;
+        background-color: #fff;
+        color: #000;
+        border: 2px solid #B4D4CA;
+        padding: 10px 10px;
+        margin-bottom: 5px;
+        margin-left: 15px;
+        margin-right: 15px;
+        cursor: pointer;
+    }
+
+    .protein-button.clicked {
+        background-color: #B4D4CA;
+    }
+
+    .fat-button {
+        font-family: 'Abril Fatface';
+        font-size: 15px;
+        background-color: #fff;
+        color: #000;
+        border: 2px solid #B4D4CA;
+        padding: 10px 10px;
+        margin-bottom: 5px;
+        margin-left: 15px;
+        margin-right: 15px;
+        cursor: pointer;
+    }
+
+    .fat-button.clicked {
+        background-color: #B4D4CA;
+    }
+
 </style>
 </head>
 <body>
@@ -301,6 +359,31 @@
         <p>15g Sugar</p>
         <p>200 Calories</p>
     </div>
+
+
+<div class="modify-button-container">
+    <button class="sugar-button" onclick="modifySugar(this)">Low Sugar</button>
+    <button class="protein-button" onclick="modifyProtein(this)">High Protein</button>
+    <button class="fat-button" onclick="modifyFat(this)">Low Fat</button>
+</div>
+
+<script>
+    function modifySugar(button) {
+        button.classList.toggle('clicked');
+    }
+</script>
+
+<script>
+    function modifyProtein(button) {
+        button.classList.toggle('clicked');
+    }
+</script>
+
+<script>
+    function modifyFat(button) {
+        button.classList.toggle('clicked');
+    }
+</script>
 
 
 <script>
