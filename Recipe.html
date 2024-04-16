@@ -197,14 +197,6 @@
         background-color: rgb(255, 255, 255);
     }
 
-    .arrow::before {
-        content: "\25B2"; /* Up arrow */
-    }
-
-    .arrow.down::before {
-        content: "\25BC"; /* Down arrow */
-    }
-
     .arrow.x-mark::before {
         content: "X";
     }
@@ -388,14 +380,11 @@
 
 <script>
     function toggleState(button) {
-        if (button.innerText === '▲') {
-            button.innerText = '▼'; // Down arrow
-        } else if (button.innerText === '▼') {
-            button.innerText = 'X';
-        } else if (button.innerText === 'X'){
+        if (button.innerText === '') {
+            button.innerText = 'X'; // Down arrow
+        } 
+        else {
             button.innerText = '';
-        } else {
-            button.innerText = '▲';
         }
     }
 </script>
