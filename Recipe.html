@@ -381,6 +381,12 @@
 </div>
 
 <script>
+        // Define variables for storing image states
+        var milkImage = false;
+    var eggImage = false;
+    var glutenImage = false;
+    var peanutImage = false;
+    var veganImage = false;
     // modify recipe based on saved allergens 
     // Retrieve selected allergens from local storage
     const savedAllergens = localStorage.getItem('selectedAllergens');
@@ -412,12 +418,27 @@ if (savedAllergens) {
 
     // Iterate over each allergen
     selectedAllergens.forEach(allergen => {
+        if(allergen == "Milk"){
+                    milkImage = true;
+                } 
+                if(allergen == "Egg"){
+                    eggImage = true;
+                }
+                if(allergen == "Gluten"){
+                    glutenImage = true;
+                }  
+                if(allergen == "Vegan"){
+                    veganImage = true;
+                } 
+                if(allergen == "Peanut"){
+                    peanutImage = true;
+                } 
         // Modify ingredients based on allergens
         recipe.ingredients.forEach(ingredient => {
             // Check if ingredient needs to be replaced based on allergen
             if (replacementRules[allergen] && ingredient.task === allergen) {
                 ingredient.task = replacementRules[allergen]; // Update the ingredient task
-                ingredient.modified = true; 
+                ingredient.modified = true;
             }
         });
     });
@@ -560,6 +581,11 @@ if (fatClicked === 'true') {
     function saveAndNavigate() {
         // Save the modified recipe to localStorage
         localStorage.setItem('modifiedRecipe', JSON.stringify(recipe));
+        localStorage.setItem('milkImage', JSON.stringify(milkImage));
+        localStorage.setItem('eggImage', JSON.stringify(eggImage));
+        localStorage.setItem('glutenImage', JSON.stringify(glutenImage));
+        localStorage.setItem('peanutImage', JSON.stringify(peanutImage));
+        localStorage.setItem('veganImage', JSON.stringify(veganImage));
         window.location.href = "FinalRecipe.html";
     }
 </script>
