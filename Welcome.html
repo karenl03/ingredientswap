@@ -286,7 +286,7 @@
     <button class="dropdown-btn" onclick="toggleDropdown()">Select</button>
     <span class="material-symbols-outlined">expand_more</span>
     <div class="dropdown-content" id="dropdownContent">
-        <a><label><span>Dairy</span><input type="checkbox" class="custom-checkbox" value="Dairy"></label></a>
+        <a><label><span>Milk</span><input type="checkbox" class="custom-checkbox" value="Milk"></label></a>
         <a><label><span>Peanuts</span><input type="checkbox" class="custom-checkbox" value="Peanuts"></label></a>
         <a><label><span>Tree Nuts</span><input type="checkbox" class="custom-checkbox" value="Tree Nuts"></label></a>
         <a><label><span>Eggs</span><input type="checkbox" class="custom-checkbox" value="Eggs"></label></a>
@@ -297,19 +297,21 @@
 </div>
 
 <script>
-    // JavaScript to handle checkbox selection
+        // JavaScript to handle checkbox selection and saving allergens
     const checkboxes = document.querySelectorAll('.custom-checkbox');
-  
+
     checkboxes.forEach(checkbox => {
-      checkbox.addEventListener('change', function() {
-        const selectedOptions = Array.from(checkboxes)
-          .filter(checkbox => checkbox.checked)
-          .map(checkbox => checkbox.value);
-  
-        console.log('Selected options:', selectedOptions);
-      });
+        checkbox.addEventListener('change', function() {
+            const selectedOptions = Array.from(checkboxes)
+                .filter(checkbox => checkbox.checked)
+                .map(checkbox => checkbox.value);
+
+            // Save the selected allergens to local storage
+            localStorage.setItem('selectedAllergens', JSON.stringify(selectedOptions));
+            console.log(selectedOptions);
+        });
     });
-  </script>
+</script>
 
 <div class="button-container">
     <button class="button" onclick="doneAndNavigate()">Done</button>

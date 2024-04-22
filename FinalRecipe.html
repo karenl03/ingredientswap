@@ -267,23 +267,8 @@
         <h2 style="margin-bottom: 0; margin-top: 6px;">Ingredients</h2>
     </div>
 
-    <ul class="todo-list">
-        <li class="todo-item">
-            <span class="number">1</span>
-            <span class="task">Eggs</span>
-        </li>
-        <li class="todo-item">
-            <span class="number">2</span>
-            <span class="task">Cups Almond Milk</span>
-        </li>
-        <li class="todo-item">
-            <span class="number">3</span>
-            <span class="task">Cups Sugar</span>
-        </li>
-        <li class="todo-item">
-            <span class="number">4</span>
-            <span class="task">Cups Chocolate Chips</span>
-        </li>
+    <ul class="todo-list" id="recipeList">
+        <!-- List items will be generated dynamically -->
     </ul>
     
     <div class="nutrition-title">
@@ -295,9 +280,107 @@
         <p>200 Calories</p>
     </div>
 </div>
+
+<script>
+    // Retrieve the modified recipe from localStorage
+    const modifiedRecipe = JSON.parse(localStorage.getItem('modifiedRecipe'));
+    // Function to generate list items from recipe object
+    function generateRecipeList(recipe) {
+        const recipeList = document.getElementById('recipeList');
+    
+        // Clear existing list items
+        recipeList.innerHTML = '';
+    
+        // Generate list items for each ingredient
+        recipe.ingredients.forEach(ingredient => {
+            const listItem = document.createElement('li');
+            listItem.className = 'todo-item';
+    
+            const buttonContainer = document.createElement('div');
+            buttonContainer.className = 'button-container';
+    
+            const button = document.createElement('button');
+            button.className = 'button';
+            button.setAttribute('onclick', 'toggleState(this)');
+    
+            const spanNumber = document.createElement('span');
+            spanNumber.className = 'number';
+            spanNumber.textContent = ingredient.number;
+    
+            const spanTask = document.createElement('span');
+            spanTask.className = 'task';
+            spanTask.textContent = ingredient.task;
+    
+            // Check if ingredient has been modified, and underline it if necessary
+            if (ingredient.modified) {
+                spanTask.style.textDecoration = 'underline';
+            }
+    
+            buttonContainer.appendChild(button);
+            buttonContainer.appendChild(spanNumber);
+            listItem.appendChild(buttonContainer);
+            listItem.appendChild(spanTask);
+    
+            recipeList.appendChild(listItem);
+        });
+    }
+    
+    // Call the function to generate the recipe list
+    generateRecipeList(modifiedRecipe);
+    </script>
+
+<!-- <script>
+    // Retrieve the saved state of the buttons
+    const sugarClicked = localStorage.getItem('sugarClicked');
+    const proteinClicked = localStorage.getItem('proteinClicked');
+    const fatClicked = localStorage.getItem('fatClicked');
+
+    // Define replacement rules based on button clicks
+    const replacementRules = {
+        "Sugar": "Honey",
+        "Flour": "Protein Powder",
+        "Butter": "Apple Sauce", 
+        // Add more rules as needed
+    };
+
+    // Modify the recipe based on button clicks
+    if (sugarClicked === 'true') {
+        modifiedRecipe.ingredients.forEach(ingredient => {
+            if (ingredient.task === 'Sugar') {
+                ingredient.task = replacementRules['Sugar'];
+            }
+        });
+    }
+
+    if (proteinClicked === 'true') {
+        modifiedRecipe.ingredients.forEach(ingredient => {
+            if (ingredient.task === 'Flour') {
+                ingredient.task = replacementRules['Flour'];
+            }
+        });
+    }
+
+    if (fatClicked === 'true') {
+        modifiedRecipe.ingredients.forEach(ingredient => {
+            if (ingredient.task === 'Butter') {
+                ingredient.task = replacementRules['Butter'];
+            }
+        });
+    }
+</script> -->
+
+
+
+
+
 <div class="button-container">
     <button class="button" onclick="savedRecipes()">Save</button>
 </div>
+
+
+
+
+
 <script>
     function savedRecipes() {
         window.location.href = "SavedRecipe.html";
