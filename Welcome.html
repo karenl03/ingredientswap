@@ -63,7 +63,7 @@
         font-weight: bold;
         color: #F17D98;
         text-align: center;
-        margin-top: 5px;
+        margin-top: 10px;
     }
 
     .text-title {
@@ -177,7 +177,6 @@
     z-index: 1;
   }
 
-  /* Style for dropdown button */
   .dropdown-btn {
     font-family: 'Roboto Mono', bold;
     font-size: 20px;
@@ -188,7 +187,15 @@
     border: none;
     cursor: pointer;
     width: 200px;
-  }
+    position: relative; /* Add relative positioning to the button */
+}
+
+.dropdown-btn .material-symbols-outlined {
+    position: absolute;
+    top: 50%;
+    right: 10px; /* Adjust the right position as needed */
+    transform: translateY(-50%);
+}
 
   /* Style for dropdown content */
   .dropdown-content {
@@ -284,7 +291,7 @@
 
 <div class="dropdown">
     <button class="dropdown-btn" onclick="toggleDropdown()">Select</button>
-    <span class="material-symbols-outlined">expand_more</span>
+    <!-- <span class="material-symbols-outlined">expand_more</span> -->
     <div class="dropdown-content" id="dropdownContent">
         <a><label><span>Milk</span><input type="checkbox" class="custom-checkbox" value="Milk"></label></a>
         <a><label><span>Peanut</span><input type="checkbox" class="custom-checkbox" value="Peanut"></label></a>
@@ -318,6 +325,38 @@
 </div>
 
 <script>
+    // Variable to keep track of dropdown state
+    let dropdownOpen = false;
+
+    // Function to toggle the dropdown content
+    function toggleDropdown() {
+        const dropdownContent = document.getElementById('dropdownContent');
+        
+        // Toggle the visibility of dropdown content
+        dropdownContent.classList.toggle('show');
+
+        // Update dropdown state
+        dropdownOpen = !dropdownOpen;
+    }
+
+    // Close the dropdown when the user clicks outside of it or clicks the button again
+    document.addEventListener('click', function(event) {
+        const dropdownContent = document.getElementById('dropdownContent');
+        const dropdownButton = document.querySelector('.dropdown-btn');
+
+        // Check if the clicked element is not the dropdown button or the dropdown content
+        if (!event.target.matches('.dropdown-btn') && !event.target.matches('.dropdown-content') && !event.target.matches('.custom-checkbox')) {
+            // Check if the dropdown content is currently visible and dropdown is open
+            if (dropdownContent.classList.contains('show') && dropdownOpen) {
+                // Hide the dropdown content
+                dropdownContent.classList.remove('show');
+                // Update dropdown state
+                dropdownOpen = false;
+            }
+        }
+    });
+
+
     function doneAndNavigate() {
         window.location.href = "Recipe.html";
     }
