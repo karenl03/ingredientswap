@@ -9,6 +9,11 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" /><style>
 
+    .container-wrapper {
+            height: 100vh; /* Make the container take up the full viewport height */
+            overflow-y: scroll; /* Enable vertical scrolling */
+        }
+
     .material-symbols-outlined {
         font-size: 50px;
         color: #B4D4CA;
@@ -156,9 +161,10 @@
     }
 
     .save-button-container {
-        position: fixed;
         bottom: 100px;
         right: 28px;
+        margin-left: 269px;
+        margin-top: 10px;
     }
 
     .save-button {
@@ -293,6 +299,8 @@
     <img src="is-logo.png" alt="Logo" height="68px">
 </header>
 
+<div class="container-wrapper">
+
 <div class="title">
     <div class="header-icons">
         <a href="Welcome.html">
@@ -319,45 +327,6 @@
     <h2 style="margin-bottom: 0;">Ingredients</h2>
 </div>
 
-
-<!-- <ul class="todo-list">
-    <li class="todo-item">
-        <div class="button-container">
-            <button class="button" onclick="toggleState(this)"></button>
-            <span class="number">1</span>
-        </div>
-        <span class="task">Eggs</span>
-    </li>
-    <li class="todo-item">
-        <div class="button-container">
-            <button class="button" onclick="toggleState(this)"></button>
-            <span class="number">2</span>
-        </div>
-        <span class="task">Cup Almond Milk</span>
-    </li>
-    <li class="todo-item">
-        <div class="button-container">
-            <button class="button" onclick="toggleState(this)"></button>
-            <span class="number">3</span>
-        </div>
-        <span class="task">Cup Sugar</span>
-    </li>
-    <li class="todo-item">
-        <div class="button-container">
-            <button class="button" onclick="toggleState(this)"></button>
-            <span class="number">4</span>
-        </div>
-        <span class="task">Cup Chocolate Chips</span>
-    </li>
-    <li class="todo-item">
-        <div class="button-container">
-            <button class="button" onclick="toggleState(this)"></button>
-            <span class="number">5</span>
-        </div>
-        <span class="task">Tbs Baking Soda</span>
-    </li>
-</ul> -->
-
 <ul class="todo-list" id="recipeList">
     <!-- List items will be generated dynamically -->
 </ul>
@@ -380,6 +349,12 @@
     <button class="fat-button" onclick="modifyFat(this)">Low Fat</button>
 </div>
 
+<div class="save-button-container">
+    <button class="save-button" onclick="saveAndNavigate()">Save</button>
+</div>
+
+</div>
+
 <script>
         // Define variables for storing image states
         var milkImage = false;
@@ -396,10 +371,13 @@ const recipe = {
     name: "Sample Recipe",
     ingredients: [
         { number: 1, task: "Eggs" },
-        { number: 2, task: "Milk" },
-        { number: 3, task: "Sugar" },
-        { number: 4, task: "Chocolate Chips" },
-        { number: 5, task: "Baking Soda" }
+        { number: 2, task: "tsp Vanilla" },
+        { number: 1/2, task: "cup White Sugar" },
+        { number: 2, task: "cups Flour" },
+        { number: 1/4, task: "cup Brown Sugar" },
+        { number: 1, task: "cup Chocolate Chips" },
+        { number: 1/2, task: "tsp Salt" },
+        { number: 1/2, task: "tsp Baking Soda" }
     ]
 };
 
@@ -436,13 +414,22 @@ if (savedAllergens) {
         // Modify ingredients based on allergens
         recipe.ingredients.forEach(ingredient => {
             // Check if ingredient needs to be replaced based on allergen
-            if (replacementRules[allergen] && ingredient.task === allergen) {
+            if (replacementRules[allergen] && ingredient.task.includes(allergen)) {
                 ingredient.task = replacementRules[allergen]; // Update the ingredient task
                 ingredient.modified = true;
             }
         });
     });
 }
+
+    // Function to toggle the appearance of the button and mark ingredient for removal
+    function toggleState(button) {
+        if (button.innerText === '') {
+            button.innerText = 'X'; // Display X symbol
+        } else {
+            button.innerText = ''; // Remove X symbol
+        }
+    }
 
 // Log the modified recipe with replaced ingredients
 console.log("Modified Recipe:", recipe);
@@ -521,17 +508,27 @@ generateRecipeList(recipe);
     }
 </script>
 
-
-<script>
+<!-- <script>
     function toggleState(button) {
         if (button.innerText === '') {
-            button.innerText = 'X'; // Down arrow
-        } 
-        else {
+            button.innerText = 'X'; // Display X symbol
+        } else {
             button.innerText = '';
+
+            // Get the parent list item
+            const listItem = button.parentElement.parentElement;
+
+            // Get the task text within the list item
+            const taskText = listItem.querySelector('.task').textContent;
+
+            // Find the index of the ingredient with the matching task in the modifiedRecipe array
+            const index = modifiedRecipe.ingredients.findIndex(ingredient => ingredient.task === taskText);
+
+            // Remove the ingredient from the modifiedRecipe array
+            modifiedRecipe.ingredients.splice(index, 1);
         }
     }
-</script>
+</script> -->
 
 <script>
     // Retrieve the saved state of the buttons
@@ -573,12 +570,27 @@ if (fatClicked === 'true') {
 }
 </script>
 
-<div class="save-button-container">
-    <button class="save-button" onclick="saveAndNavigate()">Save</button>
-</div>
-
 <script>
     function saveAndNavigate() {
+        // Get all the buttons with an 'X' symbol
+        const buttonsWithX = document.querySelectorAll('.button');
+
+        // Iterate over each button to check if it has the 'X' symbol
+        buttonsWithX.forEach(button => {
+            if (button.innerText === 'X') {
+                // Get the parent list item
+                const listItem = button.parentElement.parentElement;
+
+                // Get the task text within the list item
+                const taskText = listItem.querySelector('.task').textContent;
+
+                // Find the index of the ingredient with the matching task in the recipe array
+                const index = recipe.ingredients.findIndex(ingredient => ingredient.task === taskText);
+
+                // Remove the ingredient from the recipe array
+                recipe.ingredients.splice(index, 1);
+            }
+        });
         // Save the modified recipe to localStorage
         localStorage.setItem('modifiedRecipe', JSON.stringify(recipe));
         localStorage.setItem('milkImage', JSON.stringify(milkImage));
