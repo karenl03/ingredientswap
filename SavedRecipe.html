@@ -31,6 +31,13 @@
         margin: 0px;
     }
 
+    h2 {
+        font-family: 'Abril Fatface';
+        padding: 0;
+        margin: 2px;
+        font-size: 18px;
+    }
+
     p {
         font-family: 'Roboto Mono';
         font-weight: normal;
@@ -237,60 +244,99 @@
 </head>
 <body>
 
-<header>
-    <img src="is-logo.png" alt="Logo" height="68px">
-</header>
-
-<div class="title">
-    <div class="header-icons">
-        <a href="Recipe.html">
-            <span class="material-symbols-outlined" style="font-size: 30px; color: white;">arrow_back_ios</span>
-        </a>
-        <h1>Saved Recipe</h1>
-        <span class="material-symbols-outlined" style="font-size: 30px; color: white;">info</span>
+    <header>
+        <img src="is-logo.png" alt="Logo" height="68px">
+    </header>
+    
+    <div class="title">
+        <div class="header-icons">
+            <a href="Recipe.html">
+                <span class="material-symbols-outlined" style="font-size: 30px; color: white;">arrow_back_ios</span>
+            </a>
+            <h1>Saved Recipes</h1>
+            <span class="material-symbols-outlined" style="font-size: 30px; color: white;">info</span>
+        </div>
+        <h2>Select a recipe to modify</h2>
     </div>
-</div>
-
-<div class="big-container">
-    <div class="container">
-        <img src="Cookies.jpg" width ="180px" height = "180px" onclick="getRecipe()">
-        <h1 style="font-size: 20px; color: #F17D98; margin-top: 8px;">Chocolate Chip Cookies</h1>
+    
+    <div class="big-container">
+        <div class="container">
+            <img src="Cookies.jpg" width ="180px" height = "180px" onclick="setRecipe('Cookie Recipe')">
+            <h1 style="font-size: 20px; color: #F17D98; margin-top: 8px;">Chocolate Chip Cookies</h1>
+        </div>
+        <div class="container">
+            <img src="Angel.jpg" width ="180px" height = "180px">
+            <h1 style="font-size: 20px; color: #F17D98; margin-top: 8px;">Angel Food Cake</h1>
+        </div>
     </div>
+    
+    <div class="big-container">
+        <div class="container">
+            <img src="muffins.jpg" width ="180px" height = "180px" onclick="setRecipe('Muffin Recipe')">
+            <h1 style="font-size: 20px; color: #F17D98; margin-top: 8px;">Muffins</h1>
+        </div>
+        <div class="container">
+            <img src="Brownies.png" width ="180px" height = "180px" onclick="setRecipe('Brownie Recipe')">
+            <h1 style="font-size: 20px; color: #F17D98; margin-top: 8px;">Brownies</h1>
+        </div>
+    </div>
+    
+    <footer-top></footer-top>
+    <footer>
+        <div class="footer-icons">
+            <span class="material-symbols-outlined">home</span>
+            <span class="material-symbols-outlined">bookmark</span>
+            <span class="material-symbols-outlined">person</span>
+        </div>
+    </footer>
+    
     <script>
-        function getRecipe() {
-            window.location.href = "FinalRecipe.html";
-        }
+    // Define recipe objects
+    const recipes = {
+        "Cookie Recipe": {
+            name: "Cookie Recipe",
+            ingredients: [
+                { number: 1, task: "Eggs" },
+                { number: 2, task: "tsp Vanilla" },
+                { number: 1/2, task: "cup White Sugar" },
+                { number: 2, task: "cups Flour" },
+                { number: 1/4, task: "cup Brown Sugar" },
+                { number: 1, task: "cup Chocolate Chips" },
+                { number: 1/2, task: "tsp Salt" },
+                { number: 1/2, task: "tsp Baking Soda" }
+            ]
+        },
+        "Brownie Recipe": {
+            name: "Brownie Recipe",
+            ingredients: [
+                { number: 1, task: "Eggs" },
+                { number: 1/2, task: "cup White Sugar" },
+                { number: 2, task: "cups Flour" },
+                { number: 1, task: "cup Chocolate Chips" },
+                { number: 1/2, task: "tsp Salt" },
+                { number: 1/2, task: "tsp Baking Soda" }
+            ]
+        },
+        "Muffin Recipe": {
+            name: "Muffin Recipe",
+            ingredients: [
+                { number: 1, task: "Eggs" },
+                { number: 1/2, task: "cup White Sugar" },
+                { number: 2, task: "cups Flour" },
+                { number: 1/2, task: "tsp Baking Soda" }
+            ]
+        },
+        // Add more recipes here
+    };
+    
+    function setRecipe(recipeName) {
+        const recipe = recipes[recipeName];
+        localStorage.setItem('selectedRecipe', JSON.stringify(recipe));
+        window.location.href = "Recipe.html";
+    }
     </script>
-    <div class="container">
-        <img src="Angel.jpg" width ="180px" height = "180px">
-        <h1 style="font-size: 20px; color: #F17D98; margin-top: 8px;">Angel Food Cake</h1>
-    </div>
-</div>
-
-<div class="big-container">
-    <div class="container">
-        <img src="Cake-Pops.png" width ="180px" height = "180px">
-        <h1 style="font-size: 20px; color: #F17D98; margin-top: 8px;">Cake Pops</h1>
-    </div>
-    <div class="container">
-        <img src="Brownies.png" width ="180px" height = "180px">
-        <h1 style="font-size: 20px; color: #F17D98; margin-top: 8px;">Brownies</h1>
-    </div>
-</div>
-
-
-
-<footer-top></footer-top>
-<footer>
-    <div class="footer-icons">
-        <span class="material-symbols-outlined">home</span>
-        <span class="material-symbols-outlined">bookmark</span>
-        <span class="material-symbols-outlined">person</span>
-    </div>
-</footer>
-
-<!-- We used ChatGPT to help when we got stuck with Javascript for the buttons and finding the right CSS modifiers -->
-
-
-</body>
-</html>
+    
+    <!-- We used ChatGPT to help when we got stuck with JavaScript for the buttons and finding the right CSS modifiers -->
+    
+    </body>
+    </html>

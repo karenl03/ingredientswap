@@ -303,7 +303,7 @@
 
 <div class="title">
     <div class="header-icons">
-        <a href="Welcome.html">
+        <a href="SavedRecipe.html">
             <span class="material-symbols-outlined" style="font-size: 30px;">arrow_back_ios</span>
         </a>
         <div class = "header-text">
@@ -357,7 +357,7 @@
 
 <script>
         // Define variables for storing image states
-        var milkImage = false;
+    var milkImage = false;
     var eggImage = false;
     var glutenImage = false;
     var peanutImage = false;
@@ -365,21 +365,21 @@
     // modify recipe based on saved allergens 
     // Retrieve selected allergens from local storage
     const savedAllergens = localStorage.getItem('selectedAllergens');
+    const recipe = JSON.parse(localStorage.getItem('selectedRecipe'));
 
-    // Sample recipe object
-const recipe = {
-    name: "Sample Recipe",
-    ingredients: [
-        { number: 1, task: "Eggs" },
-        { number: 2, task: "tsp Vanilla" },
-        { number: 1/2, task: "cup White Sugar" },
-        { number: 2, task: "cups Flour" },
-        { number: 1/4, task: "cup Brown Sugar" },
-        { number: 1, task: "cup Chocolate Chips" },
-        { number: 1/2, task: "tsp Salt" },
-        { number: 1/2, task: "tsp Baking Soda" }
-    ]
-};
+// const recipe = {
+//     name: "Cookie Recipe",
+//     ingredients: [
+//         { number: 1, task: "Eggs" },
+//         { number: 2, task: "tsp Vanilla" },
+//         { number: 1/2, task: "cup White Sugar" },
+//         { number: 2, task: "cups Flour" },
+//         { number: 1/4, task: "cup Brown Sugar" },
+//         { number: 1, task: "cup Chocolate Chips" },
+//         { number: 1/2, task: "tsp Salt" },
+//         { number: 1/2, task: "tsp Baking Soda" }
+//     ]
+// };
 
     // Define replacement rules based on allergens
     const replacementRules = {
@@ -508,27 +508,6 @@ generateRecipeList(recipe);
     }
 </script>
 
-<!-- <script>
-    function toggleState(button) {
-        if (button.innerText === '') {
-            button.innerText = 'X'; // Display X symbol
-        } else {
-            button.innerText = '';
-
-            // Get the parent list item
-            const listItem = button.parentElement.parentElement;
-
-            // Get the task text within the list item
-            const taskText = listItem.querySelector('.task').textContent;
-
-            // Find the index of the ingredient with the matching task in the modifiedRecipe array
-            const index = modifiedRecipe.ingredients.findIndex(ingredient => ingredient.task === taskText);
-
-            // Remove the ingredient from the modifiedRecipe array
-            modifiedRecipe.ingredients.splice(index, 1);
-        }
-    }
-</script> -->
 
 <script>
     // Retrieve the saved state of the buttons
