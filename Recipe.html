@@ -357,38 +357,60 @@
 </div>
 
 <script>
-        // Define variables for storing image states
-    var milkImage = false;
-    var eggImage = false;
-    var glutenImage = false;
-    var peanutImage = false;
-    var veganImage = false;
-    // modify recipe based on saved allergens 
-    // Retrieve selected allergens from local storage
-    const savedAllergens = localStorage.getItem('selectedAllergens');
-    const recipe = JSON.parse(localStorage.getItem('selectedRecipe'));
+     // Define variables for storing image states
+var milkImage = false;
+var eggImage = false;
+var glutenImage = false;
+var peanutImage = false;
+var veganImage = false;
 
-// const recipe = {
-//     name: "Cookie Recipe",
-//     ingredients: [
-//         { number: 1, task: "Eggs" },
-//         { number: 2, task: "tsp Vanilla" },
-//         { number: 1/2, task: "cup White Sugar" },
-//         { number: 2, task: "cups Flour" },
-//         { number: 1/4, task: "cup Brown Sugar" },
-//         { number: 1, task: "cup Chocolate Chips" },
-//         { number: 1/2, task: "tsp Salt" },
-//         { number: 1/2, task: "tsp Baking Soda" }
-//     ]
-// };
+// Retrieve selected allergens from local storage
+const savedAllergens = localStorage.getItem('selectedAllergens');
+const recipe = JSON.parse(localStorage.getItem('selectedRecipe'));
 
-    // Define replacement rules based on allergens
-    const replacementRules = {
-    "Milk": "Almond Milk",
-    "Eggs": "Flax Eggs",
-    "Peanuts": "Almonds", 
-    "Tree Nuts": "Sunflower Seeds",
-    // Add more rules as needed
+// Define replacement rules based on allergens
+const replacementRules = {
+    "Milk": {
+        "cup Milk": "cup Almond Milk",
+        "cup Yogurt": "cup Almond Yogurt",
+        "cups Milk": "cups Almond Milk",
+        "cups Yogurt": "cups Almond Yogurt",
+        "cup Butter": "cup Oil",
+        "cups Butter": "cups Oil",
+        // Add more rules specific to milk
+    },
+    "Eggs": {
+        "Eggs": "Flax Eggs",
+        "Egg Whites": "Flax Egg Whites",
+        // Add more rules specific to eggs
+    },
+    "Peanuts": {
+        "cup Peanuts": "cup Almonds",
+        "cup Peanut Butter": "cup Almond Butter",
+        "cups Peanut Butter": "cups Almond Butter",
+        // Add more rules specific to peanuts
+    },
+    "Tree Nuts": {
+        "cup Almonds": "cup Pumpkin Seeds",
+        "cup Almond Butter": "cup Sunflower Butter",
+        "cups Almond Butter": "cups Sunflower Butter",
+        // Add more rules specific to tree nuts
+    },
+    "Gluten": {
+        "cup Flour": "cup Oat Flour",
+        "cups Flour": "cups Oat Flour",
+    },
+    "Vegan": {
+        "cup Milk": "cup Almond Milk",
+        "cup Yogurt": "cup Almond Yogurt",
+        "cups Milk": "cups Almond Milk",
+        "cups Yogurt": "cups Almond Yogurt",
+        "cup Butter": "cup Oil",
+        "cups Butter": "cups Oil",
+        "Eggs": "Flax Eggs",
+        "Egg Whites": "Flax Egg Whites",
+    },
+    // Add more allergens and their replacement rules as needed
 };
 
 // If there are saved allergens, parse the JSON string and modify ingredients
@@ -397,26 +419,11 @@ if (savedAllergens) {
 
     // Iterate over each allergen
     selectedAllergens.forEach(allergen => {
-        if(allergen == "Milk"){
-                    milkImage = true;
-                } 
-                if(allergen == "Egg"){
-                    eggImage = true;
-                }
-                if(allergen == "Gluten"){
-                    glutenImage = true;
-                }  
-                if(allergen == "Vegan"){
-                    veganImage = true;
-                } 
-                if(allergen == "Peanut"){
-                    peanutImage = true;
-                } 
         // Modify ingredients based on allergens
         recipe.ingredients.forEach(ingredient => {
             // Check if ingredient needs to be replaced based on allergen
-            if (replacementRules[allergen] && ingredient.task.includes(allergen)) {
-                ingredient.task = replacementRules[allergen]; // Update the ingredient task
+            if (replacementRules[allergen] && replacementRules[allergen][ingredient.task]) {
+                ingredient.task = replacementRules[allergen][ingredient.task]; // Update the ingredient task
                 ingredient.modified = true;
             }
         });
@@ -482,73 +489,151 @@ function generateRecipeList(recipe) {
 generateRecipeList(recipe);
 </script>
 
+
 <script>
-    function modifySugar(button) {
-        button.classList.toggle('clicked');
-        // Save the state of the button click
-        const isClicked = button.classList.contains('clicked');
-        localStorage.setItem('sugarClicked', isClicked);
+function modifySugar(button) {
+    button.classList.toggle('clicked');
+    const isClicked = button.classList.contains('clicked');
+    localStorage.setItem('sugarClicked', isClicked);
+
+    // Define replacement rules for sugar-related ingredients
+    const replacementRulesSugar = {
+        "cup White Sugar": "cup Honey",
+        "cup Brown Sugar": "cup Maple Syrup",
+        "cups White Sugar": "cups Honey",
+        "cups Brown Sugar": "cups Maple Syrup"
+    };
+
+    // Define replacement rules for sugar-related ingredients
+    const replacementRulesSugarDone = {
+        "cup Honey": "cup White Sugar",
+        "cup Maple Syrup": "cup Brown Sugar",
+        "cups Honey": "cups White Sugar",
+        "cups Maple Syrup": "cups Brown Sugar"
+    };
+
+    // Retrieve the recipe from localStorage
+    const recipe = JSON.parse(localStorage.getItem('selectedRecipe'));
+
+    // If the button is clicked, apply the replacement rules
+    if (isClicked) {
+        recipe.ingredients.forEach(ingredient => {
+            if (replacementRulesSugar[ingredient.task]) {
+                ingredient.task = replacementRulesSugar[ingredient.task];
+            }
+        });
+    } else {
+        // If the button is not clicked, revert to the original recipe
+        recipe.ingredients.forEach(ingredient => {
+            if (replacementRulesSugarDone[ingredient.task]) {
+                ingredient.task = replacementRulesSugarDone[ingredient.task];            }
+        });
     }
+
+    // Save the modified recipe back to localStorage
+    localStorage.setItem('selectedRecipe', JSON.stringify(recipe));
+
+    // Regenerate the recipe list
+    generateRecipeList(recipe);
+}
 </script>
 
 <script>
-    function modifyProtein(button) {
-        button.classList.toggle('clicked');
-        // Save the state of the button click
-        const isClicked = button.classList.contains('clicked');
-        localStorage.setItem('proteinClicked', isClicked);
+function modifyProtein(button) {
+    button.classList.toggle('clicked');
+    const isClicked = button.classList.contains('clicked');
+    localStorage.setItem('proteinClicked', isClicked);
+
+    // Define replacement rules for sugar-related ingredients
+    const replacementRulesProtein = {
+        "Egg": "cup Egg White",
+        "Eggs": "cup Egg Whites",
+        "cup Flour": "cup Almond Flour",
+        "cups Flour": "cups Almond Flour",
+    };
+
+    // Define replacement rules for sugar-related ingredients
+    const replacementRulesProteinDone = {
+        "cup Egg White": "Egg",
+        "cup Egg Whites": "Eggs", 
+        "cup Almond Flour": "cup Flour",
+        "cups Almond Flour": "cups Flour",
+    };
+
+    // Retrieve the recipe from localStorage
+    const recipe = JSON.parse(localStorage.getItem('selectedRecipe'));
+
+    // If the button is clicked, apply the replacement rules
+    if (isClicked) {
+        recipe.ingredients.forEach(ingredient => {
+            if (replacementRulesProtein[ingredient.task]) {
+                ingredient.task = replacementRulesProtein[ingredient.task];
+            }
+        });
+    } else {
+        // If the button is not clicked, revert to the original recipe
+        recipe.ingredients.forEach(ingredient => {
+            if (replacementRulesProteinDone[ingredient.task]) {
+                ingredient.task = replacementRulesProteinDone[ingredient.task];            }
+        });
     }
+
+    // Save the modified recipe back to localStorage
+    localStorage.setItem('selectedRecipe', JSON.stringify(recipe));
+
+    // Regenerate the recipe list
+    generateRecipeList(recipe);
+}
 </script>
 
 <script>
     function modifyFat(button) {
         button.classList.toggle('clicked');
-        // Save the state of the button click
-        const isClicked = button.classList.contains('clicked');
-        localStorage.setItem('fatClicked', isClicked);
+    const isClicked = button.classList.contains('clicked');
+    localStorage.setItem('proteinClicked', isClicked);
+
+    // Define replacement rules for sugar-related ingredients
+    const replacementRulesFat = {
+        "cup Butter": "cup Apple Sauce",
+        "cups Butter": "cups Apple Sauce",
+        "cup Oil": "cup Apple Sauce",
+        "cups Oil": "cups Apple Sauce",
+    };
+
+    // Define replacement rules for sugar-related ingredients
+    const replacementRulesFatDone = {
+        "cup Apple Sauce": "cup Butter",
+        "cups Apple Sauce": "cups Butter", 
+        "cup Apple Sauce": "cup Oil",
+        "cups Apple Sauce": "cups Oil",
+    };
+
+    // Retrieve the recipe from localStorage
+    const recipe = JSON.parse(localStorage.getItem('selectedRecipe'));
+
+    // If the button is clicked, apply the replacement rules
+    if (isClicked) {
+        recipe.ingredients.forEach(ingredient => {
+            if (replacementRulesFat[ingredient.task]) {
+                ingredient.task = replacementRulesFat[ingredient.task];
+            }
+        });
+    } else {
+        // If the button is not clicked, revert to the original recipe
+        recipe.ingredients.forEach(ingredient => {
+            if (replacementRulesFatDone[ingredient.task]) {
+                ingredient.task = replacementRulesFatDone[ingredient.task];            }
+        });
     }
-</script>
 
+    // Save the modified recipe back to localStorage
+    localStorage.setItem('selectedRecipe', JSON.stringify(recipe));
 
-<script>
-    // Retrieve the saved state of the buttons
-const sugarClicked = localStorage.getItem('sugarClicked');
-const proteinClicked = localStorage.getItem('proteinClicked');
-const fatClicked = localStorage.getItem('fatClicked');
-
-// Define replacement rules based on button clicks
-const replacementRules2 = {
-    "Sugar": "Honey",
-    "Flour": "Protein Powder",
-    "Butter": "Apple Sauce", 
-    // Add more rules as needed
-};
-
-// Modify the recipe based on button clicks
-if (sugarClicked === 'true') {
-    recipe.ingredients.forEach(ingredient => {
-        if (ingredient.task === 'Sugar') {
-            ingredient.task = replacementRules2['Sugar'];
-        }
-    });
-}
-
-if (proteinClicked === 'true') {
-    recipe.ingredients.forEach(ingredient => {
-        if (ingredient.task === 'Flour') {
-            ingredient.task = replacementRules2['Flour'];
-        }
-    });
-}
-
-if (fatClicked === 'true') {
-    recipe.ingredients.forEach(ingredient => {
-        if (ingredient.task === 'Butter') {
-            ingredient.task = replacementRules2['Butter'];
-        }
-    });
+    // Regenerate the recipe list
+    generateRecipeList(recipe);
 }
 </script>
+
 
 <script>
     function saveAndNavigate() {

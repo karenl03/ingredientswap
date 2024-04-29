@@ -44,38 +44,26 @@
         font-size: 17px;
     }
 
-    /*
     .container {
-        flex: 1;
-        width: 220px;  
-        height: 210px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: #FFF;
-        border-radius: 1px;
-        text-align: center;
-
-                max-width: 90%;
-        margin: 0 auto;
-        padding: 10px;
-        background-color: #FFF;
-        border-radius: 10px;
-        margin-top: 10px;
-        position: relative;
+        width: calc(50% - 20px); 
+        margin: 5px;
         text-align: center;
     }
-    */
-    .container {
-        width: calc(50% - 20px); /* Adjust width of items */
-        margin: 5px; /* Adjust spacing between items */
-        text-align: center;
+
+    .bigger-container {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-around; 
+        flex-wrap: wrap;
+        margin-bottom: 80px;
+        margin-right: 14px;
     }
 
     .big-container {
         display: flex;
         align-items: flex-start;
-        justify-content: space-around; /* Adjust as needed */
-        flex-wrap: wrap; /* Wrap items to next line if needed */
+        justify-content: space-around;
+        flex-wrap: wrap; 
     }
 
     .title {
@@ -259,6 +247,7 @@
         <h2>Select a recipe to modify</h2>
     </div>
     
+    <div class="bigger-container">
     <div class="big-container">
         <div class="container">
             <img src="cookies.jpg" width ="180px" height = "180px" onclick="setRecipe('Cookie Recipe')">
@@ -280,7 +269,19 @@
             <h1 style="font-size: 20px; color: #F17D98; margin-top: 8px;">Brownies</h1>
         </div>
     </div>
-    
+
+    <div class="big-container">
+        <div class="container">
+            <img src="balls.png" width ="180px" height = "180px" onclick="setRecipe('Balls Recipe')">
+            <h1 style="font-size: 20px; color: #F17D98; margin-top: 8px;">Protein Balls</h1>
+        </div>
+        <div class="container">
+            <img src="fruit.png" width ="180px" height = "180px" onclick="setRecipe('Fruit Recipe')">
+            <h1 style="font-size: 20px; color: #F17D98; margin-top: 8px;">Fruit Cobbler</h1>
+        </div>
+    </div>
+</div>
+
     <footer-top></footer-top>
     <footer>
         <div class="footer-icons">
@@ -346,6 +347,29 @@
                 { number: 3/4, task: "cup Milk" }, 
                 { number: 1/4, task: "cup Butter" }, 
                 { number: 2, task: "tsp Salt" }
+            ]
+        },
+        "Balls Recipe": {
+            name: "Balls Recipe",
+            ingredients: [
+                { number: 1/4, task: "cup White Sugar" },
+                { number: 1/2, task: "cup Peanut Butter" },
+                { number: 1, task: "cup Oats" },
+                { number: 2, task: "tsp Baking Powder" }, 
+                { number: 1/2, task: "cups Shredded Coconut" }, 
+                { number: 1/2, task: "cup Ground Flaxseed" }, 
+                { number: 1/2, task: "cup Chocolate Chips" }
+            ]
+        },
+        "Fruit Recipe": {
+            name: "Fruit Recipe",
+            ingredients: [
+                { number: 1/2, task: "cup Butter" },
+                { number: 3/4, task: "cups Flour" },
+                { number: 1, task: "tsp Baking Powder" }, 
+                { number: 3/4, task: "cup Milk" }, 
+                { number: 3/4, task: "cup White Sugar" }, 
+                { number: 2, task: "cups Sliced Nectarines" }
             ]
         },
         // Add more recipes here
