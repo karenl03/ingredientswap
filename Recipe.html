@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ingredient Swap</title>
-<link rel="icon" href="is-logo.png">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" /><style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ingredient Swap</title>
+    <link rel="icon" href="images/is-logo.png" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"
+    />
+    <style>
+      .container-wrapper {
+        height: 100vh; 
+        overflow-y: scroll;
+      }
 
-    .container-wrapper {
-            height: 100vh; /* Make the container take up the full viewport height */
-            overflow-y: scroll; /* Enable vertical scrolling */
-        }
-
-    .material-symbols-outlined {
+      .material-symbols-outlined {
         font-size: 50px;
-        color: #B4D4CA;
+        color: #b4d4ca;
         margin-top: 10px;
-    }
+      }
 
-    body {
-        font-family: 'Abril Fatface';
+      body {
+        font-family: "Abril Fatface";
         font-weight: normal;
         width: 100%;
         margin: 0;
@@ -29,68 +38,68 @@
         background-color: #ffffff;
         display: flex;
         flex-direction: column;
-    }
+      }
 
-    h1 {
-        font-family: 'Abril Fatface';
+      h1 {
+        font-family: "Abril Fatface";
         padding: 0;
         margin: 0;
         order: 1;
-    }
+      }
 
-    h2 {
-        font-family: 'Abril Fatface';
+      h2 {
+        font-family: "Abril Fatface";
         padding: 0;
         margin: 0;
         font-size: 18px;
         order: 2;
-    }
+      }
 
-    .container {
+      .container {
         flex: 1;
         max-width: 90%;
         margin: 0 auto;
         padding: 10px;
-        background-color: #FFF;
+        background-color: #fff;
         border-radius: 10px;
         margin-top: 10px;
         position: relative;
         text-align: center;
-    }
+      }
 
-    .title {
+      .title {
         font-size: 18px;
         font-weight: bold;
-        color: #F17D98;
+        color: #f17d98;
         text-align: center;
         margin-top: 5px;
-    }
+      }
 
-    .text-title {
+      .text-title {
         font-size: 15px;
         font-weight: bold;
         color: #ffffff;
         text-align: left;
-    }
+      }
 
-    .text-box {
+      .text-box {
         font-size: 15px;
-        font-family: 'Roboto', italic;
+        font-family: "Roboto", italic;
         font-weight: normal;
         color: #000000;
         text-align: left;
         margin-top: px;
-    }
+      }
 
-    header {
-        background-color: #B4D4CA;
+      header {
+        background-color: #b4d4ca;
         color: #fff;
         height: 68px;
         text-align: center;
         padding: 10px 0;
-    }
+      }
 
-    footer {
+      footer {
         position: fixed;
         left: 0;
         bottom: 0;
@@ -100,841 +109,1048 @@
         height: 50px;
         text-align: center;
         padding: 10px 0;
-    }
+      }
 
-    footer-top {
+      footer-top {
         position: fixed;
-        bottom: 50px; /* Adjust to fit the size of the footer */
+        bottom: 50px;
         width: 100%;
-        background-color: #B4D4CA;
-        height: 5px; /* Adjust the height of the rectangle */
+        background-color: #b4d4ca;
+        height: 5px;
         text-align: center;
         padding: 10px 0;
-    }
+      }
 
-    .footer-icons {
+      .footer-icons {
         display: flex;
-    justify-content: space-around;
-    position: fixed;
-    width: 100%;
-    padding: 5px 0;
-    bottom: 0px;
-    }
+        justify-content: space-around;
+        position: fixed;
+        width: 100%;
+        padding: 5px 0;
+        bottom: 0px;
+      }
 
-    .header-icons {
+      .header-icons {
         display: flex;
         justify-content: space-between;
-        padding: 0 20px; 
-    }
+        padding: 0 20px;
+      }
 
-    .header-text {
+      .header-text {
         display: flex;
         flex-direction: column;
-    }
+      }
 
-    .ingredients-title {
-        font-family: 'Abril Fatface';
+      .ingredients-title {
+        font-family: "Abril Fatface";
         font-weight: normal;
         color: #000000;
         text-decoration: underline;
         text-align: left;
         margin-top: 5px;
         margin-left: 10px;
-    }
+      }
 
-    .nutrition-title {
+      .nutrition-title {
         font-size: 12px;
-        font-family: 'Abril Fatface';
+        font-family: "Abril Fatface";
         font-weight: normal;
         color: #000000;
         text-decoration: underline;
         text-align: left;
         margin-top: 5px;
         margin-left: 10px;
-    }
+      }
 
-    .nutrition-text {
+      .nutrition-text {
         font-size: 20px;
-        font-family: 'Roboto Mono', normal;
+        font-family: "Roboto Mono", normal;
         font-weight: normal;
         color: #000000;
         text-align: left;
         margin-left: 20px;
         text-decoration: none;
         line-height: 0.75;
-    }
+      }
 
-    .save-button-container {
+      .save-button-container {
         bottom: 100px;
         right: 28px;
         margin-left: 269px;
         margin-top: 10px;
         margin-bottom: 100px;
-    }
+      }
 
-    .save-button {
-        font-family: 'Abril Fatface';
+      .save-button {
+        font-family: "Abril Fatface";
         font-size: 25px;
-        background-color: #F17D98;
+        background-color: #f17d98;
         color: #fff;
         border: none;
         padding: 10px 20px;
         cursor: pointer;
-    }
+      }
 
-    .button:hover {
+      .button:hover {
         background-color: #d84f96;
-    }
+      }
 
-    .container img {
+      .container img {
         display: block;
         margin: 0 auto;
-        border: 4px solid #B4D4CA;
-    }
-    .todo-list {
+        border: 4px solid #b4d4ca;
+      }
+      .todo-list {
         list-style-type: none;
         padding: 0;
-    }
+      }
 
-    .todo-item {
+      .todo-item {
         display: flex;
         align-items: center;
         margin-bottom: 10px;
-    }
+      }
 
-    .task {
+      .task {
         font-size: 20px;
-        font-family: 'Roboto Mono', normal;
+        font-family: "Roboto Mono", normal;
         font-weight: normal;
-    }
+      }
 
-    .button {
+      .button {
         font-size: 16px;
         padding: 5px 10px;
         cursor: pointer;
         background-color: rgb(255, 255, 255);
-        width: 40px; /* Set a fixed width */
-        height: 30px; /* Set a fixed height */
+        width: 40px; 
+        height: 30px;
         margin-left: 15px;
-    }
+      }
 
-    .button:hover {
+      .button:hover {
         background-color: rgb(255, 255, 255);
-    }
+      }
 
-    .arrow.x-mark::before {
+      .arrow.x-mark::before {
         content: "X";
-    }
+      }
 
-    .button-container {
+      .button-container {
         display: flex;
         align-items: center;
-    }
+      }
 
-    .number {
+      .number {
         margin-right: 10px;
         font-size: 22px;
         font-weight: bold;
-        color: #F17D98;
+        color: #f17d98;
         margin-left: 8px;
-    }
+      }
 
-    .modify-button-container {
+      .modify-button-container {
         display: flex;
         align-items: center;
         margin: auto;
-    }
+      }
 
-    .sugar-button {
-        font-family: 'Abril Fatface';
+      .sugar-button {
+        font-family: "Abril Fatface";
         font-size: 15px;
         background-color: #fff;
         color: #000;
-        border: 2px solid #B4D4CA;
+        border: 2px solid #b4d4ca;
         padding: 10px 10px;
         margin-bottom: 5px;
         margin-left: 15px;
         margin-right: 15px;
         cursor: pointer;
-    }
+      }
 
-    .sugar-button.clicked {
-    background-color: #B4D4CA;
-    }
+      .sugar-button.clicked {
+        background-color: #b4d4ca;
+      }
 
-    .protein-button {
-        font-family: 'Abril Fatface';
+      .protein-button {
+        font-family: "Abril Fatface";
         font-size: 15px;
         background-color: #fff;
         color: #000;
-        border: 2px solid #B4D4CA;
+        border: 2px solid #b4d4ca;
         padding: 10px 10px;
         margin-bottom: 5px;
         margin-left: 15px;
         margin-right: 15px;
         cursor: pointer;
-    }
+      }
 
-    .protein-button.clicked {
-        background-color: #B4D4CA;
-    }
+      .protein-button.clicked {
+        background-color: #b4d4ca;
+      }
 
-    .fat-button {
-        font-family: 'Abril Fatface';
+      .fat-button {
+        font-family: "Abril Fatface";
         font-size: 15px;
         background-color: #fff;
         color: #000;
-        border: 2px solid #B4D4CA;
+        border: 2px solid #b4d4ca;
         padding: 10px 10px;
         margin-bottom: 5px;
         margin-left: 15px;
         margin-right: 15px;
         cursor: pointer;
-    }
+      }
 
-    .fat-button.clicked {
-        background-color: #B4D4CA;
-    }
+      .fat-button.clicked {
+        background-color: #b4d4ca;
+      }
 
-    /* Popup box styles */
-.popup {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
+      .popup {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+      }
 
-/* Popup content */
-.popup-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-}
+      /* Popup content */
+      .popup-content {
+        background-color: #fefefe;
+        margin: 15% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+      }
 
-/* Close button */
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
+      /* Close button */
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
 
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="images/is-logo.png" alt="Logo" height="68px" />
+    </header>
 
-</style>
-</head>
-<body>
-
-<header>
-    <img src="is-logo.png" alt="Logo" height="68px">
-</header>
-
-<div class="container-wrapper">
-
-<div class="title">
-    <div class="header-icons">
-        <a href="SavedRecipe.html">
-            <span class="material-symbols-outlined" style="font-size: 30px;">arrow_back_ios</span>
-        </a>
-        <div class = "header-text">
+    <div class="container-wrapper">
+      <div class="title">
+        <div class="header-icons">
+          <a href="SavedRecipe.html">
+            <span class="material-symbols-outlined" style="font-size: 30px"
+              >arrow_back_ios</span
+            >
+          </a>
+          <div class="header-text">
             <h1>Edit Recipe</h1>
             <h2>Click to remove an ingredient</h2>
+          </div>
+          <a href="#" onclick="navigateToInfo()">
+            <span class="material-symbols-outlined" style="font-size: 30px"
+              >info</span
+            >
+          </a>
         </div>
-        <a href="#" onclick="navigateToInfo()">
-            <span class="material-symbols-outlined" style="font-size: 30px;">info</span>
-        </a>
+      </div>
+
+      <script>
+        function navigateToInfo() {
+          // Navigate to the new page
+          window.location.href = "Information.html";
+        }
+      </script>
+
+      <div class="ingredients-title">
+        <h2 style="margin-bottom: 0">Ingredients</h2>
+      </div>
+
+      <ul class="todo-list" id="recipeList">
+        <!-- List items will be generated dynamically -->
+      </ul>
+
+      <div id="popup-box" class="popup">
+        <div class="popup-content">
+          <span class="close" onclick="closePopup()">&times;</span>
+          <p>No ingredients available for replacement.</p>
+        </div>
+      </div>
+
+      <div id="popup-box-too-many-modified" class="popup">
+        <div class="popup-content">
+          <span class="close" onclick="closePopupTooManyModified()"
+            >&times;</span
+          >
+          <p>
+            Removing these ingredients will fundamentally change the recipe.
+            Please select fewer or try another recipe.
+          </p>
+        </div>
+      </div>
+
+      <div class="nutrition-title">
+        <h1>Nutrition</h1>
+      </div>
+
+      <div class="nutrition-text" id="nutritionText">
+        <!-- Nutrition information will be dynamically generated here -->
+      </div>
+
+      <script>
+        // Retrieve the recipe nutrition information from local storage
+        const recipeNutrition = localStorage.getItem("recipeNutrition");
+
+        // Parse the JSON string to convert it into a JavaScript object
+        const nutritionData = JSON.parse(recipeNutrition);
+
+        // Get a reference to the nutrition text container
+        const nutritionTextContainer = document.getElementById("nutritionText");
+
+        // Clear any existing content in the container
+        nutritionTextContainer.innerHTML = "";
+
+        // Iterate over the nutrition data and create <p> elements for each nutrient
+        nutritionData.forEach((item) => {
+          const paragraph = document.createElement("p");
+          paragraph.textContent = `${item.n}${item.task}`;
+          nutritionTextContainer.appendChild(paragraph);
+        });
+      </script>
+
+      <script>
+        // Function to close the popup box
+        function closePopup() {
+          document.getElementById("popup-box").style.display = "none";
+        }
+      </script>
+
+      <div class="modify-button-container">
+        <button class="sugar-button" onclick="modifySugar(this)">
+          Low Sugar
+        </button>
+        <button class="protein-button" onclick="modifyProtein(this)">
+          High Protein
+        </button>
+        <button class="fat-button" onclick="modifyFat(this)">Low Fat</button>
+      </div>
+
+      <div class="save-button-container">
+        <button class="save-button" onclick="saveAndNavigate()">Save</button>
+      </div>
     </div>
-</div>
 
-<script>
-    function navigateToInfo() {
-        // Navigate to the new page
-        window.location.href = "Information.html";
-    }
-</script>
+    <script>
+      // Define variables for storing image states
+      var milkImage = false;
+      var eggImage = false;
+      var glutenImage = false;
+      var peanutImage = false;
+      var veganImage = false;
+      var treenutImage = false;
 
-<div class="ingredients-title">
-    <h2 style="margin-bottom: 0;">Ingredients</h2>
-</div>
+      // Retrieve selected allergens from local storage
+      const savedAllergens = localStorage.getItem("selectedAllergens");
+      const recipe = JSON.parse(localStorage.getItem("selectedRecipe"));
 
-<ul class="todo-list" id="recipeList">
-    <!-- List items will be generated dynamically -->
-</ul>
+      // Define replacement rules based on allergens
+      const replacementRules = {
+        Milk: {
+          "cup Milk": "cup Almond Milk",
+          "cup Yogurt": "cup Almond Yogurt",
+          "cups Milk": "cups Almond Milk",
+          "cups Yogurt": "cups Almond Yogurt",
+          "cup Butter": "cup Oil",
+          "cups Butter": "cups Oil",
+          // Add more rules specific to milk
+        },
+        Eggs: {
+          Eggs: "Flax Eggs",
+          "Egg Whites": "Flax Egg Whites",
+          // Add more rules specific to eggs
+        },
+        Peanuts: {
+          "cup Peanuts": "cup Almonds",
+          "cup Peanut Butter": "cup Almond Butter",
+          "cups Peanut Butter": "cups Almond Butter",
+          // Add more rules specific to peanuts
+        },
+        "Tree Nuts": {
+          "cup Almonds": "cup Pumpkin Seeds",
+          "cup Almond Butter": "cup Sunflower Butter",
+          "cups Almond Butter": "cups Sunflower Butter",
+          // Add more rules specific to tree nuts
+        },
+        Gluten: {
+          "cup Flour": "cup Oat Flour",
+          "cups Flour": "cups Oat Flour",
+        },
+        Vegan: {
+          "cup Milk": "cup Almond Milk",
+          "cup Yogurt": "cup Almond Yogurt",
+          "cups Milk": "cups Almond Milk",
+          "cups Yogurt": "cups Almond Yogurt",
+          "cup Butter": "cup Oil",
+          "cups Butter": "cups Oil",
+          Eggs: "Flax Eggs",
+          "Egg Whites": "Flax Egg Whites",
+        },
+        // Add more allergens and their replacement rules as needed
+      };
 
-<div id="popup-box" class="popup">
-    <div class="popup-content">
-        <span class="close" onclick="closePopup()">&times;</span>
-        <p>No ingredients available for replacement.</p>
-    </div>
-</div>
+      // If there are saved allergens, parse the JSON string and modify ingredients
+      if (savedAllergens) {
+        const selectedAllergens = JSON.parse(savedAllergens);
 
-<div class="nutrition-title">
-    <h1>Nutrition</h1>
-</div>
-
-<div class="nutrition-text" id="nutritionText">
-    <!-- Nutrition information will be dynamically generated here -->
-</div>
-
-<script>
-    // Retrieve the recipe nutrition information from local storage
-    const recipeNutrition = localStorage.getItem('recipeNutrition');
-
-    // Parse the JSON string to convert it into a JavaScript object
-    const nutritionData = JSON.parse(recipeNutrition);
-
-    // Get a reference to the nutrition text container
-    const nutritionTextContainer = document.getElementById('nutritionText');
-
-    // Clear any existing content in the container
-    nutritionTextContainer.innerHTML = '';
-
-    // Iterate over the nutrition data and create <p> elements for each nutrient
-    nutritionData.forEach(item => {
-        const paragraph = document.createElement('p');
-        paragraph.textContent = `${item.n}${item.task}`;
-        nutritionTextContainer.appendChild(paragraph);
-    });
-</script>
-
-<script>
-    // Function to close the popup box
-function closePopup() {
-    document.getElementById('popup-box').style.display = 'none';
-}
-</script>
-
-<div class="modify-button-container">
-    <button class="sugar-button" onclick="modifySugar(this)">Low Sugar</button>
-    <button class="protein-button" onclick="modifyProtein(this)">High Protein</button>
-    <button class="fat-button" onclick="modifyFat(this)">Low Fat</button>
-</div>
-
-<div class="save-button-container">
-    <button class="save-button" onclick="saveAndNavigate()">Save</button>
-</div>
-
-</div>
-
-<script>
-     // Define variables for storing image states
-var milkImage = false;
-var eggImage = false;
-var glutenImage = false;
-var peanutImage = false;
-var veganImage = false;
-var treenutImage = false;
-
-// Retrieve selected allergens from local storage
-const savedAllergens = localStorage.getItem('selectedAllergens');
-const recipe = JSON.parse(localStorage.getItem('selectedRecipe'));
-
-// Define replacement rules based on allergens
-const replacementRules = {
-    "Milk": {
-        "cup Milk": "cup Almond Milk",
-        "cup Yogurt": "cup Almond Yogurt",
-        "cups Milk": "cups Almond Milk",
-        "cups Yogurt": "cups Almond Yogurt",
-        "cup Butter": "cup Oil",
-        "cups Butter": "cups Oil",
-        // Add more rules specific to milk
-    },
-    "Eggs": {
-        "Eggs": "Flax Eggs",
-        "Egg Whites": "Flax Egg Whites",
-        // Add more rules specific to eggs
-    },
-    "Peanuts": {
-        "cup Peanuts": "cup Almonds",
-        "cup Peanut Butter": "cup Almond Butter",
-        "cups Peanut Butter": "cups Almond Butter",
-        // Add more rules specific to peanuts
-    },
-    "Tree Nuts": {
-        "cup Almonds": "cup Pumpkin Seeds",
-        "cup Almond Butter": "cup Sunflower Butter",
-        "cups Almond Butter": "cups Sunflower Butter",
-        // Add more rules specific to tree nuts
-    },
-    "Gluten": {
-        "cup Flour": "cup Oat Flour",
-        "cups Flour": "cups Oat Flour",
-    },
-    "Vegan": {
-        "cup Milk": "cup Almond Milk",
-        "cup Yogurt": "cup Almond Yogurt",
-        "cups Milk": "cups Almond Milk",
-        "cups Yogurt": "cups Almond Yogurt",
-        "cup Butter": "cup Oil",
-        "cups Butter": "cups Oil",
-        "Eggs": "Flax Eggs",
-        "Egg Whites": "Flax Egg Whites",
-    },
-    // Add more allergens and their replacement rules as needed
-};
-
-// If there are saved allergens, parse the JSON string and modify ingredients
-if (savedAllergens) {
-    const selectedAllergens = JSON.parse(savedAllergens);
-
-    // Iterate over each allergen
-    selectedAllergens.forEach(allergen => {
-        if(allergen == "Milk"){
-                    milkImage = true;
-                } 
-                if(allergen == "Egg"){
-                    eggImage = true;
-                }
-                if(allergen == "Gluten"){
-                    glutenImage = true;
-                }  
-                if(allergen == "Vegan"){
-                    veganImage = true;
-                } 
-                if(allergen == "Peanut"){
-                    peanutImage = true;
-                } 
-                if(allergen == "Tree Nut"){
-                    treenutImage = true;
-                } 
-        // Modify ingredients based on allergens
-        recipe.ingredients.forEach(ingredient => {
+        // Iterate over each allergen
+        selectedAllergens.forEach((allergen) => {
+          if (allergen == "Milk") {
+            milkImage = true;
+          }
+          if (allergen == "Egg") {
+            eggImage = true;
+          }
+          if (allergen == "Gluten") {
+            glutenImage = true;
+          }
+          if (allergen == "Vegan") {
+            veganImage = true;
+          }
+          if (allergen == "Peanut") {
+            peanutImage = true;
+          }
+          if (allergen == "Tree Nut") {
+            treenutImage = true;
+          }
+          // Modify ingredients based on allergens
+          recipe.ingredients.forEach((ingredient) => {
             // Check if ingredient needs to be replaced based on allergen
-            if (replacementRules[allergen] && replacementRules[allergen][ingredient.task]) {
-                ingredient.task = replacementRules[allergen][ingredient.task]; // Update the ingredient task
-                ingredient.modified = true;
+            if (
+              replacementRules[allergen] &&
+              replacementRules[allergen][ingredient.task]
+            ) {
+              ingredient.task = replacementRules[allergen][ingredient.task]; // Update the ingredient task
+              ingredient.modified = true;
             }
+          });
         });
-    });
-    // Save the modified recipe back to localStorage
-    localStorage.setItem('selectedRecipe', JSON.stringify(recipe));
-}
+        // Save the modified recipe back to localStorage
+        localStorage.setItem("selectedRecipe", JSON.stringify(recipe));
+      }
 
-    // Function to toggle the appearance of the button and mark ingredient for removal
-    function toggleState(button) {
-        if (button.innerText === '') {
-            button.innerText = 'X'; // Display X symbol
-        } else {
-            button.innerText = ''; // Remove X symbol
-        }
-    }
+      function showPopupTooManyModified() {
+        document.getElementById("popup-box-too-many-modified").style.display =
+          "block";
+      }
 
-// Log the modified recipe with replaced ingredients
-console.log("Modified Recipe:", recipe);
+      function closePopupTooManyModified() {
+        document.getElementById("popup-box-too-many-modified").style.display =
+          "none";
+      }
 
-// Function to generate list items from recipe object
-function generateRecipeList(recipe) {
-    const recipeList = document.getElementById('recipeList');
-
-    // Clear existing list items
-    recipeList.innerHTML = '';
-
-    // Generate list items for each ingredient
-    recipe.ingredients.forEach(ingredient => {
-        const listItem = document.createElement('li');
-        listItem.className = 'todo-item';
-
-        const buttonContainer = document.createElement('div');
-        buttonContainer.className = 'button-container';
-
-        const button = document.createElement('button');
-        button.className = 'button';
-        button.setAttribute('onclick', 'toggleState(this)');
-
-        const spanNumber = document.createElement('span');
-        spanNumber.className = 'number';
-        spanNumber.textContent = ingredient.number;
-
-        const spanTask = document.createElement('span');
-        spanTask.className = 'task';
-        spanTask.textContent = ingredient.task;
-
-        // Check if ingredient has been modified, and underline it if necessary
-        if (ingredient.modified) {
-            spanTask.style.textDecoration = 'underline';
-        }
-
-        buttonContainer.appendChild(button);
-        buttonContainer.appendChild(spanNumber);
-        listItem.appendChild(buttonContainer);
-        listItem.appendChild(spanTask);
-
-        recipeList.appendChild(listItem);
-    });
-}
-
-// Call the function to generate the recipe list
-generateRecipeList(recipe);
-
-function modifySugar(button) {
-    var noneModified = true; 
-    button.classList.toggle('clicked');
-    const isClicked = button.classList.contains('clicked');
-    localStorage.setItem('sugarClicked', isClicked);
-
-    // Define replacement rules for sugar-related ingredients
-    const replacementRulesSugar = {
-        "cup White Sugar": "cup Honey",
-        "cup Brown Sugar": "cup Maple Syrup",
-        "cups White Sugar": "cups Honey",
-        "cups Brown Sugar": "cups Maple Syrup"
-    };
-
-    const replacementRulesSugarDone = {
-        "cup Honey": "cup White Sugar",
-        "cup Maple Syrup": "cup Brown Sugar",
-        "cups Honey": "cups White Sugar",
-        "cups Maple Syrup": "cups Brown Sugar"
-    };
-
-    // Retrieve the recipe from localStorage
-    const recipe = JSON.parse(localStorage.getItem('selectedRecipe'));
-    const recipeNutrition = JSON.parse(localStorage.getItem('recipeNutrition'));
-
-    // Modify the function to check if ingredient task is modified by allergen or buttons
-    function isModified(ingredient) {
-        return ingredient.modified || ingredient.modifiedByButton;
-    }
-        // Function to show the popup box
-function showPopup() {
-    document.getElementById('popup-box').style.display = 'block';
-}
-
-// Function to close the popup box
-function closePopup() {
-    document.getElementById('popup-box').style.display = 'none';
-}
-
-// Inside the modification functions, when applying replacements, mark ingredients modified by buttons
-if (isClicked) {
-    recipe.ingredients.forEach(ingredient => {
-        if (replacementRulesSugar[ingredient.task] && !isModified(ingredient)) {
-            ingredient.task = replacementRulesSugar[ingredient.task];
-            ingredient.modifiedByButton = true; // Mark as modified by button
-            noneModified = false;
-        }
-    });
-    if (noneModified){
-        showPopup();
-        button.classList.toggle('clicked');
-        const isClicked = button.classList.contains('clicked');
-    localStorage.setItem('sugarClicked', isClicked);
-    }
-} else {
-    // If the button is not clicked, revert to the original recipe for ingredients modified by buttons
-    recipe.ingredients.forEach(ingredient => {
-        if (replacementRulesSugarDone[ingredient.task] && ingredient.modifiedByButton) {
-            ingredient.task = replacementRulesSugarDone[ingredient.task];
-            delete ingredient.modifiedByButton; // Clear the modification by button flag
-        }
-    });
-}
-
-// If the button is clicked, apply the replacement rules
-if (isClicked) {
-    recipe.ingredients.forEach(ingredient => {
-        // Check if ingredient task is not already modified by allergen and not modified by buttons
-        if (!ingredient.modified && !ingredient.modifiedByButton && replacementRulesSugar[ingredient.task]) {
-            ingredient.task = replacementRulesSugar[ingredient.task];
-            ingredient.modifiedByButton = true; // Mark as modified by button
-        }
-    });
-    recipeNutrition[3].n /= 2; // halve the suagr content
-} else {
-    // If the button is not clicked, revert to the original recipe for ingredients modified by buttons
-    recipe.ingredients.forEach(ingredient => {
-        if (replacementRulesSugarDone[ingredient.task] && ingredient.modifiedByButton) {
-            ingredient.task = replacementRulesSugarDone[ingredient.task];
-            delete ingredient.modifiedByButton; // Clear the modification by button flag
-        }
-    });
-    recipeNutrition[3].n *= 2; // reset the sugar content
-}
-
-// Save the modified recipe & nutrition back to localStorage
-localStorage.setItem('selectedRecipe', JSON.stringify(recipe));
-localStorage.setItem('recipeNutrition', JSON.stringify(recipeNutrition));
-
-// Update the nutrition text on the webpage
-updateNutritionText(recipeNutrition);
-
-// Regenerate the recipe list
-generateRecipeList(recipe);
-}
-
-function modifyProtein(button) {
-    var noneModified = true;
-    button.classList.toggle('clicked');
-    const isClicked = button.classList.contains('clicked');
-    localStorage.setItem('proteinClicked', isClicked);
-
-    const recipeNutrition = JSON.parse(localStorage.getItem('recipeNutrition'));
-
-        // Modify the function to check if ingredient task is modified by allergen or buttons
-function isModified(ingredient) {
-    return ingredient.modified || ingredient.modifiedByButton;
-}
-
-    // Define replacement rules for sugar-related ingredients
-    const replacementRulesProtein = {
-        "Egg": "cup Egg White",
-        "Eggs": "cup Egg Whites",
-        "cup Flour": "cup Almond Flour",
-        "cups Flour": "cups Almond Flour",
-    };
-
-    // Define replacement rules for sugar-related ingredients
-    const replacementRulesProteinDone = {
-        "cup Egg White": "Egg",
-        "cup Egg Whites": "Eggs", 
-        "cup Almond Flour": "cup Flour",
-        "cups Almond Flour": "cups Flour",
-    };
-
-    // Function to show the popup box
-function showPopup() {
-    document.getElementById('popup-box').style.display = 'block';
-}
-
-// Function to close the popup box
-function closePopup() {
-    document.getElementById('popup-box').style.display = 'none';
-}
-
-    // Retrieve the recipe from localStorage
-    const recipe = JSON.parse(localStorage.getItem('selectedRecipe'));
-
-// Inside the modification functions, when applying replacements, mark ingredients modified by buttons
-if (isClicked) {
-    recipe.ingredients.forEach(ingredient => {
-        if (replacementRulesProtein[ingredient.task] && !isModified(ingredient)) {
-            ingredient.task = replacementRulesProtein[ingredient.task];
-            ingredient.modifiedByButton = true; // Mark as modified by button
-            noneModified = false;
-        }
-    });
-    if (noneModified){
-        showPopup();
-        button.classList.toggle('clicked');
-        const isClicked = button.classList.contains('clicked');
-    localStorage.setItem('proteinClicked', isClicked);
-    }
-} else {
-    // If the button is not clicked, revert to the original recipe for ingredients modified by buttons
-    recipe.ingredients.forEach(ingredient => {
-        if (replacementRulesProteinDone[ingredient.task] && ingredient.modifiedByButton) {
-            ingredient.task = replacementRulesProteinDone[ingredient.task];
-            delete ingredient.modifiedByButton; // Clear the modification by button flag
-        }
-    });
-}
-
-// If the button is clicked, apply the replacement rules
-if (isClicked) {
-    recipe.ingredients.forEach(ingredient => {
-        // Check if ingredient task is not already modified by allergen and not modified by buttons
-        if (!ingredient.modified && !ingredient.modifiedByButton && replacementRulesProtein[ingredient.task]) {
-            ingredient.task = replacementRulesProtein[ingredient.task];
-            ingredient.modifiedByButton = true; // Mark as modified by button
-        }
-    });
-    recipeNutrition[1].n *= 2; // double the protein content
-} else {
-    // If the button is not clicked, revert to the original recipe for ingredients modified by buttons
-    recipe.ingredients.forEach(ingredient => {
-        if (replacementRulesProteinDone[ingredient.task] && ingredient.modifiedByButton) {
-            ingredient.task = replacementRulesProteinDone[ingredient.task];
-            delete ingredient.modifiedByButton; // Clear the modification by button flag
-        }
-    });
-    recipeNutrition[1].n /= 2; // reset the protein content
-}
-// Inside the modifyProtein function, just before calling updateNutritionText
-console.log("nutritionData before modifying:", recipeNutrition);
-   // Save the modified recipe & nutrition back to localStorage
-localStorage.setItem('selectedRecipe', JSON.stringify(recipe));
-localStorage.setItem('recipeNutrition', JSON.stringify(recipeNutrition));
-
-// Inside the modifyProtein function, just after modifying nutritionData
-console.log("nutritionData after modifying:", recipeNutrition);
-// Update the nutrition text on the webpage
-updateNutritionText(recipeNutrition);
-
-// Regenerate the recipe list
-generateRecipeList(recipe);
-}
-
-    function modifyFat(button) {
-        var noneModified = true;
-        button.classList.toggle('clicked');
-    const isClicked = button.classList.contains('clicked');
-    localStorage.setItem('fatClicked', isClicked);
-    const recipeNutrition = JSON.parse(localStorage.getItem('recipeNutrition'));
-
-        // Modify the function to check if ingredient task is modified by allergen or buttons
-function isModified(ingredient) {
-    return ingredient.modified || ingredient.modifiedByButton;
-}
-// Function to show the popup box
-function showPopup() {
-    document.getElementById('popup-box').style.display = 'block';
-}
-
-// Function to close the popup box
-function closePopup() {
-    document.getElementById('popup-box').style.display = 'none';
-}
-
-    // Define replacement rules for sugar-related ingredients
-    const replacementRulesFat = {
-        "cup Butter": "cup Apple Sauce",
-        "cups Butter": "cups Apple Sauce",
-        "cup Oil": "cup Apple Sauce",
-        "cups Oil": "cups Apple Sauce",
-        "cups Vegetable Oil": "cups Apple Sauce",
-        "cup Vegetable Oil": "cup Apple Sauce",
-    };
-
-    // Define replacement rules for sugar-related ingredients
-    const replacementRulesFatDone = {
-        "cup Apple Sauce": "cup Butter",
-        "cups Apple Sauce": "cups Butter", 
-        "cup Apple Sauce": "cup Oil",
-        "cups Apple Sauce": "cups Oil",
-        "cup Apple Sauce": "cup Vegetable Oil", 
-        "cups Apple Sauce": "cups Vegetable Oil", 
-    };
-
-    // Retrieve the recipe from localStorage
-    const recipe = JSON.parse(localStorage.getItem('selectedRecipe'));
-
-    // Inside the modification functions, when applying replacements, mark ingredients modified by buttons
-if (isClicked) {
-    recipe.ingredients.forEach(ingredient => {
-        if (replacementRulesFat[ingredient.task] && !isModified(ingredient)) {
-            ingredient.task = replacementRulesFat[ingredient.task];
-            ingredient.modifiedByButton = true; // Mark as modified by button
-            noneModified = false;
-        }
-    });
-    if (noneModified){
-        showPopup();
-        button.classList.toggle('clicked');
-        const isClicked = button.classList.contains('clicked');
-    localStorage.setItem('fatClicked', isClicked);
-    }
-} else {
-    // If the button is not clicked, revert to the original recipe for ingredients modified by buttons
-    recipe.ingredients.forEach(ingredient => {
-        if (replacementRulesFatDone[ingredient.task] && ingredient.modifiedByButton) {
-            ingredient.task = replacementRulesFatDone[ingredient.task];
-            delete ingredient.modifiedByButton; // Clear the modification by button flag
-        }
-    });
-}
-
-// If the button is clicked, apply the replacement rules
-if (isClicked) {
-    recipe.ingredients.forEach(ingredient => {
-        // Check if ingredient task is not already modified by allergen and not modified by buttons
-        if (!ingredient.modified && !ingredient.modifiedByButton && replacementRulesFat[ingredient.task]) {
-            ingredient.task = replacementRulesFat[ingredient.task];
-            ingredient.modifiedByButton = true; // Mark as modified by button
-        }
-    });
-    recipeNutrition[2].n /= 2; // halve the fat content
-} else {
-    // If the button is not clicked, revert to the original recipe for ingredients modified by buttons
-    recipe.ingredients.forEach(ingredient => {
-        if (replacementRulesFatDone[ingredient.task] && ingredient.modifiedByButton) {
-            ingredient.task = replacementRulesFatDone[ingredient.task];
-            delete ingredient.modifiedByButton; // Clear the modification by button flag
-        }
-    });
-    recipeNutrition[2].n *= 2; // halve the fat content
-}
-
- // Save the modified recipe & nutrition back to localStorage
- localStorage.setItem('selectedRecipe', JSON.stringify(recipe));
-localStorage.setItem('recipeNutrition', JSON.stringify(recipeNutrition));
-
-// Update the nutrition text on the webpage
-updateNutritionText(recipeNutrition);
-
-// Regenerate the recipe list
-generateRecipeList(recipe);
-}
-
-// Function to update the nutrition text on the webpage
-function updateNutritionText(nutritionData) {
-const nutritionTextContainer = document.getElementById('nutritionText');
-nutritionTextContainer.innerHTML = ''; // Clear existing content
-
-nutritionData.forEach(item => {
-    const paragraph = document.createElement('p');
-    paragraph.textContent = `${item.n}${item.task}`;
-    nutritionTextContainer.appendChild(paragraph);
-});
-}
-</script>
-
-
-<script>
-    function saveAndNavigate() {
-        const recipe = JSON.parse(localStorage.getItem('selectedRecipe'));
+      function checkTooManyMod() {
+        const recipe = JSON.parse(localStorage.getItem("selectedRecipe"));
         // Get all the buttons with an 'X' symbol
-        const buttonsWithX = document.querySelectorAll('.button');
+        const buttonsWithX = document.querySelectorAll(".button");
+        let countModified = 0;
+        let essentialIngredientMod = false;
 
-        // Iterate over each button to check if it has the 'X' symbol
-        buttonsWithX.forEach(button => {
-            if (button.innerText === 'X') {
-                // Get the parent list item
-                const listItem = button.parentElement.parentElement;
-
-                // Get the task text within the list item
-                const taskText = listItem.querySelector('.task').textContent;
-
-                // Find the index of the ingredient with the matching task in the recipe array
-                const index = recipe.ingredients.findIndex(ingredient => ingredient.task === taskText);
-
-                // Remove the ingredient from the recipe array
-                recipe.ingredients.splice(index, 1);
+        buttonsWithX.forEach((button) => {
+          if (button.innerText === "X") {
+            countModified++;
+            const listItem = button.parentElement.parentElement;
+            const taskText = listItem.querySelector(".task").textContent;
+            if (
+              taskText.includes("Egg") ||
+              taskText.includes("Flour") ||
+              taskText.includes("Baking")
+            ) {
+              essentialIngredientMod = true;
             }
+          }
         });
-        // Save the modified recipe to localStorage
-        localStorage.setItem('modifiedRecipe', JSON.stringify(recipe));
-        localStorage.setItem('milkImage', JSON.stringify(milkImage));
-        localStorage.setItem('eggImage', JSON.stringify(eggImage));
-        localStorage.setItem('treenutImage', JSON.stringify(treenutImage));
-        localStorage.setItem('glutenImage', JSON.stringify(glutenImage));
-        localStorage.setItem('peanutImage', JSON.stringify(peanutImage));
-        localStorage.setItem('veganImage', JSON.stringify(veganImage));
-        window.location.href = "FinalRecipe.html";
-    }
-</script>
+        if (countModified > 3 || essentialIngredientMod) {
+          showPopupTooManyModified(); // Show the popup for too many modified ingredients
+        }
 
-<footer-top></footer-top>
-<footer>
-    <div class="footer-icons">
-        <a href="Welcome.html"><span class="material-symbols-outlined">allergies</span></a>
-        <a href="SavedRecipe.html"><span class="material-symbols-outlined">bookmark</span></a>
-    </div>
-</footer>
+        return countModified > 3 || essentialIngredientMod;
+      }
+      // Function to toggle the appearance of the button and mark ingredient for removal
+      function toggleState(button) {
+        const recipeNutrition = JSON.parse(
+          localStorage.getItem("recipeNutrition")
+        );
+        if (button.innerText === "") {
+          button.innerText = "X"; // Display X symbol
+          if (checkTooManyMod()) {
+            button.innerText = "";
+            return;
+          }
+          const listItem = button.parentElement.parentElement;
+          const taskText = listItem.querySelector(".task").textContent;
+          if (taskText.includes("Sugar")) {
+            recipeNutrition[3].n -= 10;
+            recipeNutrition[2].n -= 2;
+            recipeNutrition[0].n -= 40;
+          } else if (taskText.includes("Eggs")) {
+            recipeNutrition[1].n -= 1;
+            recipeNutrition[0].n -= 30;
+          } else {
+            recipeNutrition[0].n -= 20;
+          }
+          recipeNutrition[0].n = Math.max(recipeNutrition[0].n, 0);
+          recipeNutrition[1].n = Math.max(recipeNutrition[1].n, 0);
+          recipeNutrition[2].n = Math.max(recipeNutrition[2].n, 0);
+          recipeNutrition[3].n = Math.max(recipeNutrition[3].n, 0);
+          localStorage.setItem(
+            "recipeNutrition",
+            JSON.stringify(recipeNutrition)
+          );
+          updateNutritionText(recipeNutrition);
+        } else {
+          button.innerText = ""; // Remove X symbol
+          const listItem = button.parentElement.parentElement;
+          const taskText = listItem.querySelector(".task").textContent;
+          if (taskText.includes("Sugar")) {
+            recipeNutrition[3].n += 10;
+            recipeNutrition[2].n += 2;
+            recipeNutrition[0].n += 40;
+          } else if (taskText.includes("Eggs")) {
+            recipeNutrition[1].n += 1;
+            recipeNutrition[0].n += 30;
+          } else {
+            recipeNutrition[0].n += 20;
+          }
+          localStorage.setItem(
+            "recipeNutrition",
+            JSON.stringify(recipeNutrition)
+          );
+          updateNutritionText(recipeNutrition);
+        }
+      }
 
-<!-- We used ChatGPT to help when we got stuck with Javascript for the buttons and finding the right CSS modifiers -->
+      // Log the modified recipe with replaced ingredients
+      console.log("Modified Recipe:", recipe);
 
-</body>
+      // Function to generate list items from recipe object
+      function generateRecipeList(recipe) {
+        const recipeList = document.getElementById("recipeList");
+
+        // Clear existing list items
+        recipeList.innerHTML = "";
+
+        // Generate list items for each ingredient
+        recipe.ingredients.forEach((ingredient) => {
+          const listItem = document.createElement("li");
+          listItem.className = "todo-item";
+
+          const buttonContainer = document.createElement("div");
+          buttonContainer.className = "button-container";
+
+          const button = document.createElement("button");
+          button.className = "button";
+          button.setAttribute("onclick", "toggleState(this)");
+
+          const spanNumber = document.createElement("span");
+          spanNumber.className = "number";
+          spanNumber.textContent = ingredient.number;
+
+          const spanTask = document.createElement("span");
+          spanTask.className = "task";
+          spanTask.textContent = ingredient.task;
+
+          // Check if ingredient has been modified, and underline it if necessary
+          if (ingredient.modified) {
+            spanTask.style.textDecoration = "underline";
+          }
+
+          buttonContainer.appendChild(button);
+          buttonContainer.appendChild(spanNumber);
+          listItem.appendChild(buttonContainer);
+          listItem.appendChild(spanTask);
+
+          recipeList.appendChild(listItem);
+        });
+      }
+
+      // Call the function to generate the recipe list
+      generateRecipeList(recipe);
+
+      function modifySugar(button) {
+        var noneModified = true;
+        button.classList.toggle("clicked");
+        const isClicked = button.classList.contains("clicked");
+        localStorage.setItem("sugarClicked", isClicked);
+
+        // Define replacement rules for sugar-related ingredients
+        const replacementRulesSugar = {
+          "cup White Sugar": "cup Honey",
+          "cup Brown Sugar": "cup Maple Syrup",
+          "cups White Sugar": "cups Honey",
+          "cups Brown Sugar": "cups Maple Syrup",
+        };
+
+        const replacementRulesSugarDone = {
+          "cup Honey": "cup White Sugar",
+          "cup Maple Syrup": "cup Brown Sugar",
+          "cups Honey": "cups White Sugar",
+          "cups Maple Syrup": "cups Brown Sugar",
+        };
+
+        // Retrieve the recipe from localStorage
+        const recipe = JSON.parse(localStorage.getItem("selectedRecipe"));
+        const recipeNutrition = JSON.parse(
+          localStorage.getItem("recipeNutrition")
+        );
+
+        // Modify the function to check if ingredient task is modified by allergen or buttons
+        function isModified(ingredient) {
+          return ingredient.modified || ingredient.modifiedByButton;
+        }
+        // Function to show the popup box
+        function showPopup() {
+          document.getElementById("popup-box").style.display = "block";
+        }
+
+        // Function to close the popup box
+        function closePopup() {
+          document.getElementById("popup-box").style.display = "none";
+        }
+
+        function showPopupTooManyModified() {
+          document.getElementById("popup-box-too-many-modified").style.display =
+            "block";
+        }
+
+        function closePopupTooManyModified() {
+          document.getElementById("popup-box-too-many-modified").style.display =
+            "none";
+        }
+
+        // Inside the modification functions, when applying replacements, mark ingredients modified by buttons
+        if (isClicked) {
+          recipe.ingredients.forEach((ingredient) => {
+            if (
+              replacementRulesSugar[ingredient.task] &&
+              !isModified(ingredient)
+            ) {
+              ingredient.task = replacementRulesSugar[ingredient.task];
+              ingredient.modifiedByButton = true; // Mark as modified by button
+              noneModified = false;
+            }
+          });
+          if (noneModified) {
+            showPopup();
+            button.classList.toggle("clicked");
+            const isClicked = button.classList.contains("clicked");
+            localStorage.setItem("sugarClicked", isClicked);
+          }
+        } else {
+          // If the button is not clicked, revert to the original recipe for ingredients modified by buttons
+          recipe.ingredients.forEach((ingredient) => {
+            if (
+              replacementRulesSugarDone[ingredient.task] &&
+              ingredient.modifiedByButton
+            ) {
+              ingredient.task = replacementRulesSugarDone[ingredient.task];
+              delete ingredient.modifiedByButton; // Clear the modification by button flag
+            }
+          });
+        }
+
+        // If the button is clicked, apply the replacement rules
+        if (isClicked) {
+          recipe.ingredients.forEach((ingredient) => {
+            // Check if ingredient task is not already modified by allergen and not modified by buttons
+            if (
+              !ingredient.modified &&
+              !ingredient.modifiedByButton &&
+              replacementRulesSugar[ingredient.task]
+            ) {
+              ingredient.task = replacementRulesSugar[ingredient.task];
+              ingredient.modifiedByButton = true; // Mark as modified by button
+            }
+          });
+          recipeNutrition[3].n /= 2; // halve the suagr content
+        } else {
+          // If the button is not clicked, revert to the original recipe for ingredients modified by buttons
+          recipe.ingredients.forEach((ingredient) => {
+            if (
+              replacementRulesSugarDone[ingredient.task] &&
+              ingredient.modifiedByButton
+            ) {
+              ingredient.task = replacementRulesSugarDone[ingredient.task];
+              delete ingredient.modifiedByButton; // Clear the modification by button flag
+            }
+          });
+          recipeNutrition[3].n *= 2; // reset the sugar content
+        }
+
+        // Save the modified recipe & nutrition back to localStorage
+        localStorage.setItem("selectedRecipe", JSON.stringify(recipe));
+        localStorage.setItem(
+          "recipeNutrition",
+          JSON.stringify(recipeNutrition)
+        );
+
+        // Update the nutrition text on the webpage
+        updateNutritionText(recipeNutrition);
+
+        // Regenerate the recipe list
+        generateRecipeList(recipe);
+      }
+
+      function modifyProtein(button) {
+        var noneModified = true;
+        button.classList.toggle("clicked");
+        const isClicked = button.classList.contains("clicked");
+        localStorage.setItem("proteinClicked", isClicked);
+
+        const recipeNutrition = JSON.parse(
+          localStorage.getItem("recipeNutrition")
+        );
+
+        // Modify the function to check if ingredient task is modified by allergen or buttons
+        function isModified(ingredient) {
+          return ingredient.modified || ingredient.modifiedByButton;
+        }
+
+        // Define replacement rules for sugar-related ingredients
+        const replacementRulesProtein = {
+          Egg: "cup Egg White",
+          Eggs: "cup Egg Whites",
+          "cup Flour": "cup Almond Flour",
+          "cups Flour": "cups Almond Flour",
+        };
+
+        // Define replacement rules for sugar-related ingredients
+        const replacementRulesProteinDone = {
+          "cup Egg White": "Egg",
+          "cup Egg Whites": "Eggs",
+          "cup Almond Flour": "cup Flour",
+          "cups Almond Flour": "cups Flour",
+        };
+
+        // Function to show the popup box
+        function showPopup() {
+          document.getElementById("popup-box").style.display = "block";
+        }
+
+        // Function to close the popup box
+        function closePopup() {
+          document.getElementById("popup-box").style.display = "none";
+        }
+
+        function showPopupTooManyModified() {
+          document.getElementById("popup-box-too-many-modified").style.display =
+            "block";
+        }
+
+        function closePopupTooManyModified() {
+          document.getElementById("popup-box-too-many-modified").style.display =
+            "none";
+        }
+
+        // Retrieve the recipe from localStorage
+        const recipe = JSON.parse(localStorage.getItem("selectedRecipe"));
+
+        // Inside the modification functions, when applying replacements, mark ingredients modified by buttons
+        if (isClicked) {
+          recipe.ingredients.forEach((ingredient) => {
+            if (
+              replacementRulesProtein[ingredient.task] &&
+              !isModified(ingredient)
+            ) {
+              ingredient.task = replacementRulesProtein[ingredient.task];
+              ingredient.modifiedByButton = true; // Mark as modified by button
+              noneModified = false;
+            }
+          });
+          if (noneModified) {
+            showPopup();
+            button.classList.toggle("clicked");
+            const isClicked = button.classList.contains("clicked");
+            localStorage.setItem("proteinClicked", isClicked);
+          }
+        } else {
+          // If the button is not clicked, revert to the original recipe for ingredients modified by buttons
+          recipe.ingredients.forEach((ingredient) => {
+            if (
+              replacementRulesProteinDone[ingredient.task] &&
+              ingredient.modifiedByButton
+            ) {
+              ingredient.task = replacementRulesProteinDone[ingredient.task];
+              delete ingredient.modifiedByButton; // Clear the modification by button flag
+            }
+          });
+        }
+
+        // If the button is clicked, apply the replacement rules
+        if (isClicked) {
+          recipe.ingredients.forEach((ingredient) => {
+            // Check if ingredient task is not already modified by allergen and not modified by buttons
+            if (
+              !ingredient.modified &&
+              !ingredient.modifiedByButton &&
+              replacementRulesProtein[ingredient.task]
+            ) {
+              ingredient.task = replacementRulesProtein[ingredient.task];
+              ingredient.modifiedByButton = true; // Mark as modified by button
+            }
+          });
+          recipeNutrition[1].n *= 2; // double the protein content
+        } else {
+          // If the button is not clicked, revert to the original recipe for ingredients modified by buttons
+          recipe.ingredients.forEach((ingredient) => {
+            if (
+              replacementRulesProteinDone[ingredient.task] &&
+              ingredient.modifiedByButton
+            ) {
+              ingredient.task = replacementRulesProteinDone[ingredient.task];
+              delete ingredient.modifiedByButton; // Clear the modification by button flag
+            }
+          });
+          recipeNutrition[1].n /= 2; // reset the protein content
+        }
+        // Inside the modifyProtein function, just before calling updateNutritionText
+        console.log("nutritionData before modifying:", recipeNutrition);
+        // Save the modified recipe & nutrition back to localStorage
+        localStorage.setItem("selectedRecipe", JSON.stringify(recipe));
+        localStorage.setItem(
+          "recipeNutrition",
+          JSON.stringify(recipeNutrition)
+        );
+
+        // Inside the modifyProtein function, just after modifying nutritionData
+        console.log("nutritionData after modifying:", recipeNutrition);
+        // Update the nutrition text on the webpage
+        updateNutritionText(recipeNutrition);
+
+        // Regenerate the recipe list
+        generateRecipeList(recipe);
+      }
+
+      function modifyFat(button) {
+        var noneModified = true;
+        button.classList.toggle("clicked");
+        const isClicked = button.classList.contains("clicked");
+        localStorage.setItem("fatClicked", isClicked);
+        const recipeNutrition = JSON.parse(
+          localStorage.getItem("recipeNutrition")
+        );
+
+        // Modify the function to check if ingredient task is modified by allergen or buttons
+        function isModified(ingredient) {
+          return ingredient.modified || ingredient.modifiedByButton;
+        }
+        // Function to show the popup box
+        function showPopup() {
+          document.getElementById("popup-box").style.display = "block";
+        }
+
+        // Function to close the popup box
+        function closePopup() {
+          document.getElementById("popup-box").style.display = "none";
+        }
+
+        // Define replacement rules for sugar-related ingredients
+        const replacementRulesFat = {
+          "cup Butter": "cup Apple Sauce",
+          "cups Butter": "cups Apple Sauce",
+          "cup Oil": "cup Apple Sauce",
+          "cups Oil": "cups Apple Sauce",
+          "cups Vegetable Oil": "cups Apple Sauce",
+          "cup Vegetable Oil": "cup Apple Sauce",
+        };
+
+        // Define replacement rules for sugar-related ingredients
+        const replacementRulesFatDone = {
+          "cup Apple Sauce": "cup Butter",
+          "cups Apple Sauce": "cups Butter",
+          "cup Apple Sauce": "cup Oil",
+          "cups Apple Sauce": "cups Oil",
+          "cup Apple Sauce": "cup Vegetable Oil",
+          "cups Apple Sauce": "cups Vegetable Oil",
+        };
+
+        // Retrieve the recipe from localStorage
+        const recipe = JSON.parse(localStorage.getItem("selectedRecipe"));
+
+        // Inside the modification functions, when applying replacements, mark ingredients modified by buttons
+        if (isClicked) {
+          recipe.ingredients.forEach((ingredient) => {
+            if (
+              replacementRulesFat[ingredient.task] &&
+              !isModified(ingredient)
+            ) {
+              ingredient.task = replacementRulesFat[ingredient.task];
+              ingredient.modifiedByButton = true; // Mark as modified by button
+              noneModified = false;
+            }
+          });
+          if (noneModified) {
+            showPopup();
+            // button.classList.toggle('clicked');
+            // const isClicked = button.classList.contains('clicked');
+            // localStorage.setItem('fatClicked', isClicked);
+          }
+        } else {
+          // If the button is not clicked, revert to the original recipe for ingredients modified by buttons
+          recipe.ingredients.forEach((ingredient) => {
+            if (
+              replacementRulesFatDone[ingredient.task] &&
+              ingredient.modifiedByButton
+            ) {
+              ingredient.task = replacementRulesFatDone[ingredient.task];
+              delete ingredient.modifiedByButton; // Clear the modification by button flag
+            }
+          });
+        }
+
+        // If the button is clicked, apply the replacement rules
+        if (isClicked) {
+          recipe.ingredients.forEach((ingredient) => {
+            // Check if ingredient task is not already modified by allergen and not modified by buttons
+            if (
+              !ingredient.modified &&
+              !ingredient.modifiedByButton &&
+              replacementRulesFat[ingredient.task]
+            ) {
+              ingredient.task = replacementRulesFat[ingredient.task];
+              ingredient.modifiedByButton = true; // Mark as modified by button
+            }
+          });
+          recipeNutrition[2].n /= 2; // halve the fat content
+        } else {
+          // If the button is not clicked, revert to the original recipe for ingredients modified by buttons
+          recipe.ingredients.forEach((ingredient) => {
+            if (
+              replacementRulesFatDone[ingredient.task] &&
+              ingredient.modifiedByButton
+            ) {
+              ingredient.task = replacementRulesFatDone[ingredient.task];
+              delete ingredient.modifiedByButton; // Clear the modification by button flag
+            }
+          });
+          recipeNutrition[2].n *= 2; // halve the fat content
+        }
+
+        // Save the modified recipe & nutrition back to localStorage
+        localStorage.setItem("selectedRecipe", JSON.stringify(recipe));
+        localStorage.setItem(
+          "recipeNutrition",
+          JSON.stringify(recipeNutrition)
+        );
+
+        // Update the nutrition text on the webpage
+        updateNutritionText(recipeNutrition);
+
+        // Regenerate the recipe list
+        generateRecipeList(recipe);
+      }
+
+      // Function to update the nutrition text on the webpage
+      function updateNutritionText(nutritionData) {
+        const nutritionTextContainer = document.getElementById("nutritionText");
+        nutritionTextContainer.innerHTML = ""; // Clear existing content
+
+        nutritionData.forEach((item) => {
+          const paragraph = document.createElement("p");
+          paragraph.textContent = `${item.n}${item.task}`;
+          nutritionTextContainer.appendChild(paragraph);
+        });
+      }
+    </script>
+
+    <script>
+      function showPopupTooManyModified() {
+        document.getElementById("popup-box-too-many-modified").style.display =
+          "block";
+      }
+
+      function closePopupTooManyModified() {
+        document.getElementById("popup-box-too-many-modified").style.display =
+          "none";
+      }
+      function saveAndNavigate() {
+        const recipe = JSON.parse(localStorage.getItem("selectedRecipe"));
+        // Get all the buttons with an 'X' symbol
+        const buttonsWithX = document.querySelectorAll(".button");
+        let countModified = 0;
+        let essentialIngredientMod = false;
+
+        buttonsWithX.forEach((button) => {
+          if (button.innerText === "X") {
+            countModified++;
+            const listItem = button.parentElement.parentElement;
+            const taskText = listItem.querySelector(".task").textContent;
+            if (
+              taskText.includes("Egg") ||
+              taskText.includes("Flour") ||
+              taskText.includes("Baking")
+            ) {
+              essentialIngredientMod = true;
+            }
+          }
+        });
+        if (countModified > 3 || essentialIngredientMod) {
+          showPopupTooManyModified(); // Show the popup for too many modified ingredients
+        } else {
+          // Iterate over each button to check if it has the 'X' symbol
+          buttonsWithX.forEach((button) => {
+            if (button.innerText === "X") {
+              // Get the parent list item
+              const listItem = button.parentElement.parentElement;
+
+              // Get the task text within the list item
+              const taskText = listItem.querySelector(".task").textContent;
+
+              // Find the index of the ingredient with the matching task in the recipe array
+              const index = recipe.ingredients.findIndex(
+                (ingredient) => ingredient.task === taskText
+              );
+
+              // Remove the ingredient from the recipe array
+              recipe.ingredients.splice(index, 1);
+            }
+          });
+          // Save the modified recipe to localStorage
+          localStorage.setItem("modifiedRecipe", JSON.stringify(recipe));
+          localStorage.setItem("milkImage", JSON.stringify(milkImage));
+          localStorage.setItem("eggImage", JSON.stringify(eggImage));
+          localStorage.setItem("treenutImage", JSON.stringify(treenutImage));
+          localStorage.setItem("glutenImage", JSON.stringify(glutenImage));
+          localStorage.setItem("peanutImage", JSON.stringify(peanutImage));
+          localStorage.setItem("veganImage", JSON.stringify(veganImage));
+          window.location.href = "FinalRecipe.html";
+        }
+      }
+    </script>
+
+    <footer-top></footer-top>
+    <footer>
+      <div class="footer-icons">
+        <a href="index.html"
+          ><span class="material-symbols-outlined">allergies</span></a
+        >
+        <a href="SavedRecipe.html"
+          ><span class="material-symbols-outlined">bookmark</span></a
+        >
+      </div>
+    </footer>
+
+    <!-- We used ChatGPT to help when we got stuck with Javascript for the buttons and finding the right CSS modifiers -->
+  </body>
 </html>

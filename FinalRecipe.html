@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ingredient Swap</title>
-<link rel="icon" href="is-logo.png">
+<link rel="icon" href="images/is-logo.png">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" /><style>
 
 .container-wrapper {
-            height: 100vh; /* Make the container take up the full viewport height */
-            overflow-y: scroll; /* Enable vertical scrolling */
+            height: 100vh; 
+            overflow-y: scroll; /* vertical scrolling */
         }
 
     .material-symbols-outlined {
@@ -101,10 +101,10 @@
 
     footer-top {
         position: fixed;
-        bottom: 50px; /* Adjust to fit the size of the footer */
+        bottom: 50px; 
         width: 100%;
         background-color: #B4D4CA;
-        height: 5px; /* Adjust the height of the rectangle */
+        height: 5px; 
         text-align: center;
         padding: 10px 0;
     }
@@ -262,7 +262,7 @@
 <body>
 
 <header>
-    <img src="is-logo.png" alt="Logo" height="68px">
+    <img src="images/is-logo.png" alt="Logo" height="68px">
 </header>
 
 <div class="container-wrapper">
@@ -290,57 +290,54 @@
 
     <div class="allergen-images">
         <h2 class="ingredients-title">Ingredients</h2>
-        <img id="milk-image" src="milkImage.png" style="width: 30px; height: auto; margin-left: 10px;">
-        <img id="egg-image" src="eggImage.png" style="width: 30px; height: auto; margin-left: 10px;">
-        <img id="vegan-image" src="veganImage.png" style="width: 30px; height: auto; margin-left: 10px;">
-        <img id="peanut-image" src="peanutImage.png" style="width: 30px; height: auto; margin-left: 10px;">
-        <img id="gluten-image" src="glutenImage.png" style="width: 30px; height: auto; margin-left: 10px;">
-        <img id="treenut-image" src="treenut.png" style="width: 30px; height: auto; margin-left: 10px;">
+        <img id="milk-image" src="images/milkImage.png" style="width: 30px; height: auto; margin-left: 10px;">
+        <img id="egg-image" src="images/eggImage.png" style="width: 30px; height: auto; margin-left: 10px;">
+        <img id="vegan-image" src="images/veganImage.png" style="width: 30px; height: auto; margin-left: 10px;">
+        <img id="peanut-image" src="images/peanutImage.png" style="width: 30px; height: auto; margin-left: 10px;">
+        <img id="gluten-image" src="images/glutenImage.png" style="width: 30px; height: auto; margin-left: 10px;">
+        <img id="treenut-image" src="images/treenut.png" style="width: 30px; height: auto; margin-left: 10px;">
     </div>
 
 
     <script>
-        // Retrieve the recipe name from local storage
+        // retrieve the recipe name from local storage
         const recipeName = localStorage.getItem('recipeName');
-        console.log(recipeName); // Check if the recipeName is retrieved correctly
+        console.log(recipeName); 
         
-        // Define an object mapping recipe names to their corresponding text and image
+        // define an object mapping recipe names to their corresponding text and image
         const recipeInfo = {
             "Cookie Recipe": {
                 text: "Chocolate Chip Cookies",
-                image: "Cookies.jpg"
+                image: "images/Cookies.jpg"
             },
             "Cake Recipe": {
                 text: "Carrot Cake",
-                image: "carrotcake.jpg"
+                image: "images/carrotcake.jpg"
             },
             "Brownie Recipe": {
                 text: "Brownies",
-                image: "Brownies.png"
+                image: "images/Brownies.png"
             },
             "Muffin Recipe": {
                 text: "Muffins",
-                image: "muffins.jpg"
+                image: "images/muffins.jpg"
             },
             "Balls Recipe": {
                 text: "Protein Balls",
-                image: "balls.png"
+                image: "images/balls.png"
             },
             "Fruit Recipe": {
                 text: "Fruit Cobbler",
-                image: "fruit.jpg"
+                image: "images/fruit.png"
             },
         };
     
         console.log("Recipe Name:", recipeName);
         console.log("Recipe Name:", recipeName);
         console.log("Recipe Info Keys:", Object.keys(recipeInfo));
-        // Trim the recipeName to remove leading and trailing spaces and quotation marks
         const trimmedRecipeName = recipeName.trim().replace(/^"(.*)"$/, '$1');
 
-                // Check if the recipe name exists in the recipeInfo object
         if (recipeInfo.hasOwnProperty(trimmedRecipeName)) {
-            // Update the text and image based on the recipe name
             document.getElementById('recipeName').textContent = recipeInfo[trimmedRecipeName].text;
             document.getElementById('recipeImage').src = recipeInfo[trimmedRecipeName].image;
         } else {
@@ -349,7 +346,6 @@
     </script>
 
     <script>
-        // Check the value of the milkImage variable
         const milkImage =  JSON.parse(localStorage.getItem('milkImage')); // Set to true if milk is modified, otherwise false
         const eggImage =  JSON.parse(localStorage.getItem('eggImage')); // Set to true if egg is modified, otherwise false
         const glutenImage =  JSON.parse(localStorage.getItem('glutenImage')); // Set to true if egg is modified, otherwise false
@@ -357,14 +353,12 @@
         const veganImage =  JSON.parse(localStorage.getItem('veganImage')); // Set to true if egg is modified, otherwise false
         const treenutImage =  JSON.parse(localStorage.getItem('treenutImage')); // Set to true if egg is modified, otherwise false
 
-        // Get a reference to the milk image element
         var milkImageElement = document.getElementById('milk-image');
     
-        // Show or hide the milk image based on the value of the milkImage variable
         if (milkImage) {
-            milkImageElement.style.display = 'block'; // Show the milk image
+            milkImageElement.style.display = 'block'; 
         } else {
-            milkImageElement.style.display = 'none'; // Hide the milk image
+            milkImageElement.style.display = 'none'; 
         }
     var eggImageElement = document.getElementById('egg-image');
     if (eggImage) {
@@ -487,7 +481,7 @@
 <footer-top></footer-top>
 <footer>
     <div class="footer-icons">
-        <a href="Welcome.html"><span class="material-symbols-outlined">allergies</span></a>
+        <a href="index.html"><span class="material-symbols-outlined">allergies</span></a>
         <a href="SavedRecipe.html"><span class="material-symbols-outlined">bookmark</span></a>
     </div>
 </footer>
