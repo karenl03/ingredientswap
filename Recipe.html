@@ -419,6 +419,24 @@ if (savedAllergens) {
 
     // Iterate over each allergen
     selectedAllergens.forEach(allergen => {
+        if(allergen == "Milk"){
+                    milkImage = true;
+                } 
+                if(allergen == "Egg"){
+                    eggImage = true;
+                }
+                if(allergen == "Gluten"){
+                    glutenImage = true;
+                }  
+                if(allergen == "Vegan"){
+                    veganImage = true;
+                } 
+                if(allergen == "Peanut"){
+                    peanutImage = true;
+                } 
+                if(allergen == "Tree Nut"){
+                    treenutImage = true;
+                } 
         // Modify ingredients based on allergens
         recipe.ingredients.forEach(ingredient => {
             // Check if ingredient needs to be replaced based on allergen
@@ -428,6 +446,8 @@ if (savedAllergens) {
             }
         });
     });
+    // Save the modified recipe back to localStorage
+    localStorage.setItem('selectedRecipe', JSON.stringify(recipe));
 }
 
     // Function to toggle the appearance of the button and mark ingredient for removal
@@ -441,9 +461,7 @@ if (savedAllergens) {
 
 // Log the modified recipe with replaced ingredients
 console.log("Modified Recipe:", recipe);
-</script>
 
-<script>
 // Function to generate list items from recipe object
 function generateRecipeList(recipe) {
     const recipeList = document.getElementById('recipeList');
@@ -487,10 +505,7 @@ function generateRecipeList(recipe) {
 
 // Call the function to generate the recipe list
 generateRecipeList(recipe);
-</script>
 
-
-<script>
 function modifySugar(button) {
     button.classList.toggle('clicked');
     const isClicked = button.classList.contains('clicked');
@@ -504,7 +519,6 @@ function modifySugar(button) {
         "cups Brown Sugar": "cups Maple Syrup"
     };
 
-    // Define replacement rules for sugar-related ingredients
     const replacementRulesSugarDone = {
         "cup Honey": "cup White Sugar",
         "cup Maple Syrup": "cup Brown Sugar",
@@ -515,34 +529,63 @@ function modifySugar(button) {
     // Retrieve the recipe from localStorage
     const recipe = JSON.parse(localStorage.getItem('selectedRecipe'));
 
-    // If the button is clicked, apply the replacement rules
-    if (isClicked) {
-        recipe.ingredients.forEach(ingredient => {
-            if (replacementRulesSugar[ingredient.task]) {
-                ingredient.task = replacementRulesSugar[ingredient.task];
-            }
-        });
-    } else {
-        // If the button is not clicked, revert to the original recipe
-        recipe.ingredients.forEach(ingredient => {
-            if (replacementRulesSugarDone[ingredient.task]) {
-                ingredient.task = replacementRulesSugarDone[ingredient.task];            }
-        });
-    }
+    // Modify the function to check if ingredient task is modified by allergen or buttons
+    function isModified(ingredient) {
+    return ingredient.modified || ingredient.modifiedByButton;
+}
 
+// Inside the modification functions, when applying replacements, mark ingredients modified by buttons
+if (isClicked) {
+    recipe.ingredients.forEach(ingredient => {
+        if (replacementRulesSugar[ingredient.task] && !isModified(ingredient)) {
+            ingredient.task = replacementRulesSugar[ingredient.task];
+            ingredient.modifiedByButton = true; // Mark as modified by button
+        }
+    });
+} else {
+    // If the button is not clicked, revert to the original recipe for ingredients modified by buttons
+    recipe.ingredients.forEach(ingredient => {
+        if (replacementRulesSugarDone[ingredient.task] && ingredient.modifiedByButton) {
+            ingredient.task = replacementRulesSugarDone[ingredient.task];
+            delete ingredient.modifiedByButton; // Clear the modification by button flag
+        }
+    });
+}
+
+// If the button is clicked, apply the replacement rules
+if (isClicked) {
+    recipe.ingredients.forEach(ingredient => {
+        // Check if ingredient task is not already modified by allergen and not modified by buttons
+        if (!ingredient.modified && !ingredient.modifiedByButton && replacementRulesSugar[ingredient.task]) {
+            ingredient.task = replacementRulesSugar[ingredient.task];
+            ingredient.modifiedByButton = true; // Mark as modified by button
+        }
+    });
+} else {
+    // If the button is not clicked, revert to the original recipe for ingredients modified by buttons
+    recipe.ingredients.forEach(ingredient => {
+        if (replacementRulesSugarDone[ingredient.task] && ingredient.modifiedByButton) {
+            ingredient.task = replacementRulesSugarDone[ingredient.task];
+            delete ingredient.modifiedByButton; // Clear the modification by button flag
+        }
+    });
+}
     // Save the modified recipe back to localStorage
     localStorage.setItem('selectedRecipe', JSON.stringify(recipe));
 
     // Regenerate the recipe list
     generateRecipeList(recipe);
 }
-</script>
 
-<script>
 function modifyProtein(button) {
     button.classList.toggle('clicked');
     const isClicked = button.classList.contains('clicked');
     localStorage.setItem('proteinClicked', isClicked);
+
+        // Modify the function to check if ingredient task is modified by allergen or buttons
+function isModified(ingredient) {
+    return ingredient.modified || ingredient.modifiedByButton;
+}
 
     // Define replacement rules for sugar-related ingredients
     const replacementRulesProtein = {
@@ -563,20 +606,42 @@ function modifyProtein(button) {
     // Retrieve the recipe from localStorage
     const recipe = JSON.parse(localStorage.getItem('selectedRecipe'));
 
-    // If the button is clicked, apply the replacement rules
-    if (isClicked) {
-        recipe.ingredients.forEach(ingredient => {
-            if (replacementRulesProtein[ingredient.task]) {
-                ingredient.task = replacementRulesProtein[ingredient.task];
-            }
-        });
-    } else {
-        // If the button is not clicked, revert to the original recipe
-        recipe.ingredients.forEach(ingredient => {
-            if (replacementRulesProteinDone[ingredient.task]) {
-                ingredient.task = replacementRulesProteinDone[ingredient.task];            }
-        });
-    }
+// Inside the modification functions, when applying replacements, mark ingredients modified by buttons
+if (isClicked) {
+    recipe.ingredients.forEach(ingredient => {
+        if (replacementRulesProtein[ingredient.task] && !isModified(ingredient)) {
+            ingredient.task = replacementRulesProtein[ingredient.task];
+            ingredient.modifiedByButton = true; // Mark as modified by button
+        }
+    });
+} else {
+    // If the button is not clicked, revert to the original recipe for ingredients modified by buttons
+    recipe.ingredients.forEach(ingredient => {
+        if (replacementRulesProteinDone[ingredient.task] && ingredient.modifiedByButton) {
+            ingredient.task = replacementRulesProteinDone[ingredient.task];
+            delete ingredient.modifiedByButton; // Clear the modification by button flag
+        }
+    });
+}
+
+// If the button is clicked, apply the replacement rules
+if (isClicked) {
+    recipe.ingredients.forEach(ingredient => {
+        // Check if ingredient task is not already modified by allergen and not modified by buttons
+        if (!ingredient.modified && !ingredient.modifiedByButton && replacementRulesProtein[ingredient.task]) {
+            ingredient.task = replacementRulesProtein[ingredient.task];
+            ingredient.modifiedByButton = true; // Mark as modified by button
+        }
+    });
+} else {
+    // If the button is not clicked, revert to the original recipe for ingredients modified by buttons
+    recipe.ingredients.forEach(ingredient => {
+        if (replacementRulesProteinDone[ingredient.task] && ingredient.modifiedByButton) {
+            ingredient.task = replacementRulesProteinDone[ingredient.task];
+            delete ingredient.modifiedByButton; // Clear the modification by button flag
+        }
+    });
+}
 
     // Save the modified recipe back to localStorage
     localStorage.setItem('selectedRecipe', JSON.stringify(recipe));
@@ -584,13 +649,16 @@ function modifyProtein(button) {
     // Regenerate the recipe list
     generateRecipeList(recipe);
 }
-</script>
 
-<script>
     function modifyFat(button) {
         button.classList.toggle('clicked');
     const isClicked = button.classList.contains('clicked');
     localStorage.setItem('proteinClicked', isClicked);
+
+        // Modify the function to check if ingredient task is modified by allergen or buttons
+function isModified(ingredient) {
+    return ingredient.modified || ingredient.modifiedByButton;
+}
 
     // Define replacement rules for sugar-related ingredients
     const replacementRulesFat = {
@@ -598,6 +666,8 @@ function modifyProtein(button) {
         "cups Butter": "cups Apple Sauce",
         "cup Oil": "cup Apple Sauce",
         "cups Oil": "cups Apple Sauce",
+        "cups Vegetable Oil": "cups Apple Sauce",
+        "cup Vegetable Oil": "cup Apple Sauce",
     };
 
     // Define replacement rules for sugar-related ingredients
@@ -606,25 +676,49 @@ function modifyProtein(button) {
         "cups Apple Sauce": "cups Butter", 
         "cup Apple Sauce": "cup Oil",
         "cups Apple Sauce": "cups Oil",
+        "cup Apple Sauce": "cup Vegetable Oil", 
+        "cups Apple Sauce": "cups Vegetable Oil", 
     };
 
     // Retrieve the recipe from localStorage
     const recipe = JSON.parse(localStorage.getItem('selectedRecipe'));
 
-    // If the button is clicked, apply the replacement rules
-    if (isClicked) {
-        recipe.ingredients.forEach(ingredient => {
-            if (replacementRulesFat[ingredient.task]) {
-                ingredient.task = replacementRulesFat[ingredient.task];
-            }
-        });
-    } else {
-        // If the button is not clicked, revert to the original recipe
-        recipe.ingredients.forEach(ingredient => {
-            if (replacementRulesFatDone[ingredient.task]) {
-                ingredient.task = replacementRulesFatDone[ingredient.task];            }
-        });
-    }
+    // Inside the modification functions, when applying replacements, mark ingredients modified by buttons
+if (isClicked) {
+    recipe.ingredients.forEach(ingredient => {
+        if (replacementRulesFat[ingredient.task] && !isModified(ingredient)) {
+            ingredient.task = replacementRulesFat[ingredient.task];
+            ingredient.modifiedByButton = true; // Mark as modified by button
+        }
+    });
+} else {
+    // If the button is not clicked, revert to the original recipe for ingredients modified by buttons
+    recipe.ingredients.forEach(ingredient => {
+        if (replacementRulesFatDone[ingredient.task] && ingredient.modifiedByButton) {
+            ingredient.task = replacementRulesFatDone[ingredient.task];
+            delete ingredient.modifiedByButton; // Clear the modification by button flag
+        }
+    });
+}
+
+// If the button is clicked, apply the replacement rules
+if (isClicked) {
+    recipe.ingredients.forEach(ingredient => {
+        // Check if ingredient task is not already modified by allergen and not modified by buttons
+        if (!ingredient.modified && !ingredient.modifiedByButton && replacementRulesFat[ingredient.task]) {
+            ingredient.task = replacementRulesFat[ingredient.task];
+            ingredient.modifiedByButton = true; // Mark as modified by button
+        }
+    });
+} else {
+    // If the button is not clicked, revert to the original recipe for ingredients modified by buttons
+    recipe.ingredients.forEach(ingredient => {
+        if (replacementRulesFatDone[ingredient.task] && ingredient.modifiedByButton) {
+            ingredient.task = replacementRulesFatDone[ingredient.task];
+            delete ingredient.modifiedByButton; // Clear the modification by button flag
+        }
+    });
+}
 
     // Save the modified recipe back to localStorage
     localStorage.setItem('selectedRecipe', JSON.stringify(recipe));
@@ -637,6 +731,7 @@ function modifyProtein(button) {
 
 <script>
     function saveAndNavigate() {
+        const recipe = JSON.parse(localStorage.getItem('selectedRecipe'));
         // Get all the buttons with an 'X' symbol
         const buttonsWithX = document.querySelectorAll('.button');
 
@@ -660,6 +755,7 @@ function modifyProtein(button) {
         localStorage.setItem('modifiedRecipe', JSON.stringify(recipe));
         localStorage.setItem('milkImage', JSON.stringify(milkImage));
         localStorage.setItem('eggImage', JSON.stringify(eggImage));
+        localStorage.setItem('treenutImage', JSON.stringify(treenutImage));
         localStorage.setItem('glutenImage', JSON.stringify(glutenImage));
         localStorage.setItem('peanutImage', JSON.stringify(peanutImage));
         localStorage.setItem('veganImage', JSON.stringify(veganImage));

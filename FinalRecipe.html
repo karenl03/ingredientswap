@@ -274,14 +274,15 @@
 </div>
 
 <div class="container">
-    <img src="Cookies.jpg" width ="90%">
-    <h1 style="font-size: 30px; color: #F17D98; margin-top: 8px;">Chocolate Chip Cookies</h1>
+    <img id="recipeImage" width="90%">
+    <h1 id="recipeName" style="font-size: 30px; color: #F17D98; margin-top: 8px;"></h1>
     <div class="servings-container">
         <span class="material-symbols-outlined" style="font-size: 20px; color: #FFF; margin-top: 0;">groups</span>
         <p>8 servings</p>
         <span class="material-symbols-outlined" style="font-size: 20px; color: #FFF; margin-top: 0;">timer</span>
         <p>30 minutes</p>
     </div>
+</div>
 
     <div class="allergen-images">
         <h2 class="ingredients-title">Ingredients</h2>
@@ -290,7 +291,56 @@
         <img id="vegan-image" src="veganImage.png" style="width: 30px; height: auto; margin-left: 10px;">
         <img id="peanut-image" src="peanutImage.png" style="width: 30px; height: auto; margin-left: 10px;">
         <img id="gluten-image" src="glutenImage.png" style="width: 30px; height: auto; margin-left: 10px;">
+        <img id="treenut-image" src="treenut.png" style="width: 30px; height: auto; margin-left: 10px;">
     </div>
+
+
+    <script>
+        // Retrieve the recipe name from local storage
+        const recipeName = localStorage.getItem('recipeName');
+        console.log(recipeName); // Check if the recipeName is retrieved correctly
+        
+        // Define an object mapping recipe names to their corresponding text and image
+        const recipeInfo = {
+            "Cookie Recipe": {
+                text: "Chocolate Chip Cookies",
+                image: "Cookies.jpg"
+            },
+            "Cake Recipe": {
+                text: "Carrot Cake",
+                image: "carrotcake.jpg"
+            },
+            "Brownie Recipe": {
+                text: "Brownies",
+                image: "Brownies.png"
+            },
+            "Muffin Recipe": {
+                text: "Muffins",
+                image: "muffins.jpg"
+            },
+            "Balls Recipe": {
+                text: "Protein Balls",
+                image: "balls.png"
+            },
+            "Fruit Recipe": {
+                text: "Fruit Cobbler",
+                image: "fruit.jpg"
+            },
+        };
+    
+        console.log("Recipe Name:", recipeName);
+        console.log("Recipe Name:", recipeName);
+        console.log("Recipe Info Keys:", Object.keys(recipeInfo));
+        console.log("Trimmed Recipe Name:", trimmedRecipeName);
+                // Check if the recipe name exists in the recipeInfo object
+        if (recipeInfo[recipeName] != null) {
+            // Update the text and image based on the recipe name
+            document.getElementById('recipeName').textContent = recipeInfo[recipeName].text;
+            document.getElementById('recipeImage').src = recipeInfo[recipeName].image;
+        } else {
+            console.error("Recipe name not found in recipeInfo:", recipeName);
+        }
+    </script>
 
     <script>
         // Check the value of the milkImage variable
@@ -299,9 +349,12 @@
         const glutenImage =  JSON.parse(localStorage.getItem('glutenImage')); // Set to true if egg is modified, otherwise false
         const peanutImage =  JSON.parse(localStorage.getItem('peanutImage')); // Set to true if egg is modified, otherwise false
         const veganImage =  JSON.parse(localStorage.getItem('veganImage')); // Set to true if egg is modified, otherwise false
+        const treenutImage =  JSON.parse(localStorage.getItem('treenutImage')); // Set to true if egg is modified, otherwise false
 
         // Get a reference to the milk image element
         var milkImageElement = document.getElementById('milk-image');
+
+        console.log(milkImage);
     
         // Show or hide the milk image based on the value of the milkImage variable
         if (milkImage) {
@@ -332,6 +385,12 @@
         veganImageElement.style.display = 'block'; // Show
     } else {
         veganImageElement.style.display = 'none'; // Hide
+    }
+    var treeImageElement = document.getElementById('treenut-image');
+    if (treenutImage) {
+        treeImageElement.style.display = 'block'; // Show
+    } else {
+        treeImageElement.style.display = 'none'; // Hide
     }
     </script>
 

@@ -378,6 +378,7 @@
     function setRecipe(recipeName) {
         const recipe = recipes[recipeName];
         localStorage.setItem('selectedRecipe', JSON.stringify(recipe));
+        localStorage.setItem('recipeName', JSON.stringify(recipe.name));
         window.location.href = "Recipe.html";
     }
     </script>
