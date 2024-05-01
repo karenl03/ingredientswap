@@ -113,17 +113,21 @@
 
     footer-top {
         position: fixed;
-        bottom: 50px;
+        bottom: 50px; /* Adjust to fit the size of the footer */
         width: 100%;
         background-color: #B4D4CA;
-        height: 5px;
+        height: 5px; /* Adjust the height of the rectangle */
         text-align: center;
         padding: 10px 0;
     }
 
     .footer-icons {
         display: flex;
-        justify-content: space-around;
+    justify-content: space-around;
+    position: fixed;
+    width: 100%;
+    padding: 5px 0;
+    bottom: 0px;
     }
 
     .header-icons {
@@ -282,7 +286,6 @@
 <div class="title">
     <div class="header-icons">
         <span class="material-symbols-outlined" style="font-size: 30px; color: white">arrow_back_ios</span>
-        <h1>Welcome!</h1>
         <span class="material-symbols-outlined" style="font-size: 30px; color: white">info</span>
     </div>
     <h2>Please select your dietary restrictions and allergens</h2>
@@ -364,9 +367,8 @@
 <footer-top></footer-top>
 <footer>
     <div class="footer-icons">
-        <span class="material-symbols-outlined">home</span>
-        <span class="material-symbols-outlined">bookmark</span>
-        <span class="material-symbols-outlined">person</span>
+        <a href="Welcome.html"><span class="material-symbols-outlined">allergies</span></a>
+        <a href="SavedRecipe.html"><span class="material-symbols-outlined">bookmark</span></a>
     </div>
 </footer>
 

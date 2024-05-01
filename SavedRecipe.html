@@ -122,7 +122,11 @@
 
     .footer-icons {
         display: flex;
-        justify-content: space-around;
+    justify-content: space-around;
+    position: fixed;
+    width: 100%;
+    padding: 5px 0;
+    bottom: 0px;
     }
 
     .ingredients-container p {
@@ -282,14 +286,13 @@
     </div>
 </div>
 
-    <footer-top></footer-top>
-    <footer>
-        <div class="footer-icons">
-            <span class="material-symbols-outlined">home</span>
-            <span class="material-symbols-outlined">bookmark</span>
-            <span class="material-symbols-outlined">person</span>
-        </div>
-    </footer>
+<footer-top></footer-top>
+<footer>
+    <div class="footer-icons">
+        <a href="Welcome.html"><span class="material-symbols-outlined">allergies</span></a>
+        <a href="SavedRecipe.html"><span class="material-symbols-outlined">bookmark</span></a>
+    </div>
+</footer>
     
     <script>
     // Define recipe objects
@@ -307,7 +310,7 @@
                 { number: 1/2, task: "tsp Baking Soda" }
             ],
             nutrition: [
-                { n: 200, task: " Calories" },
+                { n: 180, task: " Calories" },
                 { n: 2, task: "g Protein" },
                 { n: 8, task: "g Fat" },
                 { n: 20, task: "g Sugar" },
@@ -331,9 +334,9 @@
                 { number: 2, task: "tsp Baking Soda" }
             ],
             nutrition: [
-                { n: 200, task: "  Calories" },
+                { n: 250, task: "  Calories" },
                 { n: 2, task: "g Protein" },
-                { n: 8, task: "g Fat" },
+                { n: 15, task: "g Fat" },
                 { n: 20, task: "g Sugar" },
             ]
         },
@@ -367,10 +370,10 @@
                 { number: 2, task: "tsp Salt" }
             ],
             nutrition: [
-                { n: 200, task: "  Calories" },
+                { n: 420, task: "  Calories" },
                 { n: 2, task: "g Protein" },
-                { n: 8, task: "g Fat" },
-                { n: 20, task: "g Sugar" },
+                { n: 14, task: "g Fat" },
+                { n: 25, task: "g Sugar" },
             ]
         },
         "Balls Recipe": {
@@ -385,10 +388,10 @@
                 { number: 1/2, task: "cup Chocolate Chips" }
             ],           
             nutrition: [
-                { n: 200, task: "  Calories" },
-                { n: 2, task: "g Protein" },
-                { n: 8, task: "g Fat" },
-                { n: 20, task: "g Sugar" },
+                { n: 110, task: "  Calories" },
+                { n: 8, task: "g Protein" },
+                { n: 6, task: "g Fat" },
+                { n: 16, task: "g Sugar" },
             ]
         },
         "Fruit Recipe": {
@@ -402,10 +405,10 @@
                 { number: 2, task: "cups Sliced Nectarines" }
             ],
             nutrition: [
-                { n: 200, task: "  Calories" },
+                { n: 210, task: "  Calories" },
                 { n: 2, task: "g Protein" },
-                { n: 8, task: "g Fat" },
-                { n: 20, task: "g Sugar" },
+                { n: 6, task: "g Fat" },
+                { n: 22, task: "g Sugar" },
             ]
         },
         // Add more recipes here
