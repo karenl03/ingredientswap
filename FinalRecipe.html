@@ -204,7 +204,7 @@
     }
 
     .nutrition-title {
-        font-size: 12px;
+        font-size: 15px;
         font-family: 'Abril Fatface';
         font-weight: normal;
         color: #000000;
@@ -215,7 +215,7 @@
     }
 
     .nutrition-text {
-        font-size: 12px;
+        font-size: 15px;
         font-family: 'Roboto Mono', normal;
         font-weight: normal;
         color: #000000;
@@ -331,14 +331,16 @@
         console.log("Recipe Name:", recipeName);
         console.log("Recipe Name:", recipeName);
         console.log("Recipe Info Keys:", Object.keys(recipeInfo));
-        console.log("Trimmed Recipe Name:", trimmedRecipeName);
+        // Trim the recipeName to remove leading and trailing spaces and quotation marks
+        const trimmedRecipeName = recipeName.trim().replace(/^"(.*)"$/, '$1');
+
                 // Check if the recipe name exists in the recipeInfo object
-        if (recipeInfo[recipeName] != null) {
+        if (recipeInfo.hasOwnProperty(trimmedRecipeName)) {
             // Update the text and image based on the recipe name
-            document.getElementById('recipeName').textContent = recipeInfo[recipeName].text;
-            document.getElementById('recipeImage').src = recipeInfo[recipeName].image;
+            document.getElementById('recipeName').textContent = recipeInfo[trimmedRecipeName].text;
+            document.getElementById('recipeImage').src = recipeInfo[trimmedRecipeName].image;
         } else {
-            console.error("Recipe name not found in recipeInfo:", recipeName);
+            console.error("Recipe name not found in recipeInfo:", trimmedRecipeName);
         }
     </script>
 
@@ -353,8 +355,6 @@
 
         // Get a reference to the milk image element
         var milkImageElement = document.getElementById('milk-image');
-
-        console.log(milkImage);
     
         // Show or hide the milk image based on the value of the milkImage variable
         if (milkImage) {
@@ -397,16 +397,36 @@
     <ul class="todo-list" id="recipeList">
         <!-- List items will be generated dynamically -->
     </ul>
-    
-    <div class="nutrition-title">
-        <h1>Nutrition</h1>
-    </div>
-    <div class ="nutrition-text">
-        <p>10g Fat</p>
-        <p>5g Protein</p>
-        <p>200 Calories</p>
-    </div>
+<div class="nutrition-title">
+    <h1>Nutrition</h1>
 </div>
+
+<div class="nutrition-text" id="nutritionText">
+    <!-- Nutrition information will be dynamically generated here -->
+</div>
+</div>
+
+<script>
+    // Retrieve the recipe nutrition information from local storage
+    const recipeNutrition = localStorage.getItem('recipeNutrition');
+
+    // Parse the JSON string to convert it into a JavaScript object
+    const nutritionData = JSON.parse(recipeNutrition);
+
+    // Get a reference to the nutrition text container
+    const nutritionTextContainer = document.getElementById('nutritionText');
+
+    // Clear any existing content in the container
+    nutritionTextContainer.innerHTML = '';
+
+    // Iterate over the nutrition data and create <p> elements for each nutrient
+    nutritionData.forEach(item => {
+        const paragraph = document.createElement('p');
+        paragraph.textContent = `${item.n}${item.task}`;
+        nutritionTextContainer.appendChild(paragraph);
+    });
+</script>
+
 
 <div class="button-container">
     <button class="button" onclick="savedRecipes()">Save</button>

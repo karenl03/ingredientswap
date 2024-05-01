@@ -292,6 +292,43 @@
         background-color: #B4D4CA;
     }
 
+    /* Popup box styles */
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Popup content */
+.popup-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Close button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 </style>
 </head>
 <body>
@@ -332,17 +369,48 @@
     <!-- List items will be generated dynamically -->
 </ul>
 
+<div id="popup-box" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <p>No ingredients available for replacement.</p>
+    </div>
+</div>
+
 <div class="nutrition-title">
     <h1>Nutrition</h1>
 </div>
 
-    <div class ="nutrition-text">
-        <p>10g Fat</p>
-        <p>5g Protein</p>
-        <p>15g Sugar</p>
-        <p>200 Calories</p>
-    </div>
+<div class="nutrition-text" id="nutritionText">
+    <!-- Nutrition information will be dynamically generated here -->
+</div>
 
+<script>
+    // Retrieve the recipe nutrition information from local storage
+    const recipeNutrition = localStorage.getItem('recipeNutrition');
+
+    // Parse the JSON string to convert it into a JavaScript object
+    const nutritionData = JSON.parse(recipeNutrition);
+
+    // Get a reference to the nutrition text container
+    const nutritionTextContainer = document.getElementById('nutritionText');
+
+    // Clear any existing content in the container
+    nutritionTextContainer.innerHTML = '';
+
+    // Iterate over the nutrition data and create <p> elements for each nutrient
+    nutritionData.forEach(item => {
+        const paragraph = document.createElement('p');
+        paragraph.textContent = `${item.n}${item.task}`;
+        nutritionTextContainer.appendChild(paragraph);
+    });
+</script>
+
+<script>
+    // Function to close the popup box
+function closePopup() {
+    document.getElementById('popup-box').style.display = 'none';
+}
+</script>
 
 <div class="modify-button-container">
     <button class="sugar-button" onclick="modifySugar(this)">Low Sugar</button>
@@ -363,6 +431,7 @@ var eggImage = false;
 var glutenImage = false;
 var peanutImage = false;
 var veganImage = false;
+var treenutImage = false;
 
 // Retrieve selected allergens from local storage
 const savedAllergens = localStorage.getItem('selectedAllergens');
@@ -507,6 +576,7 @@ function generateRecipeList(recipe) {
 generateRecipeList(recipe);
 
 function modifySugar(button) {
+    var noneModified = true; 
     button.classList.toggle('clicked');
     const isClicked = button.classList.contains('clicked');
     localStorage.setItem('sugarClicked', isClicked);
@@ -528,10 +598,20 @@ function modifySugar(button) {
 
     // Retrieve the recipe from localStorage
     const recipe = JSON.parse(localStorage.getItem('selectedRecipe'));
+    const recipeNutrition = JSON.parse(localStorage.getItem('recipeNutrition'));
 
     // Modify the function to check if ingredient task is modified by allergen or buttons
     function isModified(ingredient) {
-    return ingredient.modified || ingredient.modifiedByButton;
+        return ingredient.modified || ingredient.modifiedByButton;
+    }
+        // Function to show the popup box
+function showPopup() {
+    document.getElementById('popup-box').style.display = 'block';
+}
+
+// Function to close the popup box
+function closePopup() {
+    document.getElementById('popup-box').style.display = 'none';
 }
 
 // Inside the modification functions, when applying replacements, mark ingredients modified by buttons
@@ -540,8 +620,15 @@ if (isClicked) {
         if (replacementRulesSugar[ingredient.task] && !isModified(ingredient)) {
             ingredient.task = replacementRulesSugar[ingredient.task];
             ingredient.modifiedByButton = true; // Mark as modified by button
+            noneModified = false;
         }
     });
+    if (noneModified){
+        showPopup();
+        button.classList.toggle('clicked');
+        const isClicked = button.classList.contains('clicked');
+    localStorage.setItem('sugarClicked', isClicked);
+    }
 } else {
     // If the button is not clicked, revert to the original recipe for ingredients modified by buttons
     recipe.ingredients.forEach(ingredient => {
@@ -561,6 +648,7 @@ if (isClicked) {
             ingredient.modifiedByButton = true; // Mark as modified by button
         }
     });
+    recipeNutrition[3].n /= 2; // halve the suagr content
 } else {
     // If the button is not clicked, revert to the original recipe for ingredients modified by buttons
     recipe.ingredients.forEach(ingredient => {
@@ -569,18 +657,27 @@ if (isClicked) {
             delete ingredient.modifiedByButton; // Clear the modification by button flag
         }
     });
+    recipeNutrition[3].n *= 2; // reset the sugar content
 }
-    // Save the modified recipe back to localStorage
-    localStorage.setItem('selectedRecipe', JSON.stringify(recipe));
 
-    // Regenerate the recipe list
-    generateRecipeList(recipe);
+// Save the modified recipe & nutrition back to localStorage
+localStorage.setItem('selectedRecipe', JSON.stringify(recipe));
+localStorage.setItem('recipeNutrition', JSON.stringify(recipeNutrition));
+
+// Update the nutrition text on the webpage
+updateNutritionText(recipeNutrition);
+
+// Regenerate the recipe list
+generateRecipeList(recipe);
 }
 
 function modifyProtein(button) {
+    var noneModified = true;
     button.classList.toggle('clicked');
     const isClicked = button.classList.contains('clicked');
     localStorage.setItem('proteinClicked', isClicked);
+
+    const recipeNutrition = JSON.parse(localStorage.getItem('recipeNutrition'));
 
         // Modify the function to check if ingredient task is modified by allergen or buttons
 function isModified(ingredient) {
@@ -603,6 +700,16 @@ function isModified(ingredient) {
         "cups Almond Flour": "cups Flour",
     };
 
+    // Function to show the popup box
+function showPopup() {
+    document.getElementById('popup-box').style.display = 'block';
+}
+
+// Function to close the popup box
+function closePopup() {
+    document.getElementById('popup-box').style.display = 'none';
+}
+
     // Retrieve the recipe from localStorage
     const recipe = JSON.parse(localStorage.getItem('selectedRecipe'));
 
@@ -612,8 +719,15 @@ if (isClicked) {
         if (replacementRulesProtein[ingredient.task] && !isModified(ingredient)) {
             ingredient.task = replacementRulesProtein[ingredient.task];
             ingredient.modifiedByButton = true; // Mark as modified by button
+            noneModified = false;
         }
     });
+    if (noneModified){
+        showPopup();
+        button.classList.toggle('clicked');
+        const isClicked = button.classList.contains('clicked');
+    localStorage.setItem('proteinClicked', isClicked);
+    }
 } else {
     // If the button is not clicked, revert to the original recipe for ingredients modified by buttons
     recipe.ingredients.forEach(ingredient => {
@@ -633,6 +747,7 @@ if (isClicked) {
             ingredient.modifiedByButton = true; // Mark as modified by button
         }
     });
+    recipeNutrition[1].n *= 2; // double the protein content
 } else {
     // If the button is not clicked, revert to the original recipe for ingredients modified by buttons
     recipe.ingredients.forEach(ingredient => {
@@ -641,23 +756,42 @@ if (isClicked) {
             delete ingredient.modifiedByButton; // Clear the modification by button flag
         }
     });
+    recipeNutrition[1].n /= 2; // reset the protein content
 }
+// Inside the modifyProtein function, just before calling updateNutritionText
+console.log("nutritionData before modifying:", recipeNutrition);
+   // Save the modified recipe & nutrition back to localStorage
+localStorage.setItem('selectedRecipe', JSON.stringify(recipe));
+localStorage.setItem('recipeNutrition', JSON.stringify(recipeNutrition));
 
-    // Save the modified recipe back to localStorage
-    localStorage.setItem('selectedRecipe', JSON.stringify(recipe));
+// Inside the modifyProtein function, just after modifying nutritionData
+console.log("nutritionData after modifying:", recipeNutrition);
+// Update the nutrition text on the webpage
+updateNutritionText(recipeNutrition);
 
-    // Regenerate the recipe list
-    generateRecipeList(recipe);
+// Regenerate the recipe list
+generateRecipeList(recipe);
 }
 
     function modifyFat(button) {
+        var noneModified = true;
         button.classList.toggle('clicked');
     const isClicked = button.classList.contains('clicked');
-    localStorage.setItem('proteinClicked', isClicked);
+    localStorage.setItem('fatClicked', isClicked);
+    const recipeNutrition = JSON.parse(localStorage.getItem('recipeNutrition'));
 
         // Modify the function to check if ingredient task is modified by allergen or buttons
 function isModified(ingredient) {
     return ingredient.modified || ingredient.modifiedByButton;
+}
+// Function to show the popup box
+function showPopup() {
+    document.getElementById('popup-box').style.display = 'block';
+}
+
+// Function to close the popup box
+function closePopup() {
+    document.getElementById('popup-box').style.display = 'none';
 }
 
     // Define replacement rules for sugar-related ingredients
@@ -689,8 +823,15 @@ if (isClicked) {
         if (replacementRulesFat[ingredient.task] && !isModified(ingredient)) {
             ingredient.task = replacementRulesFat[ingredient.task];
             ingredient.modifiedByButton = true; // Mark as modified by button
+            noneModified = false;
         }
     });
+    if (noneModified){
+        showPopup();
+        button.classList.toggle('clicked');
+        const isClicked = button.classList.contains('clicked');
+    localStorage.setItem('fatClicked', isClicked);
+    }
 } else {
     // If the button is not clicked, revert to the original recipe for ingredients modified by buttons
     recipe.ingredients.forEach(ingredient => {
@@ -710,6 +851,7 @@ if (isClicked) {
             ingredient.modifiedByButton = true; // Mark as modified by button
         }
     });
+    recipeNutrition[2].n /= 2; // halve the fat content
 } else {
     // If the button is not clicked, revert to the original recipe for ingredients modified by buttons
     recipe.ingredients.forEach(ingredient => {
@@ -718,13 +860,30 @@ if (isClicked) {
             delete ingredient.modifiedByButton; // Clear the modification by button flag
         }
     });
+    recipeNutrition[2].n *= 2; // halve the fat content
 }
 
-    // Save the modified recipe back to localStorage
-    localStorage.setItem('selectedRecipe', JSON.stringify(recipe));
+ // Save the modified recipe & nutrition back to localStorage
+ localStorage.setItem('selectedRecipe', JSON.stringify(recipe));
+localStorage.setItem('recipeNutrition', JSON.stringify(recipeNutrition));
 
-    // Regenerate the recipe list
-    generateRecipeList(recipe);
+// Update the nutrition text on the webpage
+updateNutritionText(recipeNutrition);
+
+// Regenerate the recipe list
+generateRecipeList(recipe);
+}
+
+// Function to update the nutrition text on the webpage
+function updateNutritionText(nutritionData) {
+const nutritionTextContainer = document.getElementById('nutritionText');
+nutritionTextContainer.innerHTML = ''; // Clear existing content
+
+nutritionData.forEach(item => {
+    const paragraph = document.createElement('p');
+    paragraph.textContent = `${item.n}${item.task}`;
+    nutritionTextContainer.appendChild(paragraph);
+});
 }
 </script>
 

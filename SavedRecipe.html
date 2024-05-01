@@ -305,6 +305,12 @@
                 { number: 1, task: "cup Chocolate Chips" },
                 { number: 1/2, task: "tsp Salt" },
                 { number: 1/2, task: "tsp Baking Soda" }
+            ],
+            nutrition: [
+                { n: 200, task: " Calories" },
+                { n: 2, task: "g Protein" },
+                { n: 8, task: "g Fat" },
+                { n: 20, task: "g Sugar" },
             ]
         },
         "Cake Recipe": {
@@ -323,6 +329,12 @@
                 { number: 1, task: "tsp Vanilla" },
                 { number: 1/2, task: "tsp Salt" },
                 { number: 2, task: "tsp Baking Soda" }
+            ],
+            nutrition: [
+                { n: 200, task: "  Calories" },
+                { n: 2, task: "g Protein" },
+                { n: 8, task: "g Fat" },
+                { n: 20, task: "g Sugar" },
             ]
         },
         "Brownie Recipe": {
@@ -335,6 +347,12 @@
                 { number: 1, task: "cup Chocolate Chips" },
                 { number: 1, task: "tsp Vanilla" },
                 { number: 1/4, task: "cup Cocoa Powder" }
+            ],
+            nutrition: [
+                { n: 200, task: "  Calories" },
+                { n: 2, task: "g Protein" },
+                { n: 8, task: "g Fat" },
+                { n: 20, task: "g Sugar" },
             ]
         },
         "Muffin Recipe": {
@@ -347,6 +365,12 @@
                 { number: 3/4, task: "cup Milk" }, 
                 { number: 1/4, task: "cup Butter" }, 
                 { number: 2, task: "tsp Salt" }
+            ],
+            nutrition: [
+                { n: 200, task: "  Calories" },
+                { n: 2, task: "g Protein" },
+                { n: 8, task: "g Fat" },
+                { n: 20, task: "g Sugar" },
             ]
         },
         "Balls Recipe": {
@@ -359,6 +383,12 @@
                 { number: 1/2, task: "cups Shredded Coconut" }, 
                 { number: 1/2, task: "cup Ground Flaxseed" }, 
                 { number: 1/2, task: "cup Chocolate Chips" }
+            ],           
+            nutrition: [
+                { n: 200, task: "  Calories" },
+                { n: 2, task: "g Protein" },
+                { n: 8, task: "g Fat" },
+                { n: 20, task: "g Sugar" },
             ]
         },
         "Fruit Recipe": {
@@ -370,6 +400,12 @@
                 { number: 3/4, task: "cup Milk" }, 
                 { number: 3/4, task: "cup White Sugar" }, 
                 { number: 2, task: "cups Sliced Nectarines" }
+            ],
+            nutrition: [
+                { n: 200, task: "  Calories" },
+                { n: 2, task: "g Protein" },
+                { n: 8, task: "g Fat" },
+                { n: 20, task: "g Sugar" },
             ]
         },
         // Add more recipes here
@@ -379,6 +415,7 @@
         const recipe = recipes[recipeName];
         localStorage.setItem('selectedRecipe', JSON.stringify(recipe));
         localStorage.setItem('recipeName', JSON.stringify(recipe.name));
+        localStorage.setItem('recipeNutrition', JSON.stringify(recipe.nutrition));
         window.location.href = "Recipe.html";
     }
     </script>
