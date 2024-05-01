@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ingredient Swap</title>
-<link rel="icon" href="is-logo.png">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" /><style>
-
-    .material-symbols-outlined {
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ingredient Swap</title>
+    <link rel="icon" href="images/is-logo.png" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"
+    />
+    <style>
+      .material-symbols-outlined {
         font-size: 50px;
-        color: #B4D4CA;
+        color: #b4d4ca;
         margin-top: 10px;
-    }
+      }
 
-    body {
-        font-family: 'Abril Fatface', cursive;
+      body {
+        font-family: "Abril Fatface", cursive;
         font-weight: normal;
         width: 100%;
         margin: 0;
@@ -24,73 +33,73 @@
         background-color: #ffffff;
         display: flex;
         flex-direction: column;
-    }
+      }
 
-    h1 {
-        font-family: 'Abril Fatface', cursive;
+      h1 {
+        font-family: "Abril Fatface", cursive;
         padding: 0;
         margin: 0;
-    }
+      }
 
-    p {
-        font-family: 'Roboto Mono';
+      p {
+        font-family: "Roboto Mono";
         font-weight: normal;
         font-size: 17px;
-    }
+      }
 
-    .container {
+      .container {
         flex: 1;
         max-width: 80%;
         margin: 0 auto;
         padding: 10px;
-        background-color: #B4D4CA;
+        background-color: #b4d4ca;
         border-radius: 10px;
         margin-top: 10px;
-        border: 1px solid #F17D98;
+        border: 1px solid #f17d98;
         border-radius: 0px;
         position: relative;
-    }
+      }
 
-    .title {
+      .title {
         font-size: 18px;
         font-weight: bold;
-        color: #F17D98;
+        color: #f17d98;
         text-align: center;
         margin-top: 5px;
-    }
+      }
 
-    .text-title {
+      .text-title {
         font-size: 15px;
         font-weight: bold;
         color: #ffffff;
         text-align: left;
-    }
+      }
 
-    .text-box {
+      .text-box {
         font-size: 15px;
-        font-family: 'Roboto', italic;
+        font-family: "Roboto", italic;
         font-weight: normal;
         color: #000000;
         text-align: left;
         margin-top: px;
-    }
+      }
 
-    .insn-container {
+      .insn-container {
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 0;
         margin: 0;
-    }
+      }
 
-    header {
-        background-color: #B4D4CA;
+      header {
+        background-color: #b4d4ca;
         color: #fff;
         height: 68px;
         text-align: center;
         padding: 10px 0;
-    }
-    footer {
+      }
+      footer {
         position: fixed;
         left: 0;
         bottom: 0;
@@ -100,101 +109,116 @@
         height: 50px;
         text-align: center;
         padding: 10px 0;
-    }
+      }
 
-    footer-top {
+      footer-top {
         position: fixed;
-        bottom: 50px; /* Adjust to fit the size of the footer */
+        bottom: 50px;
         width: 100%;
-        background-color: #B4D4CA;
-        height: 5px; /* Adjust the height of the rectangle */
+        background-color: #b4d4ca;
+        height: 5px; 
         text-align: center;
         padding: 10px 0;
-    }
+      }
 
-    .footer-icons {
+      .footer-icons {
         display: flex;
-    justify-content: space-around;
-    position: fixed;
-    width: 100%;
-    padding: 5px 0;
-    bottom: 0px;
-    }
+        justify-content: space-around;
+        position: fixed;
+        width: 100%;
+        padding: 5px 0;
+        bottom: 0px;
+      }
 
-    .header-icons {
+      .header-icons {
         display: flex;
         justify-content: space-between;
-        padding: 0 20px; 
-    }
+        padding: 0 20px;
+      }
 
-    .button-container {
+      .button-container {
         position: fixed;
         bottom: 100px;
         right: 28px;
-    }
+      }
 
-    .button {
-        font-family: 'Abril Fatface', cursive;
+      .button {
+        font-family: "Abril Fatface", cursive;
         font-size: 20px;
-        background-color: #F17D98;
+        background-color: #f17d98;
         color: #fff;
         border: none;
         padding: 10px 20px;
         cursor: pointer;
-    }
+      }
 
-    .button:hover {
+      .button:hover {
         background-color: #d84f96;
-    }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="images/is-logo.png" alt="Logo" height="68px" />
+    </header>
 
-</style>
-</head>
-<body>
-
-<header>
-    <img src="is-logo.png" alt="Logo" height="68px">
-</header>
-
-<div class="title">
-    <div class="header-icons">
-        <span class="material-symbols-outlined" style="font-size: 30px;">arrow_back_ios</span>
+    <div class="title">
+      <div class="header-icons">
+        <span class="material-symbols-outlined" style="font-size: 30px"
+          >arrow_back_ios</span
+        >
         <h1>Edit Recipe</h1>
-        <span class="material-symbols-outlined" style="font-size: 30px;">info</span>
+        <span class="material-symbols-outlined" style="font-size: 30px"
+          >info</span
+        >
+      </div>
+      <h2>Chocolate Chip Cookies</h2>
     </div>
-    <h2>Chocolate Chip Cookies</h2>
-</div>
 
-<div class="container">
-    <div class="text-box">
+    <div class="container">
+      <div class="text-box">
         <div class="insn-container">
-            <div class="text-title">
-                <h1>Information</h1>
-            </div>
-            <span class="material-symbols-outlined" style="font-size: 30px; color: #FFF;" onclick="closeAndNavigate()">close</span>
+          <div class="text-title">
+            <h1>Information</h1>
+          </div>
+          <span
+            class="material-symbols-outlined"
+            style="font-size: 30px; color: #fff"
+            onclick="closeAndNavigate()"
+            >close</span
+          >
         </div>
-        <p>IngredientSwap customizes your favorite recipes given your allergens & dietary restrictions.</p>
-        <p>The recipe is automatically updated based on your allergens. </p>
+        <p>
+          IngredientSwap customizes your favorite recipes given your allergens &
+          dietary restrictions.
+        </p>
+        <p>The recipe is automatically updated based on your allergens.</p>
         <p>Click a box to remove an ingredient.</p>
-        <p>Click the buttons at the bottom of the screen to modify the recipe. </p>
-        <p>Select “Done” when finished. </p>
+        <p>
+          Click the buttons at the bottom of the screen to modify the recipe.
+        </p>
+        <p>Select “Done” when finished.</p>
+      </div>
     </div>
-</div>
 
-<footer-top></footer-top>
-<footer>
-    <div class="footer-icons">
-        <a href="Welcome.html"><span class="material-symbols-outlined">allergies</span></a>
-        <a href="SavedRecipe.html"><span class="material-symbols-outlined">bookmark</span></a>
-    </div>
-</footer>
+    <footer-top></footer-top>
+    <footer>
+      <div class="footer-icons">
+        <a href="index.html"
+          ><span class="material-symbols-outlined">allergies</span></a
+        >
+        <a href="SavedRecipe.html"
+          ><span class="material-symbols-outlined">bookmark</span></a
+        >
+      </div>
+    </footer>
 
-<script>
-    function closeAndNavigate() {
+    <script>
+      function closeAndNavigate() {
         window.location.href = "Recipe.html";
-    }
-</script>
+      }
+    </script>
 
-<!-- We used ChatGPT to help when we got stuck with Javascript for the buttons and finding the right CSS modifiers -->
-
-</body>
+    <!-- We used ChatGPT to help when we got stuck with Javascript for the buttons and finding the right CSS modifiers -->
+  </body>
 </html>

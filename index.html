@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ingredient Swap</title>
+    <link rel="icon" href="images/is-logo.png" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"
+    />
+    <style>
+      .material-symbols-outlined {
+        font-size: 50px;
+        color: #b4d4ca;
+        margin-top: 10px;
+      }
+
+      body {
+        font-family: "Abril Fatface", cursive;
+        font-weight: normal;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: column;
+      }
+
+      h1 {
+        font-family: "Abril Fatface", cursive;
+        padding: 0;
+        margin: 0;
+      }
+
+      h3 {
+        font-family: "Roboto Mono", normal;
+        font-size: 18px;
+        color: #000000;
+        padding: 0;
+        margin: 0;
+      }
+
+      p {
+        font-family: "Roboto Mono";
+        font-weight: normal;
+        font-size: 17px;
+      }
+
+      .container {
+        flex: 1;
+        max-width: 80%;
+        margin: 0 auto;
+        padding: 10px;
+        background-color: #b4d4ca;
+        border-radius: 10px;
+        margin-top: 10px;
+        border-radius: 0px;
+        position: relative;
+      }
+
+      .title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #f17d98;
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .text-title {
+        font-size: 15px;
+        font-weight: bold;
+        color: #ffffff;
+        text-align: left;
+      }
+
+      .text-box {
+        font-size: 15px;
+        font-family: "Roboto", italic;
+        font-weight: normal;
+        color: #000000;
+        text-align: left;
+        margin-top: 5px;
+        width: 300px;
+      }
+
+      .insn-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+      }
+
+      header {
+        background-color: #b4d4ca;
+        color: #fff;
+        height: 68px;
+        text-align: center;
+        padding: 10px 0;
+      }
+
+      footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #fff;
+        color: #fff;
+        height: 50px;
+        text-align: center;
+        padding: 10px 0;
+      }
+
+      footer-top {
+        position: fixed;
+        bottom: 50px;
+        width: 100%;
+        background-color: #b4d4ca;
+        height: 5px;
+        text-align: center;
+        padding: 10px 0;
+      }
+
+      .footer-icons {
+        display: flex;
+        justify-content: space-around;
+        position: fixed;
+        width: 100%;
+        padding: 5px 0;
+        bottom: 0px;
+      }
+
+      .header-icons {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+      }
+
+      .button-container {
+        position: fixed;
+        bottom: 100px;
+        right: 28px;
+      }
+
+      .button {
+        font-family: "Abril Fatface", cursive;
+        font-size: 20px;
+        background-color: #f17d98;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+      }
+
+      .button:hover {
+        background-color: #d84f96;
+      }
+
+      .dropdown {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-family: "Roboto Mono", bold;
+        font-size: 18px;
+        color: #000000;
+        display: inline-block;
+        transform: translate(-50%, -50%);
+        text-align: left;
+      }
+
+      .custom-select {
+        position: absolute;
+        top: 100%;
+        left: 10;
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        background-color: #f9f9f9;
+        transform: translate(-50%, -50%);
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+
+      .dropdown-btn {
+        font-family: "Roboto Mono", bold;
+        font-size: 20px;
+        color: #000000;
+        background-color: #b4d4ca;
+        padding: 12px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        width: 200px;
+        position: relative;
+      }
+
+      .dropdown-btn .material-symbols-outlined {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+      }
+
+      .dropdown-content {
+        display: none;
+        background-color: #b4d4ca;
+        width: 200px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        flex-grow: 1;
+      }
+
+      .dropdown-content a {
+        font-family: "Roboto Mono", bold;
+        font-size: 18px;
+        color: #000000;
+        text-decoration: none;
+        display: block;
+        padding: 3px 0;
+        position: relative;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 3px;
+        margin-bottom: 3px;
+        border-top: 1px solid white; 
+      }
+
+      .dropdown-content input[type="checkbox"] {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .dropdown-content input[type="checkbox"] + label::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        border: 2px solid #ffffff;
+        border-radius: 4px;
+        background-color: white;
+      }
+
+      .custom-checkbox:checked + label::before {
+        background-color: #f17d98;
+        border-color: #f17d98; 
+      }
+
+      .dropdown-content input[type="checkbox"]:checked + label::after {
+        content: "\2713";
+        position: absolute;
+        top: 50%;
+        left: 4px;
+        transform: translateY(-50%);
+        font-size: 14px;
+        color: #ffffff;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #b4d4ca;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="images/is-logo.png" alt="Logo" height="68px" />
+    </header>
+
+    <div class="title">
+      <div class="header-icons">
+        <span
+          class="material-symbols-outlined"
+          style="font-size: 30px; color: white"
+          >arrow_back_ios</span
+        >
+        <span
+          class="material-symbols-outlined"
+          style="font-size: 30px; color: white"
+          >info</span
+        >
+      </div>
+      <h2>Please select your dietary restrictions and allergens</h2>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropdown-btn" onclick="toggleDropdown()">Select</button>
+      <div class="dropdown-content" id="dropdownContent">
+        <a
+          ><label
+            ><span>No Milk</span
+            ><input
+              type="checkbox"
+              class="custom-checkbox"
+              value="Milk" /></label
+        ></a>
+        <a
+          ><label
+            ><span>No Peanut</span
+            ><input
+              type="checkbox"
+              class="custom-checkbox"
+              value="Peanut" /></label
+        ></a>
+        <a
+          ><label
+            ><span>No Tree Nut</span
+            ><input
+              type="checkbox"
+              class="custom-checkbox"
+              value="Tree Nut" /></label
+        ></a>
+        <a
+          ><label
+            ><span>No Eggs</span
+            ><input
+              type="checkbox"
+              class="custom-checkbox"
+              value="Eggs" /></label
+        ></a>
+        <a
+          ><label
+            ><span>Gluten</span
+            ><input
+              type="checkbox"
+              class="custom-checkbox"
+              value="Gluten" /></label
+        ></a>
+        <a
+          ><label
+            ><span>Vegan</span
+            ><input
+              type="checkbox"
+              class="custom-checkbox"
+              value="Vegan" /></label
+        ></a>
+      </div>
+    </div>
+
+    <script>
+      const checkboxes = document.querySelectorAll(".custom-checkbox");
+
+      checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener("change", function () {
+          const selectedOptions = Array.from(checkboxes)
+            .filter((checkbox) => checkbox.checked)
+            .map((checkbox) => checkbox.value);
+
+          // save the selected allergens
+          localStorage.setItem(
+            "selectedAllergens",
+            JSON.stringify(selectedOptions)
+          );
+          console.log(selectedOptions);
+        });
+      });
+    </script>
+
+    <div class="button-container">
+      <button class="button" onclick="doneAndNavigate()">Done</button>
+    </div>
+
+    <script>
+      // keep track of dropdown state
+      let dropdownOpen = false;
+
+      function toggleDropdown() {
+        const dropdownContent = document.getElementById("dropdownContent");
+
+        dropdownContent.classList.toggle("show");
+
+        dropdownOpen = !dropdownOpen;
+      }
+
+      document.addEventListener("click", function (event) {
+        const dropdownContent = document.getElementById("dropdownContent");
+        const dropdownButton = document.querySelector(".dropdown-btn");
+
+        // check if the clicked element is not the dropdown button or the dropdown content
+        if (
+          !event.target.matches(".dropdown-btn") &&
+          !event.target.matches(".dropdown-content") &&
+          !event.target.matches(".custom-checkbox")
+        ) {
+          // check if the dropdown content is currently visible and dropdown is open
+          if (dropdownContent.classList.contains("show") && dropdownOpen) {
+            dropdownContent.classList.remove("show");
+            dropdownOpen = false;
+          }
+        }
+      });
+
+      function doneAndNavigate() {
+        window.location.href = "SavedRecipe.html";
+      }
+    </script>
+
+    <footer-top></footer-top>
+    <footer>
+      <div class="footer-icons">
+        <a href="index.html"
+          ><span class="material-symbols-outlined">allergies</span></a
+        >
+        <a href="SavedRecipe.html"
+          ><span class="material-symbols-outlined">bookmark</span></a
+        >
+      </div>
+    </footer>
+
+    <!-- We used ChatGPT to help when we got stuck with Javascript for the buttons and finding the right CSS modifiers -->
+  </body>
+</html>

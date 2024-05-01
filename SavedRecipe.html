@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ingredient Swap</title>
-<link rel="icon" href="is-logo.png">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" /><style>
-
-    .material-symbols-outlined {
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ingredient Swap</title>
+    <link rel="icon" href="images/is-logo.png" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"
+    />
+    <style>
+      .material-symbols-outlined {
         font-size: 50px;
-        color: #B4D4CA;
-    }
+        color: #b4d4ca;
+      }
 
-    body {
-        font-family: 'Abril Fatface';
+      body {
+        font-family: "Abril Fatface";
         font-weight: normal;
         width: 100%;
         margin: 0;
@@ -23,82 +32,82 @@
         background-color: #ffffff;
         display: flex;
         flex-direction: column;
-    }
+      }
 
-    h1 {
-        font-family: 'Abril Fatface';
+      h1 {
+        font-family: "Abril Fatface";
         padding: 0;
         margin: 0px;
-    }
+      }
 
-    h2 {
-        font-family: 'Abril Fatface';
+      h2 {
+        font-family: "Abril Fatface";
         padding: 0;
         margin: 2px;
         font-size: 18px;
-    }
+      }
 
-    p {
-        font-family: 'Roboto Mono';
+      p {
+        font-family: "Roboto Mono";
         font-weight: normal;
         font-size: 17px;
-    }
+      }
 
-    .container {
-        width: calc(50% - 20px); 
+      .container {
+        width: calc(50% - 20px);
         margin: 5px;
         text-align: center;
-    }
+      }
 
-    .bigger-container {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-around; 
-        flex-wrap: wrap;
-        margin-bottom: 80px;
-        margin-right: 14px;
-    }
-
-    .big-container {
+      .bigger-container {
         display: flex;
         align-items: flex-start;
         justify-content: space-around;
-        flex-wrap: wrap; 
-    }
+        flex-wrap: wrap;
+        margin-bottom: 80px;
+        margin-right: 14px;
+      }
 
-    .title {
+      .big-container {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-around;
+        flex-wrap: wrap;
+      }
+
+      .title {
         font-size: 18px;
         font-weight: bold;
-        color: #F17D98;
+        color: #f17d98;
         text-align: center;
         margin-top: 5px;
-    }
+      }
 
-    .text-title {
+      .text-title {
         font-size: 15px;
         font-weight: bold;
         color: #ffffff;
         text-align: left;
-    }
+      }
 
-    .text-box {
+      .text-box {
         font-size: 15px;
-        font-family: 'Roboto', italic;
+        font-family: "Roboto", italic;
         font-weight: normal;
         color: #000000;
         text-align: left;
         margin-top: px;
-    }
+      }
 
-    header {
-        background-color: #B4D4CA;
+      header {
+        background-color: #b4d4ca;
         color: #fff;
         height: 68px;
         text-align: center;
         padding: 10px 0;
-    }
+      }
 
-    footer {
+      footer {
         position: fixed;
         left: 0;
         bottom: 0;
@@ -108,322 +117,376 @@
         height: 50px;
         text-align: center;
         padding: 10px 0;
-    }
+      }
 
-    footer-top {
+      footer-top {
         position: fixed;
         bottom: 50px; /* Adjust to fit the size of the footer */
         width: 100%;
-        background-color: #B4D4CA;
+        background-color: #b4d4ca;
         height: 5px; /* Adjust the height of the rectangle */
         text-align: center;
         padding: 10px 0;
-    }
+      }
 
-    .footer-icons {
+      .footer-icons {
         display: flex;
-    justify-content: space-around;
-    position: fixed;
-    width: 100%;
-    padding: 5px 0;
-    bottom: 0px;
-    }
+        justify-content: space-around;
+        position: fixed;
+        width: 100%;
+        padding: 5px 0;
+        bottom: 0px;
+      }
 
-    .ingredients-container p {
+      .ingredients-container p {
         margin: 0;
-        color: #FFF;
+        color: #fff;
         font-size: 15px;
-    }
+      }
 
-    .nutrition-container p {
+      .nutrition-container p {
         margin: 0;
-        color: #FFF;
+        color: #fff;
         font-size: 15px;
-    }
+      }
 
-    .header-icons {
+      .header-icons {
         margin-top: 10px;
         display: flex;
         justify-content: space-between;
         padding: 0 20px;
-    }
+      }
 
-    .button-container {
+      .button-container {
         position: fixed;
         bottom: 100px;
         right: 28px;
-    }
+      }
 
-    .button {
-        font-family: 'Abril Fatface';
+      .button {
+        font-family: "Abril Fatface";
         font-size: 20px;
-        background-color: #F17D98;
+        background-color: #f17d98;
         color: #fff;
         border: none;
         padding: 10px 20px;
         cursor: pointer;
-    }
+      }
 
-    .button:hover {
+      .button:hover {
         background-color: #d84f96;
-    }
+      }
 
-    .container img {
+      .container img {
         display: flex;
-        border: 2px solid #B4D4CA;
-    }
+        border: 2px solid #b4d4ca;
+      }
 
-    .ingredients-title {
-        font-family: 'Abril Fatface';
+      .ingredients-title {
+        font-family: "Abril Fatface";
         font-weight: normal;
         color: #000000;
         text-decoration: underline;
         text-align: left;
         margin-left: 10px;
-    }
+      }
 
-    .nutrition-title {
+      .nutrition-title {
         font-size: 12px;
-        font-family: 'Abril Fatface';
+        font-family: "Abril Fatface";
         font-weight: normal;
         color: #000000;
         text-decoration: underline;
         text-align: left;
         margin-top: 5px;
         margin-left: 10px;
-    }
+      }
 
-    .nutrition-text {
+      .nutrition-text {
         font-size: 12px;
-        font-family: 'Roboto Mono', normal;
+        font-family: "Roboto Mono", normal;
         font-weight: normal;
         color: #000000;
         text-align: left;
         margin-left: 20px;
-    }
+      }
 
-    .nutrition-text p {
+      .nutrition-text p {
         padding: 0;
         margin: 0;
-    }
+      }
 
-    .todo-list {
+      .todo-list {
         list-style-type: none;
         padding: 5px;
         margin: 0;
-    }
+      }
 
-    .todo-item {
+      .todo-item {
         display: flex;
         align-items: center;
-    }
+      }
 
-    .task {
+      .task {
         font-size: 20px;
-        font-family: 'Roboto Mono', normal;
+        font-family: "Roboto Mono", normal;
         font-weight: normal;
-    }
+      }
 
-    .number {
+      .number {
         margin-right: 10px;
         font-size: 22px;
         font-weight: bold;
-        color: #F17D98;
+        color: #f17d98;
         margin-left: 8px;
-    }
-
-</style>
-</head>
-<body>
-
+      }
+    </style>
+  </head>
+  <body>
     <header>
-        <img src="is-logo.png" alt="Logo" height="68px">
+      <img src="images/is-logo.png" alt="Logo" height="68px" />
     </header>
-    
+
     <div class="title">
-        <div class="header-icons">
-            <a href="Recipe.html">
-                <span class="material-symbols-outlined" style="font-size: 30px; color: white;">arrow_back_ios</span>
-            </a>
-            <h1>Saved Recipes</h1>
-            <span class="material-symbols-outlined" style="font-size: 30px; color: white;">info</span>
-        </div>
-        <h2>Select a recipe to modify</h2>
+      <div class="header-icons">
+        <a href="Recipe.html">
+          <span
+            class="material-symbols-outlined"
+            style="font-size: 30px; color: white"
+            >arrow_back_ios</span
+          >
+        </a>
+        <h1>Saved Recipes</h1>
+        <span
+          class="material-symbols-outlined"
+          style="font-size: 30px; color: white"
+          >info</span
+        >
+      </div>
+      <h2>Select a recipe to modify</h2>
     </div>
-    
+
     <div class="bigger-container">
-    <div class="big-container">
+      <div class="big-container">
         <div class="container">
-            <img src="cookies.jpg" width ="180px" height = "180px" onclick="setRecipe('Cookie Recipe')">
-            <h1 style="font-size: 20px; color: #F17D98; margin-top: 8px;">Chocolate Chip Cookies</h1>
+          <img
+            src="images/cookies.jpg"
+            width="180px"
+            height="180px"
+            onclick="setRecipe('Cookie Recipe')"
+          />
+          <h1 style="font-size: 20px; color: #f17d98; margin-top: 8px">
+            Chocolate Chip Cookies
+          </h1>
         </div>
         <div class="container">
-            <img src="carrotcake.jpg" width ="180px" height = "180px" onclick="setRecipe('Cake Recipe')">
-            <h1 style="font-size: 20px; color: #F17D98; margin-top: 8px;">Carrot Cake</h1>
+          <img
+            src="images/carrotcake.jpg"
+            width="180px"
+            height="180px"
+            onclick="setRecipe('Cake Recipe')"
+          />
+          <h1 style="font-size: 20px; color: #f17d98; margin-top: 8px">
+            Carrot Cake
+          </h1>
         </div>
-    </div>
-    
-    <div class="big-container">
+      </div>
+
+      <div class="big-container">
         <div class="container">
-            <img src="muffins.jpg" width ="180px" height = "180px" onclick="setRecipe('Muffin Recipe')">
-            <h1 style="font-size: 20px; color: #F17D98; margin-top: 8px;">Muffins</h1>
+          <img
+            src="images/muffins.jpg"
+            width="180px"
+            height="180px"
+            onclick="setRecipe('Muffin Recipe')"
+          />
+          <h1 style="font-size: 20px; color: #f17d98; margin-top: 8px">
+            Muffins
+          </h1>
         </div>
         <div class="container">
-            <img src="Brownies.png" width ="180px" height = "180px" onclick="setRecipe('Brownie Recipe')">
-            <h1 style="font-size: 20px; color: #F17D98; margin-top: 8px;">Brownies</h1>
+          <img
+            src="images/Brownies.png"
+            width="180px"
+            height="180px"
+            onclick="setRecipe('Brownie Recipe')"
+          />
+          <h1 style="font-size: 20px; color: #f17d98; margin-top: 8px">
+            Brownies
+          </h1>
         </div>
+      </div>
+
+      <div class="big-container">
+        <div class="container">
+          <img
+            src="images/balls.png"
+            width="180px"
+            height="180px"
+            onclick="setRecipe('Balls Recipe')"
+          />
+          <h1 style="font-size: 20px; color: #f17d98; margin-top: 8px">
+            Protein Balls
+          </h1>
+        </div>
+        <div class="container">
+          <img
+            src="images/fruit.png"
+            width="180px"
+            height="180px"
+            onclick="setRecipe('Fruit Recipe')"
+          />
+          <h1 style="font-size: 20px; color: #f17d98; margin-top: 8px">
+            Fruit Cobbler
+          </h1>
+        </div>
+      </div>
     </div>
 
-    <div class="big-container">
-        <div class="container">
-            <img src="balls.png" width ="180px" height = "180px" onclick="setRecipe('Balls Recipe')">
-            <h1 style="font-size: 20px; color: #F17D98; margin-top: 8px;">Protein Balls</h1>
-        </div>
-        <div class="container">
-            <img src="fruit.png" width ="180px" height = "180px" onclick="setRecipe('Fruit Recipe')">
-            <h1 style="font-size: 20px; color: #F17D98; margin-top: 8px;">Fruit Cobbler</h1>
-        </div>
-    </div>
-</div>
+    <footer-top></footer-top>
+    <footer>
+      <div class="footer-icons">
+        <a href="index.html"
+          ><span class="material-symbols-outlined">allergies</span></a
+        >
+        <a href="SavedRecipe.html"
+          ><span class="material-symbols-outlined">bookmark</span></a
+        >
+      </div>
+    </footer>
 
-<footer-top></footer-top>
-<footer>
-    <div class="footer-icons">
-        <a href="Welcome.html"><span class="material-symbols-outlined">allergies</span></a>
-        <a href="SavedRecipe.html"><span class="material-symbols-outlined">bookmark</span></a>
-    </div>
-</footer>
-    
     <script>
-    // Define recipe objects
-    const recipes = {
+      // Define recipe objects
+      const recipes = {
         "Cookie Recipe": {
-            name: "Cookie Recipe",
-            ingredients: [
-                { number: 1, task: "Eggs" },
-                { number: 2, task: "tsp Vanilla" },
-                { number: 1/2, task: "cup White Sugar" },
-                { number: 2, task: "cups Flour" },
-                { number: 1/4, task: "cup Brown Sugar" },
-                { number: 1, task: "cup Chocolate Chips" },
-                { number: 1/2, task: "tsp Salt" },
-                { number: 1/2, task: "tsp Baking Soda" }
-            ],
-            nutrition: [
-                { n: 180, task: " Calories" },
-                { n: 2, task: "g Protein" },
-                { n: 8, task: "g Fat" },
-                { n: 20, task: "g Sugar" },
-            ]
+          name: "Cookie Recipe",
+          ingredients: [
+            { number: 1, task: "Eggs" },
+            { number: 2, task: "tsp Vanilla" },
+            { number: 1 / 2, task: "cup White Sugar" },
+            { number: 2, task: "cups Flour" },
+            { number: 1 / 4, task: "cup Brown Sugar" },
+            { number: 1, task: "cup Chocolate Chips" },
+            { number: 1 / 2, task: "tsp Salt" },
+            { number: 1 / 2, task: "tsp Baking Soda" },
+          ],
+          nutrition: [
+            { n: 180, task: " Calories" },
+            { n: 2, task: "g Protein" },
+            { n: 8, task: "g Fat" },
+            { n: 20, task: "g Sugar" },
+          ],
         },
         "Cake Recipe": {
-            name: "Cake Recipe",
-            ingredients: [
-                { number: 4, task: "Eggs" },
-                { number: 2, task: "tsp Vanilla" },
-                { number: 1/2, task: "cup White Sugar" },
-                { number: 2, task: "cups Flour" },
-                { number: 3, task: "cups Grated Carrots" },
-                { number: 1, task: "cups Pecans" },
-                { number: 1, task: "cup Brown Sugar" },
-                { number: 1, task: "cup Chocolate Chips" },
-                { number: 1, task: "cup Vegetable Oil" },
-                { number: 1/2, task: "tsp Cinnamon" },
-                { number: 1, task: "tsp Vanilla" },
-                { number: 1/2, task: "tsp Salt" },
-                { number: 2, task: "tsp Baking Soda" }
-            ],
-            nutrition: [
-                { n: 250, task: "  Calories" },
-                { n: 2, task: "g Protein" },
-                { n: 15, task: "g Fat" },
-                { n: 20, task: "g Sugar" },
-            ]
+          name: "Cake Recipe",
+          ingredients: [
+            { number: 4, task: "Eggs" },
+            { number: 2, task: "tsp Vanilla" },
+            { number: 1 / 2, task: "cup White Sugar" },
+            { number: 2, task: "cups Flour" },
+            { number: 3, task: "cups Grated Carrots" },
+            { number: 1, task: "cups Pecans" },
+            { number: 1, task: "cup Brown Sugar" },
+            { number: 1, task: "cup Chocolate Chips" },
+            { number: 1, task: "cup Vegetable Oil" },
+            { number: 1 / 2, task: "tsp Cinnamon" },
+            { number: 1, task: "tsp Vanilla" },
+            { number: 1 / 2, task: "tsp Salt" },
+            { number: 2, task: "tsp Baking Soda" },
+          ],
+          nutrition: [
+            { n: 250, task: "  Calories" },
+            { n: 2, task: "g Protein" },
+            { n: 15, task: "g Fat" },
+            { n: 20, task: "g Sugar" },
+          ],
         },
         "Brownie Recipe": {
-            name: "Brownie Recipe",
-            ingredients: [
-                { number: 2, task: "Eggs" },
-                { number: 1/2, task: "cup White Sugar" },
-                { number: 3/4, task: "cups Flour" },
-                { number: 1, task: "cup Butter" }, 
-                { number: 1, task: "cup Chocolate Chips" },
-                { number: 1, task: "tsp Vanilla" },
-                { number: 1/4, task: "cup Cocoa Powder" }
-            ],
-            nutrition: [
-                { n: 200, task: "  Calories" },
-                { n: 2, task: "g Protein" },
-                { n: 8, task: "g Fat" },
-                { n: 20, task: "g Sugar" },
-            ]
+          name: "Brownie Recipe",
+          ingredients: [
+            { number: 2, task: "Eggs" },
+            { number: 1 / 2, task: "cup White Sugar" },
+            { number: 3 / 4, task: "cups Flour" },
+            { number: 1, task: "cup Butter" },
+            { number: 1, task: "cup Chocolate Chips" },
+            { number: 1, task: "tsp Vanilla" },
+            { number: 1 / 4, task: "cup Cocoa Powder" },
+          ],
+          nutrition: [
+            { n: 200, task: "  Calories" },
+            { n: 2, task: "g Protein" },
+            { n: 8, task: "g Fat" },
+            { n: 20, task: "g Sugar" },
+          ],
         },
         "Muffin Recipe": {
-            name: "Muffin Recipe",
-            ingredients: [
-                { number: 2, task: "Eggs" },
-                { number: 1/2, task: "cup White Sugar" },
-                { number: 2, task: "cups Flour" },
-                { number: 2, task: "tsp Baking Powder" }, 
-                { number: 3/4, task: "cup Milk" }, 
-                { number: 1/4, task: "cup Butter" }, 
-                { number: 2, task: "tsp Salt" }
-            ],
-            nutrition: [
-                { n: 420, task: "  Calories" },
-                { n: 2, task: "g Protein" },
-                { n: 14, task: "g Fat" },
-                { n: 25, task: "g Sugar" },
-            ]
+          name: "Muffin Recipe",
+          ingredients: [
+            { number: 2, task: "Eggs" },
+            { number: 1 / 2, task: "cup White Sugar" },
+            { number: 2, task: "cups Flour" },
+            { number: 2, task: "tsp Baking Powder" },
+            { number: 3 / 4, task: "cup Milk" },
+            { number: 1 / 4, task: "cup Butter" },
+            { number: 2, task: "tsp Salt" },
+          ],
+          nutrition: [
+            { n: 420, task: "  Calories" },
+            { n: 2, task: "g Protein" },
+            { n: 14, task: "g Fat" },
+            { n: 25, task: "g Sugar" },
+          ],
         },
         "Balls Recipe": {
-            name: "Balls Recipe",
-            ingredients: [
-                { number: 1/4, task: "cup White Sugar" },
-                { number: 1/2, task: "cup Peanut Butter" },
-                { number: 1, task: "cup Oats" },
-                { number: 2, task: "tsp Baking Powder" }, 
-                { number: 1/2, task: "cups Shredded Coconut" }, 
-                { number: 1/2, task: "cup Ground Flaxseed" }, 
-                { number: 1/2, task: "cup Chocolate Chips" }
-            ],           
-            nutrition: [
-                { n: 110, task: "  Calories" },
-                { n: 8, task: "g Protein" },
-                { n: 6, task: "g Fat" },
-                { n: 16, task: "g Sugar" },
-            ]
+          name: "Balls Recipe",
+          ingredients: [
+            { number: 1 / 4, task: "cup White Sugar" },
+            { number: 1 / 2, task: "cup Peanut Butter" },
+            { number: 1, task: "cup Oats" },
+            { number: 2, task: "tsp Baking Powder" },
+            { number: 1 / 2, task: "cups Shredded Coconut" },
+            { number: 1 / 2, task: "cup Ground Flaxseed" },
+            { number: 1 / 2, task: "cup Chocolate Chips" },
+          ],
+          nutrition: [
+            { n: 110, task: "  Calories" },
+            { n: 8, task: "g Protein" },
+            { n: 6, task: "g Fat" },
+            { n: 16, task: "g Sugar" },
+          ],
         },
         "Fruit Recipe": {
-            name: "Fruit Recipe",
-            ingredients: [
-                { number: 1/2, task: "cup Butter" },
-                { number: 3/4, task: "cups Flour" },
-                { number: 1, task: "tsp Baking Powder" }, 
-                { number: 3/4, task: "cup Milk" }, 
-                { number: 3/4, task: "cup White Sugar" }, 
-                { number: 2, task: "cups Sliced Nectarines" }
-            ],
-            nutrition: [
-                { n: 210, task: "  Calories" },
-                { n: 3, task: "g Protein" },
-                { n: 6, task: "g Fat" },
-                { n: 22, task: "g Sugar" },
-            ]
+          name: "Fruit Recipe",
+          ingredients: [
+            { number: 1 / 2, task: "cup Butter" },
+            { number: 3 / 4, task: "cups Flour" },
+            { number: 1, task: "tsp Baking Powder" },
+            { number: 3 / 4, task: "cup Milk" },
+            { number: 3 / 4, task: "cup White Sugar" },
+            { number: 2, task: "cups Sliced Nectarines" },
+          ],
+          nutrition: [
+            { n: 210, task: "  Calories" },
+            { n: 3, task: "g Protein" },
+            { n: 6, task: "g Fat" },
+            { n: 22, task: "g Sugar" },
+          ],
         },
         // Add more recipes here
-    };
-    
-    function setRecipe(recipeName) {
+      };
+
+      function setRecipe(recipeName) {
         const recipe = recipes[recipeName];
-        localStorage.setItem('selectedRecipe', JSON.stringify(recipe));
-        localStorage.setItem('recipeName', JSON.stringify(recipe.name));
-        localStorage.setItem('recipeNutrition', JSON.stringify(recipe.nutrition));
+        localStorage.setItem("selectedRecipe", JSON.stringify(recipe));
+        localStorage.setItem("recipeName", JSON.stringify(recipe.name));
+        localStorage.setItem(
+          "recipeNutrition",
+          JSON.stringify(recipe.nutrition)
+        );
         window.location.href = "Recipe.html";
-    }
+      }
     </script>
-    
+
     <!-- We used ChatGPT to help when we got stuck with JavaScript for the buttons and finding the right CSS modifiers -->
-    
-    </body>
-    </html>
+  </body>
+</html>
