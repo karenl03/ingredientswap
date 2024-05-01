@@ -137,6 +137,7 @@
       }
 
       .ingredients-title {
+        font-size: 12px;
         font-family: "Abril Fatface";
         font-weight: normal;
         color: #000000;
@@ -165,7 +166,7 @@
         text-align: left;
         margin-left: 20px;
         text-decoration: none;
-        line-height: 0.75;
+        line-height: 0.2;
       }
 
       .save-button-container {
@@ -204,6 +205,10 @@
         display: flex;
         align-items: center;
         margin-bottom: 10px;
+      }
+
+      .todo-item.crossed-out .task {
+          opacity: 0.35;
       }
 
       .task {
@@ -353,7 +358,15 @@
           </a>
           <div class="header-text">
             <h1>Edit Recipe</h1>
-            <h2>Click to remove an ingredient</h2>
+            <h2>Click to remove an ingredient </h2>
+            <h2 id="recipeNameTitle" style="font-size: 24px; margin-top: 10px"></h2>
+            <script>
+              const recipeName = String(localStorage.getItem('recipeName'));
+              console.log(recipeName);
+              const recipeNameTitle = document.getElementById('recipeNameTitle');
+              const recipeTitle = recipeName == "\"Cookie Recipe\"" ? "Chocolate Chip Cookies" : recipeName == "\"Cake Recipe\"" ? "Carrot Cake" : recipeName =="\"Muffin Recipe\"" ? "Muffins" : recipeName =="\"Brownie Recipe\"" ? "Brownies" : recipeName =="\"Balls Recipe\"" ? "Protein Balls"  : recipeName =="\"Fruit Recipe\"" ? "Fruit Cobbler"  : "";
+              recipeNameTitle.innerHTML = `<strong>${recipeTitle}</strong>`;
+            </script>
           </div>
           <a href="#" onclick="navigateToInfo()">
             <span class="material-symbols-outlined" style="font-size: 30px"
@@ -371,7 +384,7 @@
       </script>
 
       <div class="ingredients-title">
-        <h2 style="margin-bottom: 0">Ingredients</h2>
+        <h1 style="margin-bottom: 0">Ingredients</h1>
       </div>
 
       <ul class="todo-list" id="recipeList">
@@ -589,12 +602,14 @@
           localStorage.getItem("recipeNutrition")
         );
         if (button.innerText === "") {
+          const listItem = button.parentElement.parentElement;
           button.innerText = "X"; // Display X symbol
+          listItem.classList.add('crossed-out');
           if (checkTooManyMod()) {
             button.innerText = "";
+            listItem.classList.remove('crossed-out');
             return;
           }
-          const listItem = button.parentElement.parentElement;
           const taskText = listItem.querySelector(".task").textContent;
           if (taskText.includes("Sugar")) {
             recipeNutrition[3].n -= 10;
@@ -618,6 +633,7 @@
         } else {
           button.innerText = ""; // Remove X symbol
           const listItem = button.parentElement.parentElement;
+          listItem.classList.remove('crossed-out');
           const taskText = listItem.querySelector(".task").textContent;
           if (taskText.includes("Sugar")) {
             recipeNutrition[3].n += 10;
