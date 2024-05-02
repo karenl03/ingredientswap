@@ -308,19 +308,19 @@
 
       .popup {
         display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
+        position: fixed; 
+        z-index: 1;
         left: 0;
         top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+        width: 100%;
+        height: 100%; 
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
       }
 
       /* Popup content */
       .popup-content {
-        background-color: #fefefe;
+        background-color: #b4d4ca;
         margin: 15% auto; /* 15% from the top and centered */
         padding: 20px;
         border: 1px solid #888;
@@ -341,6 +341,39 @@
         text-decoration: none;
         cursor: pointer;
       }
+
+      /* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 80px;
+  background-color: #b4d4ca;
+  color: black;
+  text-align: center;
+  font-size: 12px;
+  border-radius: 6px;
+  padding: 5px 0;
+  font-family: "Roboto Mono", normal;
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  top: -10px; /* Adjust if needed */
+  left: 10px; /* Adjust if needed */
+  white-space: normal; /* Ensures that text can wrap */
+  word-wrap: break-word; /* Breaks the word to prevent overflow */
+  text-transform: none; 
+}
+
+/* Toggle the visibility of the tooltip text on click */
+.tooltip.clickable:hover .tooltiptext {
+  visibility: visible;
+}
+
     </style>
   </head>
   <body>
@@ -496,8 +529,10 @@
           "cups Peanut Butter": "cups Almond Butter",
           // Add more rules specific to peanuts
         },
-        "Tree Nuts": {
+        TreeNut: {
           "cup Almonds": "cup Pumpkin Seeds",
+          "cup Pecans": "cup Pumpkin Seeds",
+          "cups Pecans": "cups Pumpkin Seeds",
           "cup Almond Butter": "cup Sunflower Butter",
           "cups Almond Butter": "cups Sunflower Butter",
           // Add more rules specific to tree nuts
@@ -540,7 +575,7 @@
           if (allergen == "Peanut") {
             peanutImage = true;
           }
-          if (allergen == "Tree Nut") {
+          if (allergen == "TreeNut") {
             treenutImage = true;
           }
           // Modify ingredients based on allergens
@@ -683,18 +718,36 @@
           spanTask.className = "task";
           spanTask.textContent = ingredient.task;
 
-          // Check if ingredient has been modified, and underline it if necessary
-          if (ingredient.modified) {
-            spanTask.style.textDecoration = "underline";
-          }
+         // Check if ingredient has been modified, and underline and add a clickable question mark if necessary
+  if (ingredient.modified) {
+    spanTask.style.textDecoration = "underline";
 
-          buttonContainer.appendChild(button);
-          buttonContainer.appendChild(spanNumber);
-          listItem.appendChild(buttonContainer);
-          listItem.appendChild(spanTask);
+    // Create a span for the question mark
+    const questionMark = document.createElement("span");
+    questionMark.className = "material-symbols-outlined tooltip clickable";
+    questionMark.textContent = "help_outline"; // Google Material Icon for question
+    questionMark.style.fontSize = "18px";
+    questionMark.style.cursor = "pointer";
+    questionMark.style.marginLeft = "5px";
 
-          recipeList.appendChild(listItem);
-        });
+    // Create a span for the tooltip text
+    const tooltipSpan = document.createElement("span");
+    tooltipSpan.className = "tooltiptext";
+    tooltipSpan.textContent = "Modified due to allergen"; // Customize message as needed
+
+    questionMark.appendChild(tooltipSpan);
+
+    // Append question mark after the task text
+    spanTask.appendChild(questionMark);
+  }
+
+  buttonContainer.appendChild(button);
+  buttonContainer.appendChild(spanNumber);
+  listItem.appendChild(buttonContainer);
+  listItem.appendChild(spanTask);
+
+  recipeList.appendChild(listItem);
+});
       }
 
       // Call the function to generate the recipe list
@@ -1163,6 +1216,35 @@
       </div>
     </footer>
 
+    <script>
+        // All your JavaScript code that interacts with the DOM
+        document.addEventListener("DOMContentLoaded", function() {
+            document.addEventListener('click', function(event) {
+                // Close all tooltips if the click isn't on a tooltip trigger
+                var tooltips = document.querySelectorAll('.tooltiptext');
+                tooltips.forEach(function(tooltip) {
+                    if (!tooltip.parentNode.contains(event.target)) {
+                        tooltip.style.visibility = 'hidden';
+                    }
+                });
+            });
+
+            // Add click event listeners to tooltip icons
+            var tooltipIcons = document.querySelectorAll('.tooltip');
+            tooltipIcons.forEach(function(icon) {
+                icon.addEventListener('click', function(event) {
+                    // Prevent the document click handler from firing
+                    event.stopPropagation();
+
+                    // Get the tooltip text element
+                    var tooltipText = this.querySelector('.tooltiptext');
+
+                    // Toggle visibility
+                    tooltipText.style.visibility = (tooltipText.style.visibility === 'visible') ? 'hidden' : 'visible';
+                });
+            });
+        });
+    </script>
     <!-- We used ChatGPT to help when we got stuck with Javascript for the buttons and finding the right CSS modifiers -->
   </body>
 </html>
