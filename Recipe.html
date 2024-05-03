@@ -1067,9 +1067,9 @@
           });
           if (noneModified) {
             showPopup();
-            // button.classList.toggle('clicked');
-            // const isClicked = button.classList.contains('clicked');
-            // localStorage.setItem('fatClicked', isClicked);
+            button.classList.toggle('clicked');
+            const isClicked = button.classList.contains('clicked');
+            localStorage.setItem('fatClicked', isClicked);
           }
         } else {
           // If the button is not clicked, revert to the original recipe for ingredients modified by buttons
@@ -1097,7 +1097,9 @@
               ingredient.modifiedByButton = true; // Mark as modified by button
             }
           });
-          recipeNutrition[2].n /= 2; // halve the fat content
+          if (!noneModified){
+            recipeNutrition[2].n /= 2; // halve the fat content
+          }
         } else {
           // If the button is not clicked, revert to the original recipe for ingredients modified by buttons
           recipe.ingredients.forEach((ingredient) => {
